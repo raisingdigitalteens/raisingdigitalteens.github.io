@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raising Digital Teens — First Phone Setup</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #FAF8F5; color: #2C2C2C; }
+  input[type=range] { width: 100%; max-width: 360px; accent-color: #4A7C6F; display: block; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-presets="react">
+
+const C = {
+  bg: "#FAF8F5",
+  bgCard: "#FFFFFF",
+  bgMuted: "#F2EFE9",
+  bgAccent: "#EEF4F2",
+  sage: "#4A7C6F",
+  sageDim: "#3D6860",
+  sageFaint: "rgba(74,124,111,0.10)",
+  terra: "#C4714A",
+  terraFaint: "rgba(196,113,74,0.10)",
+  charcoal: "#2C2C2C",
+  mid: "#6B6B6B",
+  muted: "#9A9A9A",
+  border: "rgba(0,0,0,0.07)",
+  borderMed: "rgba(0,0,0,0.12)",
+  shadow: "0 2px 12px rgba(0,0,0,0.07)",
+  shadowMd: "0 4px 20px rgba(0,0,0,0.10)",
+  green: "#4A7C6F",
+  greenFaint: "rgba(74,124,111,0.10)",
+  yellow: "#D4952A",
+  yellowFaint: "rgba(212,149,42,0.10)",
+  red: "#B85450",
+  redFaint: "rgba(184,84,80,0.10)",
+  purple: "#6B5EA8",
+  purpleFaint: "rgba(107,94,168,0.10)",
+};
+
+const CATEGORIES = [
+  { id: "downloads", icon: "📲", label: "App Downloads", question: "How should app downloads work?", sub: "Controls whether they can install new apps without your permission.",
+    levels: { "age-appropriate": { label: "Approval required", desc: "Every download request comes to you first before anything installs." }, "restricted": { label: "Fully restricted", desc: "Nothing installs without you doing it manually yourself." }, "off": { label: "Completely blocked", desc: "App Store or Play Store access removed entirely." } },
+    detail: { "age-appropriate": "iOS: Family Sharing → Ask to Buy on. Android: Family Link → Approved apps only.", "restricted": "iOS: Screen Time → Installing Apps: Don't Allow. Android: Family Link, manually install everything.", "off": "iOS: Content & Privacy → block App Store. Android: Play Store removed via Family Link." } },
+  { id: "web", icon: "🌐", label: "Web Browsing", question: "What should they be able to access online?", sub: "Controls what websites and content they can reach through the browser.",
+    levels: { "age-appropriate": { label: "Filtered browsing", desc: "Adult content blocked, SafeSearch on. General browsing allowed." }, "restricted": { label: "Approved sites only", desc: "Only a list of sites you approve. Everything else blocked." }, "off": { label: "Browser removed", desc: "Web browser blocked or removed entirely." } },
+    detail: { "age-appropriate": "iOS: Screen Time → Content & Privacy → Web Content → Limit Adult Websites + SafeSearch. Android: Family Link content filters on.", "restricted": "iOS: Web Content → Allowed Websites Only. Android: Chrome restricted to approved sites.", "off": "iOS: Safari blocked via Screen Time. Android: Chrome blocked via Family Link." } },
+  { id: "social", icon: "💬", label: "Social Media", question: "Should they have access to social media?", sub: "Most platforms require users to be 13+. This controls what social apps they can use.",
+    levels: { "age-appropriate": { label: "Age-appropriate access", desc: "Platforms matching their age with daily time limits and your visibility." }, "restricted": { label: "One approved platform", desc: "One app you've reviewed and approved, with all others blocked." }, "off": { label: "Not yet", desc: "No social media of any kind. Block by age rating or category." } },
+    detail: { "age-appropriate": "iOS: App Limits → Social Networking category with daily cap. Android: Family Link app limits on social.", "restricted": "One app installed manually, all others blocked via App Limits or Family Link.", "off": "iOS: Content & Privacy → block 12+ apps. Android: Play Store → approved apps only, no social approved." } },
+  { id: "screentime", icon: "⏱️", label: "Daily Screen Time", question: "Should daily screen time be capped?", sub: "Sets how long they can spend on entertainment, games, and social apps each day.",
+    levels: { "age-appropriate": { label: "Recommended limits", desc: "1–2 hrs entertainment, 1 hr social, 1 hr gaming on school days." }, "restricted": { label: "Tighter limits", desc: "45 min entertainment, 30 min social, 45 min gaming on school days." }, "off": { label: "No caps", desc: "No automatic limits. You manage usage through household rules." } },
+    detail: { "age-appropriate": "iOS: Screen Time → App Limits by category. Android: Family Link → daily screen time.", "restricted": "Same tools, tighter numbers. Revisit in 30 days based on how it goes.", "off": "No limits configured. Consider revisiting after the first month with usage data." } },
+  { id: "bedtime", icon: "🌙", label: "Bedtime Lock", question: "Should the phone lock automatically at night?", sub: "Sets a schedule so the device becomes inaccessible at a set hour — no willpower required.",
+    levels: { "age-appropriate": { label: "Age-appropriate bedtime", desc: "Device locks at the right time for their age. Only calls allowed after." }, "restricted": { label: "Earlier + stricter", desc: "Locks one hour earlier with no exceptions, including calls." }, "off": { label: "No schedule", desc: "No automatic lock. You manage bedtime through household rules." } },
+    detail: { "age-appropriate": "iOS: Screen Time → Downtime. Ages 8–10: 7:30pm. Ages 11–13: 9pm. Ages 14+: 10pm. Android: Family Link bedtime.", "restricted": "One hour earlier than default. All apps including calls blocked during Downtime.", "off": "No Downtime configured. Strongly recommend a physical charging station outside the bedroom instead." } },
+  { id: "communication", icon: "📞", label: "Communication", question: "Who should they be able to contact?", sub: "Controls who can reach them and who they can reach — especially overnight.",
+    levels: { "age-appropriate": { label: "Contacts only", desc: "Contacts during the day. Family contacts only overnight." }, "restricted": { label: "Family only", desc: "Family contacts only at all hours. No outside messaging apps." }, "off": { label: "No limits", desc: "Open contact with anyone. No restrictions set." } },
+    detail: { "age-appropriate": "iOS: Screen Time → Communication Limits → Contacts Only / Specific Contacts during Downtime. Android: Family Link contact controls.", "restricted": "iOS: Communication Limits → Specific Contacts (family) at all times. Block messaging apps except SMS.", "off": "No communication limits configured." } },
+  { id: "location", icon: "📍", label: "Location Sharing", question: "Should you be able to see where they are?", sub: "Shows device location from your phone. A safety layer, not a replacement for communication.",
+    levels: { "age-appropriate": { label: "On and shared openly", desc: "Location visible to you, framed as a mutual safety feature." }, "restricted": { label: "On, private", desc: "Location visible to you only. Your child isn't notified when you check." }, "off": { label: "Off", desc: "No location sharing enabled." } },
+    detail: { "age-appropriate": "iOS: Find My → Share My Location. Consider sharing yours too. Android: Family Link shows device location automatically.", "restricted": "Same setup — not recommended for teens as transparency tends to build more trust.", "off": "No location sharing configured." } },
+  { id: "spending", icon: "💳", label: "In-App Purchases", question: "Should they be able to make purchases?", sub: "Controls in-app purchases, subscriptions, and paid downloads.",
+    levels: { "age-appropriate": { label: "Your approval required", desc: "Every purchase needs your sign-off. You get notified before anything charges." }, "restricted": { label: "Purchases blocked", desc: "In-app purchases disabled. No payment method on the account." }, "off": { label: "No limits", desc: "Purchases allowed without approval. Not recommended under 18." } },
+    detail: { "age-appropriate": "iOS: Family Sharing → Ask to Buy. Screen Time → In-app Purchases → Require Password. Android: Family Link purchase approval.", "restricted": "iOS: Screen Time → In-app Purchases: Don't Allow. Remove saved payment methods. Android: same via Family Link.", "off": "No purchase restrictions. Strongly recommended to reconsider." } },
+];
+
+const LEVEL_META = {
+  "age-appropriate": { color: C.green,  faint: C.greenFaint,  icon: "✓", tag: "Recommended" },
+  "restricted":      { color: C.yellow, faint: C.yellowFaint, icon: "↓", tag: "More restrictive" },
+  "off":             { color: C.red,    faint: C.redFaint,    icon: "✕", tag: "Blocked" },
+};
+
+// ── helpers ────────────────────────────────────────────────────
+function Label({ children, color = C.sage }) {
+  return <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color, marginBottom: 8 }}>{children}</div>;
+}
+function RichText({ text, done }) {
+  const parts = text.split(/(<strong>.*?<\/strong>)/g);
+  return (
+    <span style={{ textDecoration: done ? "line-through" : "none", opacity: done ? 0.4 : 1, transition: "all 0.2s" }}>
+      {parts.map((p, i) => p.startsWith("<strong>")
+        ? <strong key={i} style={{ color: C.charcoal, fontWeight: 600 }}>{p.replace(/<\/?strong>/g, "")}</strong>
+        : <span key={i}>{p}</span>)}
+    </span>
+  );
+}
+
+function Card({ children, style = {}, accent }) {
+  return (
+    <div style={{
+      background: C.bgCard, borderRadius: 20,
+      boxShadow: C.shadow,
+      border: accent ? `1.5px solid ${accent}` : `1px solid ${C.border}`,
+      marginBottom: 12, overflow: "hidden", ...style,
+    }}>{children}</div>
+  );
+}
+
+function PickCard({ icon, label, sub, selected, onClick }) {
+  return (
+    <div onClick={onClick} style={{
+      flex: "1 1 140px", background: selected ? C.bgAccent : C.bgCard,
+      border: `1.5px solid ${selected ? C.sage : C.border}`,
+      borderRadius: 16, padding: "16px 18px", cursor: "pointer",
+      position: "relative", boxShadow: C.shadow, transition: "all 0.18s",
+    }}>
+      {selected && <div style={{ position: "absolute", top: 12, right: 12, width: 20, height: 20, borderRadius: "50%", background: C.sage, display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ color: "#fff", fontSize: 11, fontWeight: 700 }}>✓</span></div>}
+      <div style={{ fontSize: 22, marginBottom: 8 }}>{icon}</div>
+      <div style={{ fontSize: 13, fontWeight: 700, color: C.charcoal, marginBottom: sub ? 3 : 0 }}>{label}</div>
+      {sub && <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.5 }}>{sub}</div>}
+    </div>
+  );
+}
+
+function Pill({ label, selected, onClick, color }) {
+  const col = color || C.sage;
+  return (
+    <div onClick={onClick} style={{
+      fontSize: 13, fontWeight: 500, padding: "8px 16px", borderRadius: 100,
+      border: `1.5px solid ${selected ? col : C.border}`,
+      background: selected ? `rgba(${col === C.sage ? "74,124,111" : "107,94,168"},0.08)` : C.bgCard,
+      color: selected ? col : C.muted,
+      cursor: "pointer", userSelect: "none", transition: "all 0.15s",
+      boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
+    }}>{label}</div>
+  );
+}
+
+function PrimaryBtn({ label, onClick, disabled, full }) {
+  return (
+    <button onClick={onClick} disabled={disabled} style={{
+      fontFamily: "inherit", fontSize: 15, fontWeight: 700,
+      background: disabled ? "#E8E4DE" : C.terra,
+      color: disabled ? C.muted : "#fff",
+      border: "none", borderRadius: 100, padding: "14px 32px",
+      cursor: disabled ? "not-allowed" : "pointer",
+      boxShadow: disabled ? "none" : "0 4px 14px rgba(196,113,74,0.30)",
+      transition: "all 0.2s", width: full ? "100%" : undefined,
+      letterSpacing: "0.01em",
+    }}>{label}</button>
+  );
+}
+function GhostBtn({ label, onClick }) {
+  return (
+    <button onClick={onClick} style={{ fontFamily: "inherit", fontSize: 14, fontWeight: 500, background: "none", color: C.muted, border: "none", cursor: "pointer", padding: "14px 12px" }}>{label}</button>
+  );
+}
+
+// ── progress bar ───────────────────────────────────────────────
+function PlanBar({ done, total }) {
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  const all = done === total && total > 0;
+  return (
+    <div style={{ position: "sticky", top: 0, zIndex: 20, background: "rgba(250,248,245,0.95)", backdropFilter: "blur(8px)", borderBottom: `1px solid ${C.border}`, padding: "12px 24px", display: "flex", gap: 14, alignItems: "center" }}>
+      <div style={{ flex: 1, height: 5, background: C.bgMuted, borderRadius: 100, overflow: "hidden" }}>
+        <div style={{ height: "100%", width: `${pct}%`, background: all ? C.terra : C.sage, borderRadius: 100, transition: "width 0.4s ease" }} />
+      </div>
+      <div style={{ fontSize: 12, fontWeight: 700, color: all ? C.terra : C.sage, whiteSpace: "nowrap" }}>
+        {all ? "✓ Done!" : `${done} / ${total}`}
+      </div>
+    </div>
+  );
+}
+
+function WizardBar({ current, total }) {
+  return (
+    <div style={{ padding: "16px 24px 0" }}>
+      <div style={{ display: "flex", gap: 4 }}>
+        {Array.from({ length: total }).map((_, i) => (
+          <div key={i} style={{ flex: 1, height: 3, borderRadius: 100, background: i <= current ? C.sage : C.bgMuted, transition: "background 0.3s" }} />
+        ))}
+      </div>
+      <div style={{ fontSize: 11, color: C.muted, marginTop: 8 }}>{current + 1} of {total}</div>
+    </div>
+  );
+}
+
+// ── level card ─────────────────────────────────────────────────
+function LevelCard({ levelKey, info, detail, selected, onClick }) {
+  const [expanded, setExpanded] = useState(false);
+  const meta = LEVEL_META[levelKey];
+  return (
+    <div style={{ background: selected ? `rgba(${levelKey === "age-appropriate" ? "74,124,111" : levelKey === "restricted" ? "212,149,42" : "184,84,80"},0.06)` : C.bgCard, border: `1.5px solid ${selected ? meta.color : C.border}`, borderRadius: 16, marginBottom: 10, overflow: "hidden", boxShadow: C.shadow, transition: "border-color 0.18s" }}>
+      <div onClick={onClick} style={{ padding: "14px 18px", cursor: "pointer", display: "flex", gap: 14, alignItems: "flex-start" }}>
+        <div style={{ width: 28, height: 28, borderRadius: "50%", flexShrink: 0, background: selected ? meta.color : C.bgMuted, display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1, transition: "background 0.18s" }}>
+          <span style={{ color: selected ? "#fff" : C.muted, fontSize: 12, fontWeight: 700 }}>{meta.icon}</span>
+        </div>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: C.charcoal }}>{info.label}</div>
+            {levelKey === "age-appropriate" && <div style={{ fontSize: 10, fontWeight: 700, color: C.sage, background: C.sageFaint, padding: "2px 8px", borderRadius: 100 }}>Recommended</div>}
+          </div>
+          <div style={{ fontSize: 13, color: C.mid, lineHeight: 1.55 }}>{info.desc}</div>
+        </div>
+      </div>
+      {selected && (
+        <div>
+          <div onClick={() => setExpanded(e => !e)} style={{ padding: "0 18px 12px", cursor: "pointer" }}>
+            <span style={{ fontSize: 11, color: C.muted, fontWeight: 500 }}>{expanded ? "▲ Hide details" : "▼ What gets configured"}</span>
+          </div>
+          {expanded && (
+            <div style={{ background: C.bgMuted, padding: "12px 18px", borderTop: `1px solid ${C.border}` }}>
+              <p style={{ fontSize: 12, color: C.mid, lineHeight: 1.65, margin: 0 }}>{detail}</p>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── summary card ───────────────────────────────────────────────
+function SummaryCard({ cat, choice, onEdit }) {
+  const [expanded, setExpanded] = useState(false);
+  const meta = LEVEL_META[choice];
+  const info = cat.levels[choice];
+  return (
+    <Card>
+      <div style={{ padding: "14px 18px", display: "flex", gap: 12, alignItems: "center" }}>
+        <div style={{ fontSize: 20, flexShrink: 0 }}>{cat.icon}</div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 11, color: C.muted, marginBottom: 2 }}>{cat.label}</div>
+          <div style={{ fontSize: 13, fontWeight: 700, color: meta.color }}>{info.label}</div>
+        </div>
+        <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+          <div onClick={() => setExpanded(e => !e)} style={{ fontSize: 11, color: C.muted, cursor: "pointer", padding: "5px 8px", background: C.bgMuted, borderRadius: 8 }}>{expanded ? "▲" : "▼"}</div>
+          <div onClick={onEdit} style={{ fontSize: 11, color: C.sage, cursor: "pointer", fontWeight: 700, padding: "5px 10px", background: C.sageFaint, borderRadius: 8 }}>Edit</div>
+        </div>
+      </div>
+      {expanded && (
+        <div style={{ background: C.bgMuted, padding: "12px 18px", borderTop: `1px solid ${C.border}` }}>
+          <p style={{ fontSize: 12, color: C.mid, lineHeight: 1.65, margin: 0 }}>{cat.detail[choice]}</p>
+        </div>
+      )}
+    </Card>
+  );
+}
+
+// ── section ────────────────────────────────────────────────────
+function Section({ s, si, checked, onToggle, defaultOpen = true }) {
+  const [open, setOpen] = useState(defaultOpen);
+  const checkable = s.type === "steps" || s.type === "checklist";
+  const total = s.items?.length || 0;
+  const done = checkable ? (checked[si] || []).filter(Boolean).length : 0;
+  const allDone = checkable && done === total && total > 0;
+  const isBaseline = s.isBaseline;
+
+  return (
+    <Card accent={isBaseline ? (allDone ? C.sage : C.terra) : undefined}>
+      {isBaseline && <div style={{ height: 4, background: allDone ? C.sage : C.terra, transition: "background 0.4s" }} />}
+      <div onClick={() => setOpen(o => !o)} style={{ padding: "18px 20px 14px", cursor: "pointer", userSelect: "none", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10 }}>
+        <div style={{ flex: 1 }}>
+          <Label color={isBaseline ? (allDone ? C.sage : C.terra) : s.eyebrowColor || C.sage}>{s.eyebrow}</Label>
+          <div style={{ fontSize: 15, fontWeight: 700, color: C.charcoal, lineHeight: 1.3 }}>{s.title}</div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6, flexShrink: 0, paddingTop: 2 }}>
+          {checkable && (
+            <div style={{ fontSize: 11, fontWeight: 700, color: allDone ? C.sage : isBaseline ? C.terra : C.sage, background: allDone ? C.sageFaint : isBaseline ? C.terraFaint : C.sageFaint, padding: "3px 10px", borderRadius: 100 }}>
+              {done}/{total}
+            </div>
+          )}
+          <div style={{ color: C.muted, fontSize: 13 }}>{open ? "▲" : "▼"}</div>
+        </div>
+      </div>
+      <div style={{ maxHeight: open ? 3000 : 0, overflow: "hidden", transition: "max-height 0.3s ease" }}>
+        <div style={{ padding: "0 20px 20px" }}>
+          {s.intro && <p style={{ fontSize: 12, lineHeight: 1.65, marginBottom: 14, color: isBaseline ? C.terra : C.muted, borderLeft: `3px solid ${isBaseline ? C.terra : C.bgMuted}`, paddingLeft: 12, fontStyle: "italic" }}>{s.intro}</p>}
+          <SectionItems type={s.type} items={s.items} si={si} checked={checked} onToggle={onToggle} isBaseline={isBaseline} />
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+function SectionItems({ type, items, si, checked, onToggle, isBaseline }) {
+  if (!items?.length) return null;
+  if (type === "steps" || type === "checklist") {
+    return (
+      <div>
+        {items.map((item, i) => {
+          const done = checked[si]?.[i] || false;
+          return (
+            <div key={i} onClick={() => onToggle(si, i)} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: "11px 0", cursor: "pointer", borderBottom: i < items.length - 1 ? `1px solid ${C.border}` : "none" }}>
+              {type === "steps" ? (
+                <div style={{ minWidth: 24, height: 24, borderRadius: "50%", flexShrink: 0, marginTop: 1, background: done ? C.sage : C.bgMuted, color: done ? "#fff" : C.mid, fontSize: 11, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.18s" }}>
+                  {done ? "✓" : i + 1}
+                </div>
+              ) : (
+                <div style={{ width: 20, height: 20, borderRadius: 6, flexShrink: 0, marginTop: 2, border: `2px solid ${done ? C.sage : isBaseline ? C.terra : C.borderMed}`, background: done ? C.sage : "transparent", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.18s" }}>
+                  {done && <span style={{ color: "#fff", fontSize: 10, fontWeight: 800 }}>✓</span>}
+                </div>
+              )}
+              <span style={{ fontSize: 13, color: C.mid, lineHeight: 1.65 }}><RichText text={item} done={done} /></span>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+  if (type === "scripts") {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ background: C.bgAccent, border: `1px solid rgba(74,124,111,0.15)`, borderRadius: 12, padding: "14px 16px" }}>
+            <p style={{ fontSize: 13, color: C.mid, lineHeight: 1.7, margin: 0, fontStyle: "italic" }}>{item}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      {items.map((item, i) => (
+        <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+          <span style={{ color: C.sage, flexShrink: 0, marginTop: 3, fontSize: 12 }}>●</span>
+          <p style={{ fontSize: 13, color: C.mid, lineHeight: 1.65, margin: 0 }}><RichText text={item} /></p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ── plan builders ──────────────────────────────────────────────
+function buildStandardSections(age, device) {
+  const isIOS = device === "iphone";
+  const tier = age <= 10 ? 1 : age <= 13 ? 2 : 3;
+  const tierLabel = tier === 1 ? "8–10" : tier === 2 ? "11–13" : "14–17";
+  const tierName = tier === 1 ? "Supervised Access" : tier === 2 ? "Guided Access" : "Earned Access";
+  const baseItems = {
+    1: [
+      isIOS ? "<strong>Parental oversight:</strong> Screen Time is on with a passcode only you know — your child does not have it" : "<strong>Parental oversight:</strong> Google Family Link is installed and linked on both devices — you control the settings",
+      "<strong>App downloads:</strong> Nothing can install on their phone without you approving it first",
+      "<strong>Web content:</strong> Adult sites are blocked and SafeSearch is on across all browsers",
+      "<strong>Social media:</strong> Instagram, TikTok, Snapchat and similar apps are blocked — all require age 13+",
+      "<strong>Communication:</strong> They can only reach family and adults you know — no open messaging to strangers",
+      "<strong>Bedtime lock:</strong> The phone locks itself every night at a set time — no willpower required from anyone",
+    ],
+    2: [
+      isIOS ? "<strong>Parental oversight:</strong> Screen Time is on with a passcode only you know — activity reports are visible to you" : "<strong>Parental oversight:</strong> Family Link is installed and linked — usage reports are visible to you",
+      "<strong>App downloads:</strong> Every new app requires your approval before it installs",
+      "<strong>Web content:</strong> Adult sites blocked, SafeSearch on — verified across every browser they use",
+      "<strong>Social media:</strong> Off entirely, or limited to one age-appropriate platform with your visibility into the account",
+      "<strong>Time limits:</strong> Social, entertainment, and gaming each have their own daily cap — not one combined limit",
+      "<strong>Bedtime lock:</strong> The phone locks itself at a set time every night — not a verbal agreement, a system setting",
+    ],
+    3: [
+      isIOS ? "<strong>Parental oversight:</strong> Screen Time is on — weekly activity reports are visible to you, reviewed together" : "<strong>Parental oversight:</strong> Family Link is on — activity reports visible to you, reviewed together monthly",
+      "<strong>App downloads:</strong> New apps are discussed before they're downloaded — a standing expectation, not a case-by-case negotiation",
+      "<strong>Web content:</strong> Explicit content, adult sites, and highest-risk categories are restricted — not everything, but the categories that matter",
+      "<strong>Time limits:</strong> Social and gaming each have a daily cap — targeted limits, not a blanket restriction on everything",
+      "<strong>Bedtime lock:</strong> The phone becomes inaccessible at a set time every night — set in the system, not dependent on willpower",
+    ],
+  };
+  const setupSteps = isIOS ? [
+
+    // STEP 1
+    "<strong>Step 1 — Family Setup</strong> | On your iPhone go to <strong>Settings → [your name] → Family</strong>. Tap the <strong>person+ icon</strong> in the top right corner. Choose <strong>Create Child Account</strong> if they don't have an Apple ID yet, or <strong>Invite People</strong> if they already have one. Once added, tap your child's name in the Family list — you'll see their Screen Time controls and Ask To Buy from this screen. Everything is managed from your phone.",
+
+    // STEP 2
+    "<strong>Step 2 — Screen Time Passcode</strong> | From your child's Family screen, tap <strong>Screen Time → Manage Screen Time</strong>. Tap <strong>Change Screen Time Passcode</strong> and set a passcode only you know — not their device passcode, not something they'd guess. This passcode is what prevents them from changing or turning off Screen Time settings themselves. Keep it somewhere safe.",
+
+    // STEP 3
+    "<strong>Step 3 — App Limits</strong> | From your child's Screen Time screen, tap <strong>App Limits → Add Limit</strong>. A 'Choose Apps' screen appears. You have two options: select a whole <strong>category</strong> (Social, Games, Entertainment) to cap everything in that group, or use the <strong>Search bar</strong> to find a specific app by name (TikTok, YouTube, Snapchat). Set your time and tap Add. Limits reset automatically every day at midnight. You can add separate limits for each category. <em>Most parents start with Social and Games and adjust after seeing the first weekly report.</em>",
+
+    // STEP 4
+    "<strong>Step 4 — Downtime</strong> | From Screen Time, tap <strong>Downtime</strong>. Toggle <strong>Scheduled</strong> on. Choose <strong>Every Day</strong> or <strong>Customize Days</strong> for school nights only. Tap <strong>Time</strong> and set start and end times. Your options: earlier and stricter (8–9pm start) or later with more flexibility (10–11pm start). <em>Most parents in this age range start at 9–10pm.</em> Important: make sure <strong>Block at Downtime</strong> is toggled on — this means your child sends you a request for more time rather than bypassing it themselves. They'll get a 5-minute warning before Downtime starts.",
+
+    // STEP 5
+    "<strong>Step 5 — Always Allowed & Communication</strong> | Still in Screen Time, tap <strong>Always Allowed</strong>. These apps stay accessible even during Downtime. <strong>Phone is permanently allowed and can't be removed</strong> — your child can always call you. Audit the rest of the list and tap the red minus to remove any entertainment apps (games, streaming, social) that shouldn't be available overnight. Then go back and tap <strong>Communication Limits</strong>. Set <strong>During Screen Time</strong> — your options are Everyone, Contacts Only, or Specific Contacts. Set <strong>During Downtime</strong> separately — most parents choose Contacts Only or Specific Contacts (family only) overnight. <em>Both are currently set to Everyone by default — that's worth changing.</em> Note: emergency calls always go through regardless of what you set here.",
+
+    // STEP 6
+    "<strong>Step 6 — Purchases & In-App Spending</strong> | Go back to your child's Family profile screen and tap <strong>Ask To Buy</strong> to activate purchase approval — every App Store download request will come to your phone first. Then go to Screen Time → <strong>Content & Privacy Restrictions → iTunes & App Store Purchases</strong>. You'll see three settings: <strong>Installing Apps</strong> (Allow or Don't Allow), <strong>Deleting Apps</strong> (Allow or Don't Allow), and <strong>In-app Purchases</strong> (Allow or Don't Allow). For In-app Purchases: <em>most parents choose Don't Allow regardless of age — accidental and intentional charges are the most common first-phone regret.</em> Under <strong>Require Password</strong>, switch from Don't Require to <strong>Always Require</strong> so every purchase needs your Apple ID password even after an initial one goes through.",
+
+  ] : [
+    "<strong>Step 1 — Family Link Setup</strong> | Download <strong>Google Family Link</strong> from the Play Store on your phone. Open it and either create a new Google Account for your child or link their existing one. On their Android, open Family Link and approve the connection using the confirmation code. Once linked, you manage everything from the Family Link app on your phone.",
+    "<strong>Step 2 — Screen Time & Bedtime Lock</strong> | In Family Link, tap your child's name → <strong>Controls → Daily Screen Time</strong>. Set a daily limit. Tap <strong>Bedtime</strong> to set the hours the device locks automatically. Your options: earlier and stricter or later with more flexibility. <em>Most parents start with a 9–10pm lock for this age range.</em>",
+    "<strong>Step 3 — Content Filters</strong> | In Family Link → Controls → tap <strong>Content Filters</strong>. Turn SafeSearch on. Set YouTube to <strong>Supervised</strong> mode. Set Google Play to <strong>Approved apps only</strong> so nothing installs without your sign-off. <em>These three are the highest-impact content settings available on Android.</em>",
+    "<strong>Step 4 — App Limits</strong> | In Family Link → Controls → tap <strong>App Limits</strong>. Set daily caps for individual apps or categories. <em>Most parents start with social and entertainment apps and adjust after seeing the first week of usage data.</em>",
+    "<strong>Step 5 — Communication & Location</strong> | Review which apps have access to contacts and messaging. In Family Link, confirm location sharing is on — you'll see their device location in the app. Location sharing shows where the device is, not necessarily where your child is, but it's a useful safety layer.",
+    "<strong>Step 6 — Purchases</strong> | In Family Link → Controls → Google Play → confirm <strong>purchase approval is required</strong> for all downloads and in-app purchases. Every request comes to your phone first. Remove any saved payment methods from their Google account as an additional layer.",
+  ];
+  const scripts = tier === 1 ? [
+    `"This phone is a tool that belongs to our family. We're learning how to use it together, and the rules will change as you show us you're ready."`,
+    `"When the timer goes off, screen time is done — even if it feels hard. That's the rule, every time."`,
+    `"If something ever makes you uncomfortable — something you see or someone says — you can always tell me. You won't get in trouble."`,
+  ] : tier === 2 ? [
+    `"We're starting with some limits, and as you show us you can handle it, those limits will change."`,
+    `"We're setting these rules because we care about you, not because we don't trust you."`,
+    `"If something feels weird or wrong online, come tell me. My first reaction won't be to take your phone away."`,
+  ] : [
+    `"I want to set up a starting point that works for both of us — and I want your input on what seems fair."`,
+    `"As you show me you can handle it, I'll give you more flexibility. That's the deal."`,
+    `"If something happens online that feels off, I want you to be able to tell me without worrying about losing your phone."`,
+  ];
+  return {
+    free: [{ eyebrow: "The Starting Point", eyebrowColor: C.terra, title: `Quick setup — do this before you hand over the phone`, type: "checklist", isBaseline: true, intro: `For a ${tierLabel}-year-old (${tierName}). These are the device settings worth having in place. Tap each one as you confirm it's done.`, items: baseItems[tier] }],
+    paid: [
+      { eyebrow: "How to Set It Up", title: `Step-by-Step: ${isIOS ? "Screen Time & Family Sharing" : "Google Family Link"}`, type: "steps", intro: "Each step explains what the setting does, your options, and what most parents in this situation choose. These are suggestions — you know your child best. Menu names may vary slightly by iOS/Android version.", items: setupSteps },
+      { eyebrow: "First Conversations", eyebrowColor: C.terra, title: "What to Say When You Hand Over the Phone", type: "scripts", intro: "Set up the settings first. Then have the conversation. These are starting points — adapt them to your voice.", items: scripts },
+    ],
+  };
+}
+
+function buildCustomSections(age, device, choices) {
+  const isIOS = device === "iphone";
+  const young = age <= 11;
+  const teen = age >= 14;
+  const tier = age <= 10 ? 1 : age <= 13 ? 2 : 3;
+  const setupSteps = [];
+  if (isIOS) {
+    setupSteps.push("On your phone: <strong>Settings → [your name] → Family Sharing</strong> → add your child");
+    setupSteps.push("On their iPhone: <strong>Settings → Screen Time → Turn On Screen Time</strong> → This is My Child's iPhone");
+    setupSteps.push("Set a <strong>Screen Time passcode</strong> — only you know it");
+  } else {
+    setupSteps.push("Download <strong>Google Family Link</strong> on your phone → create or link your child's Google account");
+    setupSteps.push("On their Android: open Family Link and approve the connection");
+  }
+  if (choices.downloads === "age-appropriate") setupSteps.push(isIOS ? "Family Sharing → <strong>Ask to Buy: on</strong>" : "Family Link → Controls → app approval: on");
+  if (choices.downloads === "restricted") setupSteps.push(isIOS ? "Screen Time → Content & Privacy → App Store: <strong>Don't Allow</strong>" : "Family Link → all apps manually installed only");
+  if (choices.downloads === "off") setupSteps.push(isIOS ? "Screen Time → Content & Privacy → Installing Apps: <strong>Don't Allow</strong>" : "Family Link → Play Store access removed");
+  if (choices.web === "age-appropriate") setupSteps.push(isIOS ? "Screen Time → Content & Privacy → Web Content: <strong>Limit Adult Websites</strong> + SafeSearch at safesearch.google.com" : "Family Link → Content Filters → SafeSearch on, Chrome filtered");
+  if (choices.web === "restricted") setupSteps.push(isIOS ? "Screen Time → Content & Privacy → Web Content: <strong>Allowed Websites Only</strong> → add sites manually" : "Family Link → Chrome: approved sites only");
+  if (choices.web === "off") setupSteps.push(isIOS ? "Screen Time → block Safari via Content & Privacy" : "Family Link → Chrome blocked");
+  if (choices.social === "age-appropriate") setupSteps.push(isIOS ? "Screen Time → App Limits → <strong>Social Networking</strong> → set daily cap" : "Family Link → app limits → social apps capped");
+  if (choices.social === "restricted") setupSteps.push(isIOS ? "Screen Time → App Limits → block Social Networking → manually allow one approved app" : "Family Link → block social, manually approve one");
+  if (choices.social === "off") setupSteps.push(isIOS ? "Screen Time → Content & Privacy → block 12+ apps" : "Family Link → approved apps only, no social approved");
+  if (choices.screentime === "age-appropriate") setupSteps.push(isIOS ? "Screen Time → App Limits → <strong>Entertainment: 2hrs, Social: 1.5hrs, Games: 1hr</strong> on school days" : "Family Link → daily screen time: 3 hours school days");
+  if (choices.screentime === "restricted") setupSteps.push(isIOS ? "Screen Time → App Limits → <strong>Entertainment: 45min, Social: 30min, Games: 45min</strong>" : "Family Link → daily screen time: 2 hours school days");
+  if (choices.bedtime === "age-appropriate") setupSteps.push(isIOS ? `Screen Time → Downtime → <strong>${young ? "7:30pm" : teen ? "10pm" : "9pm"}–7am</strong> on school nights` : `Family Link → Bedtime: <strong>${young ? "7:30pm" : teen ? "10pm" : "9pm"}</strong>`);
+  if (choices.bedtime === "restricted") setupSteps.push(isIOS ? `Screen Time → Downtime → <strong>${young ? "6:30pm" : teen ? "9pm" : "8pm"}–7am</strong>, all apps blocked` : `Family Link → Bedtime: <strong>${young ? "6:30pm" : teen ? "9pm" : "8pm"}</strong>, all blocked`);
+  if (choices.communication === "age-appropriate") setupSteps.push(isIOS ? "Screen Time → Communication Limits → <strong>Contacts Only</strong> during day, <strong>Specific Contacts</strong> overnight" : "Family Link → contact controls on");
+  if (choices.communication === "restricted") setupSteps.push(isIOS ? "Screen Time → Communication Limits → <strong>Specific Contacts</strong> (family only) at all times" : "Family Link → family contacts only");
+  if (choices.location === "age-appropriate" || choices.location === "restricted") setupSteps.push(isIOS ? "Find My → <strong>Share My Location</strong> → on" : "Family Link → location sharing: on (automatic)");
+  if (choices.spending === "age-appropriate") setupSteps.push(isIOS ? "Family Sharing → <strong>Ask to Buy: on</strong> → Screen Time → In-App Purchases → Require Password" : "Family Link → purchase approval: on");
+  if (choices.spending === "restricted") setupSteps.push(isIOS ? "Screen Time → Content & Privacy → In-App Purchases: <strong>Don't Allow</strong> → remove saved payment methods" : "Family Link → purchases off, remove payment methods");
+
+  const scripts = tier === 1 ? [
+    `"This phone is a tool that belongs to our family. We're learning how to use it together."`,
+    `"If something ever makes you uncomfortable online, you can always tell me. You won't get in trouble."`,
+  ] : teen ? [
+    `"I set this up based on what I think makes sense right now. I want your input on what seems fair."`,
+    `"As you show me you can handle it, I'll give you more flexibility. That's the deal."`,
+  ] : [
+    `"We're setting these rules because we care about you, not because we don't trust you."`,
+    `"If something feels off online, come tell me. My first reaction won't be to take your phone away."`,
+  ];
+
+  const choiceSummaryItems = CATEGORIES.map(cat => {
+    const choice = choices[cat.id] || "age-appropriate";
+    const info = cat.levels[choice];
+    return `<strong>${cat.label}:</strong> ${info.label} — ${cat.detail[choice]}`;
+  });
+
+  return {
+    free: [{ eyebrow: "Your Custom Setup", eyebrowColor: C.terra, title: "Your Choices — Confirmed", type: "checklist", isBaseline: true, intro: "These are the settings based on your answers. Tap each one as you confirm it's configured.", items: choiceSummaryItems }],
+    paid: [
+      { eyebrow: "How to Set It Up", title: `Step-by-Step: ${isIOS ? "iPhone" : "Android"} Configuration`, type: "steps", intro: "Generated from your choices. Menu wording may vary by device model and OS version.", items: setupSteps.slice(0, 12) },
+      { eyebrow: "First Conversations", eyebrowColor: C.terra, title: "What to Say When You Hand Over the Phone", type: "scripts", intro: "Set the settings up first. Then have the conversation.", items: scripts },
+    ],
+  };
+}
+
+// ── main app ───────────────────────────────────────────────────
+export default function App() {
+  const [screen, setScreen] = useState("device");
+  const [device, setDevice] = useState(null);
+  const [age, setAge] = useState(11);
+  const [path, setPath] = useState(null);
+  const [wizardStep, setWizardStep] = useState(0);
+  const [choices, setChoices] = useState({});
+  const [currentChoice, setCurrentChoice] = useState(null);
+  const [checked, setChecked] = useState({});
+  const [tier, setTier] = useState("free");
+  const [email, setEmail] = useState("");
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [emailLoading, setEmailLoading] = useState(false);
+
+  // ── Formspree endpoint — replace with your URL from formspree.io ──
+  const FORMSPREE_URL = "https://formspree.io/f/xzdqnwaw";
+
+  const submitEmail = async (e) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) { setEmailError("Please enter a valid email address."); return; }
+    setEmailLoading(true);
+    setEmailError("");
+    try {
+      await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ email, device, age, path: path || "standard", timestamp: new Date().toISOString() }),
+      });
+      setEmailSubmitted(true);
+      setTier("paid");
+      setChecked({});
+      scrollTop();
+    } catch {
+      setEmailError("Something went wrong. Please try again.");
+    }
+    setEmailLoading(false);
+  };
+  const topRef = useRef(null);
+  const scrollTop = () => topRef.current?.scrollIntoView({ behavior: "smooth" });
+
+  const toggle = (si, ii) => setChecked(c => { const s = c[si] ? [...c[si]] : []; s[ii] = !s[ii]; return { ...c, [si]: s }; });
+  const cat = CATEGORIES[wizardStep];
+
+  const planData = screen === "plan"
+    ? path === "standard" ? buildStandardSections(age, device) : buildCustomSections(age, device, choices)
+    : { free: [], paid: [] };
+  const freeSections = planData.free || [];
+  const paidSections = planData.paid || [];
+  const activeSections = tier === "paid" ? [...freeSections, ...paidSections] : freeSections;
+  const checkableTypes = ["checklist", "steps"];
+  const totalCheckable = activeSections.reduce((n, s) => checkableTypes.includes(s.type) ? n + (s.items?.length || 0) : n, 0);
+  const totalDone = Object.values(checked).reduce((n, arr) => n + (arr || []).filter(Boolean).length, 0);
+
+  const go = (s) => { setScreen(s); scrollTop(); };
+  const restart = () => { setScreen("device"); setDevice(null); setPath(null); setChoices({}); setCurrentChoice(null); setWizardStep(0); setChecked({}); setTier("free"); scrollTop(); };
+
+  const tierLabel = age <= 10 ? "Supervised" : age <= 13 ? "Guided" : "Earned";
+
+  const wrap = { minHeight: "100vh", background: C.bg, fontFamily: "'DM Sans', 'Inter', sans-serif", color: C.charcoal };
+
+  return (
+    <div style={wrap}>
+      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      <div ref={topRef} />
+
+      {/* HEADER */}
+      <div style={{ maxWidth: 720, margin: "0 auto", padding: "20px 24px 16px", borderBottom: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ fontSize: 17, fontWeight: 700, color: C.charcoal, letterSpacing: "-0.02em" }}>
+          Raising<span style={{ color: C.sage }}>Digital</span>Teens
+        </div>
+        <div style={{ fontSize: 10, color: C.muted, letterSpacing: "0.1em", textTransform: "uppercase" }}>First Phone Setup</div>
+      </div>
+
+      <div style={{ maxWidth: 720, margin: "0 auto" }}>
+
+        {/* DEVICE */}
+        {screen === "device" && (
+          <div style={{ padding: "40px 24px 80px" }}>
+            <Label>Free · Step 1 of 3</Label>
+            <h1 style={{ fontSize: "clamp(1.8rem,5vw,2.6rem)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.1, color: C.charcoal, marginBottom: 14 }}>
+              First phone.<br /><span style={{ color: C.sage }}>Let's set it up well.</span>
+            </h1>
+            <p style={{ fontSize: 15, color: C.mid, lineHeight: 1.65, maxWidth: 420, marginBottom: 36 }}>
+              Answer three questions. Get a setup plan matched to your child's age — with the exact items to have in place before you hand it over.
+            </p>
+            <div style={{ fontSize: 14, fontWeight: 600, color: C.charcoal, marginBottom: 14 }}>What phone are they getting?</div>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 40 }}>
+              <PickCard icon="📱" label="iPhone" sub="iOS · Screen Time" selected={device === "iphone"} onClick={() => setDevice("iphone")} />
+              <PickCard icon="🤖" label="Android" sub="Google Family Link" selected={device === "android"} onClick={() => setDevice("android")} />
+            </div>
+            <PrimaryBtn label="Continue →" onClick={() => go("age")} disabled={!device} />
+          </div>
+        )}
+
+        {/* AGE */}
+        {screen === "age" && (
+          <div style={{ padding: "40px 24px 80px" }}>
+            <Label>Step 2 of 3</Label>
+            <h2 style={{ fontSize: "clamp(1.5rem,5vw,2.2rem)", fontWeight: 700, letterSpacing: "-0.02em", color: C.charcoal, marginBottom: 12 }}>How old are they?</h2>
+            <p style={{ fontSize: 14, color: C.mid, lineHeight: 1.65, maxWidth: 400, marginBottom: 32 }}>Age determines which settings are appropriate and how your plan is built.</p>
+            <div style={{ fontFamily: "inherit", fontSize: 72, fontWeight: 700, color: C.sage, letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 4 }}>{age}</div>
+            <div style={{ fontSize: 12, color: C.muted, marginBottom: 6 }}>years old</div>
+            <div style={{ display: "inline-block", fontSize: 12, fontWeight: 600, color: C.sage, background: C.sageFaint, padding: "4px 12px", borderRadius: 100, marginBottom: 24 }}>
+              {tierLabel} Access tier
+            </div>
+            <input type="range" min={8} max={17} value={age} onChange={e => setAge(parseInt(e.target.value))} style={{ width: "100%", maxWidth: 360, accentColor: C.sage, display: "block", marginBottom: 4 }} />
+            <div style={{ display: "flex", justifyContent: "space-between", maxWidth: 360, marginBottom: 40 }}>
+              <span style={{ fontSize: 11, color: C.muted }}>8</span>
+              <span style={{ fontSize: 11, color: C.muted }}>17</span>
+            </div>
+            <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <GhostBtn label="← Back" onClick={() => go("device")} />
+              <PrimaryBtn label="Continue →" onClick={() => go("path")} />
+            </div>
+          </div>
+        )}
+
+        {/* PATH */}
+        {screen === "path" && (
+          <div style={{ padding: "40px 24px 80px" }}>
+            <Label>Step 3 of 3</Label>
+            <h2 style={{ fontSize: "clamp(1.5rem,5vw,2.2rem)", fontWeight: 700, letterSpacing: "-0.02em", color: C.charcoal, marginBottom: 12 }}>How do you want to set it up?</h2>
+            <p style={{ fontSize: 14, color: C.mid, lineHeight: 1.65, maxWidth: 400, marginBottom: 28 }}>Both give you a complete plan — the difference is how much you decide yourself.</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 36 }}>
+              {[
+                { val: "standard", icon: "⚡", title: "Standard Setup", desc: `We build you a starting point based on your child's age. Fast, done-for-you — no guessing about where to start.`, tag: "Best for: quick start" },
+                { val: "custom", icon: "🎛️", title: "Custom Setup", desc: "Walk through each category one at a time and decide what level of access is right for your child.", tag: "Best for: specific preferences" },
+              ].map(o => (
+                <div key={o.val} onClick={() => setPath(o.val)} style={{ background: path === o.val ? C.bgAccent : C.bgCard, border: `1.5px solid ${path === o.val ? C.sage : C.border}`, borderRadius: 20, padding: "20px 20px", cursor: "pointer", boxShadow: C.shadow, transition: "all 0.18s", position: "relative" }}>
+                  {path === o.val && <div style={{ position: "absolute", top: 16, right: 16, width: 22, height: 22, borderRadius: "50%", background: C.sage, display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ color: "#fff", fontSize: 11, fontWeight: 700 }}>✓</span></div>}
+                  <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                    <div style={{ fontSize: 28 }}>{o.icon}</div>
+                    <div>
+                      <div style={{ fontSize: 15, fontWeight: 700, color: C.charcoal, marginBottom: 5 }}>{o.title}</div>
+                      <div style={{ fontSize: 13, color: C.mid, lineHeight: 1.6, marginBottom: 10 }}>{o.desc}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: C.sage, background: C.sageFaint, display: "inline-block", padding: "3px 10px", borderRadius: 100 }}>{o.tag}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+              <GhostBtn label="← Back" onClick={() => go("age")} />
+              <PrimaryBtn label={path === "custom" ? "Start Custom Setup →" : "Build My Plan →"} onClick={() => { if (!path) return; if (path === "standard") { setChecked({}); go("plan"); } else { setWizardStep(0); setCurrentChoice(null); go("wizard"); } }} disabled={!path} />
+            </div>
+          </div>
+        )}
+
+        {/* WIZARD */}
+        {screen === "wizard" && cat && (
+          <div style={{ paddingBottom: 80 }}>
+            <WizardBar current={wizardStep} total={CATEGORIES.length} />
+            <div style={{ padding: "28px 24px 0" }}>
+              <div style={{ fontSize: 32, marginBottom: 14 }}>{cat.icon}</div>
+              <Label color={C.purple}>{cat.label}</Label>
+              <h2 style={{ fontSize: "clamp(1.3rem,4vw,1.9rem)", fontWeight: 700, letterSpacing: "-0.02em", color: C.charcoal, lineHeight: 1.2, marginBottom: 8 }}>{cat.question}</h2>
+              <p style={{ fontSize: 13, color: C.mid, lineHeight: 1.65, marginBottom: 28, maxWidth: 400 }}>{cat.sub}</p>
+              {Object.entries(cat.levels).map(([key, info]) => (
+                <LevelCard key={key} levelKey={key} info={info} detail={cat.detail[key]} selected={currentChoice === key} onClick={() => setCurrentChoice(key)} />
+              ))}
+              <div style={{ display: "flex", gap: 10, alignItems: "center", marginTop: 24 }}>
+                <GhostBtn label="← Back" onClick={() => { if (wizardStep === 0) go("path"); else { setWizardStep(w => w - 1); setCurrentChoice(choices[CATEGORIES[wizardStep - 1].id] || null); scrollTop(); } }} />
+                <PrimaryBtn label={wizardStep < CATEGORIES.length - 1 ? "Next →" : "Review My Choices →"} disabled={!currentChoice} onClick={() => {
+                  const nc = { ...choices, [cat.id]: currentChoice };
+                  setChoices(nc);
+                  if (wizardStep < CATEGORIES.length - 1) { setWizardStep(w => w + 1); setCurrentChoice(nc[CATEGORIES[wizardStep + 1].id] || null); scrollTop(); }
+                  else go("review");
+                }} />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* REVIEW */}
+        {screen === "review" && (
+          <div style={{ padding: "40px 24px 80px" }}>
+            <Label color={C.purple}>Review Your Choices</Label>
+            <h2 style={{ fontSize: "clamp(1.4rem,4vw,2rem)", fontWeight: 700, letterSpacing: "-0.02em", color: C.charcoal, marginBottom: 10 }}>Here's what you've decided</h2>
+            <p style={{ fontSize: 13, color: C.mid, lineHeight: 1.65, maxWidth: 420, marginBottom: 24 }}>Tap any row to see the setup detail. Tap Edit to change your answer.</p>
+            {CATEGORIES.map((c, i) => <SummaryCard key={c.id} cat={c} choice={choices[c.id] || "age-appropriate"} onEdit={() => { setWizardStep(i); setCurrentChoice(choices[c.id] || null); go("wizard"); }} />)}
+            <div style={{ display: "flex", gap: 10, alignItems: "center", marginTop: 20 }}>
+              <GhostBtn label="← Back" onClick={() => { setWizardStep(CATEGORIES.length - 1); setCurrentChoice(choices[CATEGORIES[CATEGORIES.length - 1].id] || null); go("wizard"); }} />
+              <PrimaryBtn label="Build My Plan →" onClick={() => { setChecked({}); go("plan"); }} />
+            </div>
+          </div>
+        )}
+
+        {/* PLAN */}
+        {screen === "plan" && (
+          <>
+            <PlanBar done={totalDone} total={totalCheckable} />
+            <div style={{ padding: "32px 24px 80px" }}>
+              <Label color={tier === "paid" ? C.purple : C.terra}>{tier === "paid" ? "Full Setup Plan" : "Free Setup Plan"}</Label>
+              <h2 style={{ fontSize: "clamp(1.4rem,4vw,1.9rem)", fontWeight: 700, letterSpacing: "-0.02em", color: C.charcoal, lineHeight: 1.2, marginBottom: 10 }}>
+                {device === "iphone" ? "iPhone" : "Android"} · Age {age} · {path === "standard" ? `${tierLabel} Access` : "Custom Access"}
+              </h2>
+              <p style={{ fontSize: 13, color: C.mid, lineHeight: 1.65, maxWidth: 480, marginBottom: 28 }}>
+                {tier === "free"
+                  ? <>Start with <strong style={{ color: C.terra }}>The Starting Point</strong> — the device settings to have in place before you hand over the phone. Tap each one as you confirm it's done. Unlock the full guide to get the exact steps for each setting.</>
+                  : <>Your full plan is ready. Work through it in order — tap any item to mark it done.</>}
+              </p>
+
+              {freeSections.map((s, i) => <Section key={"f"+i} s={s} si={i} checked={checked} onToggle={toggle} defaultOpen={true} />)}
+
+              {tier === "free" ? (
+                <div style={{ background: C.bgCard, border: `1.5px solid ${C.purple}`, borderRadius: 20, overflow: "hidden", marginTop: 4, boxShadow: C.shadowMd }}>
+                  <div style={{ height: 4, background: `linear-gradient(90deg,${C.purple},${C.sage})` }} />
+                  <div style={{ padding: "24px 22px" }}>
+                    <Label color={C.purple}>Unlock the Full Setup Guide</Label>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: C.charcoal, marginBottom: 8, lineHeight: 1.3 }}>
+                      You know what to aim for.<br />Now get the step-by-step guide to make it happen.
+                    </div>
+                    <p style={{ fontSize: 13, color: C.mid, lineHeight: 1.65, marginBottom: 20 }}>
+                      Step-by-step setup instructions generated from your {path === "custom" ? "choices" : "child's age"} — exactly which menus to open, what to tap, and what to set.
+                    </p>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24 }}>
+                      {[
+                        { icon: "⚙️", t: path === "custom" ? "Custom step-by-step instructions" : (device === "iphone" ? "Screen Time & Family Sharing" : "Google Family Link") + " setup guide", d: path === "custom" ? "Each step matches your choices — no irrelevant instructions" : "Exact navigation paths in the right order" },
+                        { icon: "💬", t: "First conversations", d: "Age-appropriate scripts for what to say when you hand over the phone" },
+                        { icon: "🔒", t: "Built for " + (device === "iphone" ? "iOS" : "Android") + " · Age " + age, d: "Calibrated to your device and child's age — not generic advice" },
+                      ].map((item, idx) => (
+                        <div key={idx} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                          <div style={{ width: 32, height: 32, borderRadius: 10, background: C.bgMuted, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 15 }}>{item.icon}</div>
+                          <div>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: C.charcoal, marginBottom: 2 }}>{item.t}</div>
+                            <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5 }}>{item.d}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Email gate */}
+                    <div style={{ background: C.bgMuted, borderRadius: 14, padding: "18px 18px", marginBottom: 4 }}>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: C.charcoal, marginBottom: 12 }}>Enter your email to continue</div>
+                      <form onSubmit={submitEmail} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={e => { setEmail(e.target.value); setEmailError(""); }}
+                          placeholder="you@example.com"
+                          style={{
+                            width: "100%", padding: "13px 16px", borderRadius: 12,
+                            border: `1.5px solid ${emailError ? C.red : C.borderMed}`,
+                            fontSize: 15, color: C.charcoal, background: C.bgCard,
+                            outline: "none", fontFamily: "inherit", boxSizing: "border-box",
+                          }}
+                        />
+                        {emailError && <div style={{ fontSize: 12, color: C.red, marginTop: -4 }}>{emailError}</div>}
+                        <button type="submit" disabled={emailLoading} style={{
+                          fontFamily: "inherit", fontSize: 15, fontWeight: 700,
+                          background: emailLoading ? C.bgMuted : C.terra,
+                          color: emailLoading ? C.muted : "#fff",
+                          border: "none", borderRadius: 100, padding: "14px 24px",
+                          cursor: emailLoading ? "not-allowed" : "pointer",
+                          boxShadow: emailLoading ? "none" : "0 4px 14px rgba(196,113,74,0.30)",
+                          transition: "all 0.2s", width: "100%",
+                        }}>
+                          {emailLoading ? "One moment..." : "Get the Full Setup Guide →"}
+                        </button>
+                      </form>
+                      <p style={{ fontSize: 11, color: C.muted, textAlign: "center", marginTop: 10, lineHeight: 1.6 }}>
+                        No spam. We may send occasional tips for parents navigating tech with kids.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                paidSections.map((s, i) => <Section key={"p"+i} s={s} si={freeSections.length + i} checked={checked} onToggle={toggle} defaultOpen={true} />)
+              )}
+
+              <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.75, borderTop: `1px solid ${C.border}`, paddingTop: 20, marginTop: 28 }}>
+                <strong style={{ color: C.mid, display: "block", marginBottom: 4 }}>About this plan</strong>
+                This plan is educational in nature and reflects general best practices for family digital boundaries. It is a starting point, not a comprehensive solution. Menu wording and setting locations vary by device model and OS version — verify all steps on your current device. Raising Digital Teens does not provide legal, clinical, or emergency safety guidance.
+              </div>
+              <button onClick={restart} style={{ marginTop: 24, fontFamily: "inherit", fontSize: 13, fontWeight: 500, color: C.muted, background: "none", border: `1px solid ${C.border}`, borderRadius: 100, padding: "10px 20px", cursor: "pointer" }}>← Start Over</button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+</script>
+</body>
+</html>
