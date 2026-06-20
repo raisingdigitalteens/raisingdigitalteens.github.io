@@ -8,557 +8,883 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:#FAF8F5;color:#2C2C2C;min-height:100vh}
-.wrap{max-width:720px;margin:0 auto;padding:0 24px 80px}
-header{padding:20px 24px 16px;border-bottom:1px solid rgba(0,0,0,0.07);display:flex;justify-content:space-between;align-items:center;max-width:720px;margin:0 auto}
-.logo{font-size:17px;font-weight:700;letter-spacing:-0.02em;color:#2C2C2C}
-.logo span{color:#4A7C6F}
-.tag{font-size:10px;color:#9A9A9A;letter-spacing:0.1em;text-transform:uppercase}
-.label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#4A7C6F;margin-bottom:8px}
-h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;color:#2C2C2C;margin-bottom:14px}
-h1 span{color:#4A7C6F}
-h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;letter-spacing:-0.02em;color:#2C2C2C;margin-bottom:12px}
-p.sub{font-size:14px;color:#6B6B6B;line-height:1.65;margin-bottom:32px;max-width:460px}
+.wrap{max-width:680px;margin:0 auto;padding:0 24px 80px}
+header{padding:20px 24px 16px;border-bottom:1px solid rgba(0,0,0,0.07);display:flex;justify-content:space-between;align-items:center;max-width:680px;margin:0 auto}
+.logo{font-size:17px;font-weight:700;color:#2C2C2C}.logo span{color:#4A7C6F}
+.htag{font-size:10px;color:#9A9A9A;letter-spacing:0.1em;text-transform:uppercase}
 .screen{display:none}.screen.active{display:block}
-.pick-grid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
-.pick-card{flex:1 1 140px;background:#fff;border:1.5px solid rgba(0,0,0,0.07);border-radius:16px;padding:16px 18px;cursor:pointer;position:relative;box-shadow:0 2px 12px rgba(0,0,0,0.07);transition:border-color 0.18s}
-.pick-card.selected{background:#EEF4F2;border-color:#4A7C6F}
-.pick-card .check{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;background:#4A7C6F;display:none;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700}
-.pick-card.selected .check{display:flex}
-.pick-card .icon{font-size:22px;margin-bottom:8px}
-.pick-card .name{font-size:13px;font-weight:700;color:#2C2C2C;margin-bottom:3px}
-.pick-card .desc{font-size:11px;color:#9A9A9A;line-height:1.5}
-.age-num{font-size:72px;font-weight:700;color:#4A7C6F;letter-spacing:-0.04em;line-height:1;margin-bottom:4px}
-.age-label{font-size:12px;color:#9A9A9A;margin-bottom:6px}
-.tier-badge{display:inline-block;font-size:12px;font-weight:600;color:#4A7C6F;background:rgba(74,124,111,0.10);padding:4px 12px;border-radius:100px;margin-bottom:24px}
-input[type=range]{width:100%;max-width:360px;accent-color:#4A7C6F;display:block;margin-bottom:4px}
-.range-labels{display:flex;justify-content:space-between;max-width:360px;margin-bottom:36px}
-.range-labels span{font-size:11px;color:#9A9A9A}
-.pill-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
-.pill{font-size:13px;font-weight:500;padding:8px 16px;border-radius:100px;border:1.5px solid rgba(0,0,0,0.07);background:#fff;color:#9A9A9A;cursor:pointer;transition:all 0.15s;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
-.pill.selected{border-color:#4A7C6F;background:rgba(74,124,111,0.08);color:#4A7C6F}
-.btn-primary{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;background:#C4714A;color:#fff;border:none;border-radius:100px;padding:14px 32px;cursor:pointer;box-shadow:0 4px 14px rgba(196,113,74,0.30);transition:all 0.2s}
-.btn-primary:disabled{background:#E8E4DE;color:#9A9A9A;box-shadow:none;cursor:not-allowed}
-.btn-ghost{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;background:none;color:#9A9A9A;border:none;cursor:pointer;padding:14px 12px}
-.nav-row{display:flex;gap:10px;align-items:center;margin-top:8px}
-.path-card{background:#fff;border:1.5px solid rgba(0,0,0,0.07);border-radius:20px;padding:20px;cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,0.07);transition:all 0.18s;position:relative;margin-bottom:12px}
-.path-card.selected{background:#EEF4F2;border-color:#4A7C6F}
-.path-card .check{position:absolute;top:16px;right:16px;width:22px;height:22px;border-radius:50%;background:#4A7C6F;display:none;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700}
-.path-card.selected .check{display:flex}
-.path-card .path-icon{font-size:28px;margin-bottom:0}
+/* typography */
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#4A7C6F;margin-bottom:10px}
+.eyebrow.amber{color:#C4714A}
+.eyebrow.purple{color:#6B5EA8}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;color:#2C2C2C;margin-bottom:16px}
+h1 span{color:#4A7C6F}
+h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;color:#2C2C2C;margin-bottom:10px}
+.sub{font-size:14px;color:#6B6B6B;line-height:1.7;margin-bottom:0;max-width:500px}
+/* cards */
+.card{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;padding:20px 22px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.card.sage{border-color:#4A7C6F;border-width:1.5px}
+.card.amber{border-color:#C4714A;border-width:1.5px}
+.card.purple{border-color:#6B5EA8;border-width:1.5px}
+/* awareness */
+.awareness-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.aw-top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.aw-icon{font-size:22px;flex-shrink:0}
+.aw-title{font-size:14px;font-weight:700;color:#2C2C2C}
+.aw-q{font-size:13px;font-weight:600;color:#4A7C6F;margin-bottom:5px}
+.aw-a{font-size:13px;color:#6B6B6B;line-height:1.6}
+.aw-badge{display:inline-block;font-size:11px;font-weight:700;color:#4A7C6F;background:rgba(74,124,111,0.10);padding:3px 10px;border-radius:100px;margin-top:8px}
+/* email cta */
+.cta-box{background:#fff;border:1.5px solid #4A7C6F;border-radius:20px;padding:26px 22px;box-shadow:0 4px 16px rgba(0,0,0,0.07)}
+.cta-title{font-size:19px;font-weight:700;color:#2C2C2C;margin-bottom:8px;line-height:1.3}
+.cta-sub{font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:18px}
+.cta-list{display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+.cta-row{display:flex;gap:10px;align-items:flex-start}
+.cta-check{color:#4A7C6F;font-weight:700;flex-shrink:0}
+.cta-row-text{font-size:13px;color:#6B6B6B;line-height:1.5}
+.cta-row-text strong{color:#2C2C2C}
+.email-field{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(0,0,0,0.12);font-size:15px;color:#2C2C2C;background:#FAF8F5;outline:none;font-family:'DM Sans',sans-serif;margin-bottom:10px;transition:border-color 0.18s}
+.email-field:focus{border-color:#4A7C6F;background:#fff}
+.email-err{font-size:12px;color:#B85450;margin-bottom:8px;display:none}
+.email-note{font-size:11px;color:#9A9A9A;text-align:center;margin-top:10px;line-height:1.5}
+/* buttons */
+.btn{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:100px;padding:14px 28px;cursor:pointer;transition:all 0.2s;display:inline-block}
+.btn.sage{background:#C4714A;color:#fff;box-shadow:0 4px 14px rgba(196,113,74,0.25)}
+.btn.sage:hover{background:#b5643e}
+.btn.ghost{background:none;color:#9A9A9A;font-size:14px;font-weight:500;padding:14px 12px;box-shadow:none}
+.btn.sage:disabled{background:#E8E4DE;color:#9A9A9A;box-shadow:none;cursor:not-allowed}
+.btn.purple{background:linear-gradient(135deg,#6B5EA8,#4A7C6F);color:#fff;box-shadow:0 4px 14px rgba(107,94,168,0.25)}
+.btn.full{width:100%;display:block;text-align:center}
+.nav-row{display:flex;gap:10px;align-items:center;margin-top:24px}
+/* age */
+.age-num{font-size:68px;font-weight:700;color:#4A7C6F;letter-spacing:-0.04em;line-height:1;margin-bottom:4px}
+.age-lbl{font-size:12px;color:#9A9A9A;margin-bottom:6px}
+.tier-pill{display:inline-block;font-size:12px;font-weight:600;color:#4A7C6F;background:rgba(74,124,111,0.10);padding:4px 12px;border-radius:100px;margin-bottom:22px}
+input[type=range]{width:100%;max-width:340px;accent-color:#4A7C6F;display:block;margin-bottom:4px}
+.range-row{display:flex;justify-content:space-between;max-width:340px;margin-bottom:32px}
+.range-row span{font-size:11px;color:#9A9A9A}
+/* path choice */
+.path-card{background:#fff;border:1.5px solid rgba(0,0,0,0.07);border-radius:18px;padding:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:all 0.18s;position:relative;margin-bottom:12px}
+.path-card.sel-sage{background:#EEF4F2;border-color:#4A7C6F}
+.path-card.sel-purple{background:rgba(107,94,168,0.06);border-color:#6B5EA8}
+.path-check{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;display:none;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700}
+.path-check.sage{background:#4A7C6F}
+.path-check.purple{background:#6B5EA8}
+.path-card.sel-sage .path-check.sage,.path-card.sel-purple .path-check.purple{display:flex}
 .path-inner{display:flex;gap:14px;align-items:flex-start}
-.path-title{font-size:15px;font-weight:700;color:#2C2C2C;margin-bottom:5px}
-.path-desc{font-size:13px;color:#6B6B6B;line-height:1.6;margin-bottom:10px}
-.path-tag{font-size:11px;font-weight:700;color:#4A7C6F;background:rgba(74,124,111,0.10);display:inline-block;padding:3px 10px;border-radius:100px}
-/* Plan */
-.plan-bar{position:sticky;top:0;z-index:20;background:rgba(250,248,245,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,0.07);padding:12px 24px;display:flex;gap:14px;align-items:center}
-.plan-bar-track{flex:1;height:5px;background:#F2EFE9;border-radius:100px;overflow:hidden}
-.plan-bar-fill{height:100%;background:#4A7C6F;border-radius:100px;transition:width 0.4s ease}
-.plan-bar-label{font-size:12px;font-weight:700;color:#4A7C6F;white-space:nowrap}
-.plan-head{margin-bottom:28px;padding-top:32px}
-.plan-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C4714A;margin-bottom:8px}
-.plan-title{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:700;letter-spacing:-0.02em;color:#2C2C2C;line-height:1.2;margin-bottom:10px}
-.plan-title span{color:#4A7C6F}
-.plan-sub{font-size:13px;color:#6B6B6B;line-height:1.65;max-width:480px}
-.section{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07)}
-.section.baseline{border-color:#C4714A;border-width:1.5px;background:rgba(196,113,74,0.03)}
-.section.baseline .sec-accent{height:4px;background:#C4714A}
-.section.baseline.done .sec-accent{background:#4A7C6F}
-.section.baseline.done{border-color:#4A7C6F}
+.path-icon{font-size:26px;flex-shrink:0}
+.path-title{font-size:15px;font-weight:700;color:#2C2C2C;margin-bottom:4px}
+.path-desc{font-size:13px;color:#6B6B6B;line-height:1.6;margin-bottom:8px}
+.path-pill{font-size:11px;font-weight:700;display:inline-block;padding:3px 10px;border-radius:100px}
+.path-pill.sage{color:#4A7C6F;background:rgba(74,124,111,0.10)}
+.path-pill.purple{color:#6B5EA8;background:rgba(107,94,168,0.10)}
+/* progress bar */
+.prog-bar{position:sticky;top:0;z-index:20;background:rgba(250,248,245,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,0.07);padding:11px 24px;display:flex;gap:14px;align-items:center}
+.prog-track{flex:1;height:4px;background:#F2EFE9;border-radius:100px;overflow:hidden}
+.prog-fill{height:100%;background:#4A7C6F;border-radius:100px;transition:width 0.4s ease;width:0%}
+.prog-label{font-size:12px;font-weight:700;color:#4A7C6F;white-space:nowrap}
+/* wizard */
+.wiz-bar{padding:16px 24px 0;max-width:680px;margin:0 auto}
+.wiz-dots{display:flex;gap:4px;margin-bottom:8px}
+.wiz-dot{flex:1;height:3px;border-radius:100px;background:#F2EFE9;transition:background 0.3s}
+.wiz-dot.done{background:rgba(74,124,111,0.4)}
+.wiz-dot.active{background:#4A7C6F}
+.wiz-step-label{font-size:11px;color:#9A9A9A}
+.level-card{background:#fff;border:1.5px solid rgba(0,0,0,0.07);border-radius:14px;padding:16px 18px;cursor:pointer;margin-bottom:10px;box-shadow:0 1px 6px rgba(0,0,0,0.04);transition:all 0.18s;position:relative}
+.level-card.selected-a{border-color:#4A7C6F;background:rgba(74,124,111,0.05)}
+.level-card.selected-b{border-color:#D4952A;background:rgba(212,149,42,0.05)}
+.level-card.selected-c{border-color:#B85450;background:rgba(184,84,80,0.05)}
+.level-inner{display:flex;gap:14px;align-items:flex-start}
+.level-dot{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:1px;transition:all 0.18s}
+.level-dot.a{background:rgba(74,124,111,0.12);color:#4A7C6F}
+.level-dot.b{background:rgba(212,149,42,0.12);color:#D4952A}
+.level-dot.c{background:rgba(184,84,80,0.12);color:#B85450}
+.level-card.selected-a .level-dot.a,.level-card.selected-b .level-dot.b,.level-card.selected-c .level-dot.c{opacity:1}
+.level-title{font-size:14px;font-weight:700;color:#2C2C2C;margin-bottom:3px}
+.level-desc{font-size:13px;color:#6B6B6B;line-height:1.55}
+.level-detail{margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);font-size:12px;color:#9A9A9A;line-height:1.6;display:none}
+.level-card.selected-a .level-detail,.level-card.selected-b .level-detail,.level-card.selected-c .level-detail{display:block}
+/* review */
+.review-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.06);cursor:pointer}
+.review-row:last-child{border-bottom:none}
+.review-cat{font-size:12px;color:#9A9A9A;margin-bottom:2px}
+.review-val{font-size:14px;font-weight:600;color:#2C2C2C}
+.review-edit{font-size:12px;font-weight:600;color:#4A7C6F;background:rgba(74,124,111,0.08);padding:4px 10px;border-radius:8px;flex-shrink:0}
+/* payment placeholder */
+.pay-box{background:#fff;border:1.5px solid #6B5EA8;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(107,94,168,0.12)}
+.pay-accent{height:4px;background:linear-gradient(90deg,#6B5EA8,#4A7C6F)}
+.pay-inner{padding:28px 24px}
+.pay-badge{display:inline-block;font-size:11px;font-weight:700;color:#6B5EA8;background:rgba(107,94,168,0.10);padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.pay-title{font-size:20px;font-weight:700;color:#2C2C2C;margin-bottom:8px;line-height:1.3}
+.pay-sub{font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:20px}
+.pay-includes{display:flex;flex-direction:column;gap:8px;margin-bottom:22px}
+.pay-inc-row{display:flex;gap:10px;align-items:flex-start}
+.pay-inc-icon{color:#4A7C6F;font-weight:700;flex-shrink:0;margin-top:1px}
+.pay-inc-text{font-size:13px;color:#6B6B6B;line-height:1.5}
+.pay-inc-text strong{color:#2C2C2C}
+.pay-note{font-size:11px;color:#9A9A9A;text-align:center;margin-top:10px;line-height:1.5}
+/* plan sections */
+.sec{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.sec.baseline{border-color:#C4714A;border-width:1.5px}
 .sec-accent{height:0}
-.sec-head{padding:18px 20px 14px;cursor:pointer;user-select:none;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#4A7C6F;margin-bottom:6px}
-.section.baseline .sec-eyebrow{color:#C4714A}
-.section.baseline.done .sec-eyebrow{color:#4A7C6F}
+.sec.baseline .sec-accent{height:3px;background:#C4714A}
+.sec.baseline.all-done .sec-accent{background:#4A7C6F}
+.sec.baseline.all-done{border-color:#4A7C6F}
+.sec-head{padding:16px 20px 12px;cursor:pointer;user-select:none;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.sec-ey{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#4A7C6F;margin-bottom:5px}
+.sec.baseline .sec-ey{color:#C4714A}
+.sec.baseline.all-done .sec-ey{color:#4A7C6F}
 .sec-title{font-size:14px;font-weight:700;color:#2C2C2C;line-height:1.3}
-.sec-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;padding-top:2px}
-.sec-count{font-size:11px;font-weight:700;color:#C4714A;background:rgba(196,113,74,0.10);padding:2px 8px;border-radius:100px}
-.section.baseline.done .sec-count{color:#4A7C6F;background:rgba(74,124,111,0.10)}
-.sec-toggle{color:#9A9A9A;font-size:13px}
+.sec-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;padding-top:2px}
+.sec-count{font-size:11px;font-weight:700;color:#4A7C6F;background:rgba(74,124,111,0.10);padding:2px 8px;border-radius:100px}
+.sec.baseline .sec-count{color:#C4714A;background:rgba(196,113,74,0.10)}
+.sec.baseline.all-done .sec-count{color:#4A7C6F;background:rgba(74,124,111,0.10)}
+.sec-tog{color:#9A9A9A;font-size:12px}
 .sec-body{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
-.sec-body.open{max-height:3000px}
-.sec-inner{padding:0 20px 20px}
-.sec-intro{font-size:12px;line-height:1.65;margin-bottom:14px;color:#C4714A;border-left:3px solid #C4714A;padding-left:12px;font-style:italic}
-.section:not(.baseline) .sec-intro{color:#9A9A9A;border-left-color:rgba(0,0,0,0.1)}
-.check-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;cursor:pointer;border-bottom:1px solid rgba(0,0,0,0.07)}
-.check-item:last-child{border-bottom:none}
-.check-box{width:20px;height:20px;border-radius:5px;flex-shrink:0;margin-top:2px;border:2px solid rgba(0,0,0,0.2);background:transparent;display:flex;align-items:center;justify-content:center;transition:all 0.18s}
-.section.baseline .check-box{border-color:#C4714A}
-.check-item.done .check-box{background:#4A7C6F;border-color:#4A7C6F}
-.check-item.done .check-box::after{content:'✓';color:#fff;font-size:10px;font-weight:800}
-.check-item.done .check-text{text-decoration:line-through;opacity:0.4}
-.check-text{font-size:13px;color:#6B6B6B;line-height:1.65}
-.check-text strong{color:#2C2C2C;font-weight:600}
-.step-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;cursor:pointer}
-.step-num{min-width:24px;height:24px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(74,124,111,0.10);color:#4A7C6F;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all 0.18s}
+.sec-body.open{max-height:5000px}
+.sec-inner{padding:0 20px 18px}
+.sec-intro{font-size:12px;color:#9A9A9A;line-height:1.65;margin-bottom:12px;border-left:2px solid rgba(0,0,0,0.08);padding-left:12px;font-style:italic}
+.sec.baseline .sec-intro{color:#C4714A;border-left-color:#C4714A}
+.step-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;cursor:pointer;border-bottom:1px solid rgba(0,0,0,0.06)}
+.step-item:last-child{border-bottom:none}
+.step-num{min-width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:1px;background:rgba(74,124,111,0.10);color:#4A7C6F;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all 0.18s}
 .step-item.done .step-num{background:#4A7C6F;color:#fff}
-.step-item.done .step-num::after{content:'✓'}
-.step-item.done .step-num span{display:none}
-.step-item.done .check-text{text-decoration:line-through;opacity:0.4}
-.tip-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
-.tip-dot{color:#4A7C6F;flex-shrink:0;margin-top:3px;font-size:12px}
-.script-item{background:#EEF4F2;border:1px solid rgba(74,124,111,0.15);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.step-item.done .step-text{text-decoration:line-through;opacity:0.4}
+.step-text{font-size:13px;color:#6B6B6B;line-height:1.65}
+.step-text strong{color:#2C2C2C;font-weight:600}
+.script-card{background:#EEF4F2;border:1px solid rgba(74,124,111,0.15);border-radius:10px;padding:13px 15px;margin-bottom:8px}
 .script-text{font-size:13px;color:#6B6B6B;line-height:1.7;font-style:italic}
-/* Upgrade card */
-.upgrade{background:#fff;border:1.5px solid #6B5EA8;border-radius:20px;overflow:hidden;margin-top:4px;box-shadow:0 4px 20px rgba(0,0,0,0.10)}
-.upgrade-accent{height:4px;background:linear-gradient(90deg,#6B5EA8,#4A7C6F)}
-.upgrade-inner{padding:24px 22px}
-.upgrade-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6B5EA8;margin-bottom:8px}
-.upgrade-title{font-size:16px;font-weight:700;color:#2C2C2C;margin-bottom:8px;line-height:1.3}
-.upgrade-sub{font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:20px}
-.upgrade-items{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
-.upgrade-item{display:flex;gap:12px;align-items:flex-start}
-.upgrade-icon{width:32px;height:32px;border-radius:10px;background:#F2EFE9;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
-.upgrade-item-title{font-size:13px;font-weight:600;color:#2C2C2C;margin-bottom:2px}
-.upgrade-item-desc{font-size:12px;color:#9A9A9A;line-height:1.5}
-.email-gate{background:#F2EFE9;border-radius:14px;padding:18px}
-.email-label{font-size:13px;font-weight:600;color:#2C2C2C;margin-bottom:12px}
-.email-input{width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid rgba(0,0,0,0.12);font-size:15px;color:#2C2C2C;background:#fff;outline:none;font-family:'DM Sans',sans-serif;margin-bottom:10px}
-.email-input:focus{border-color:#4A7C6F}
-.email-error{font-size:12px;color:#B85450;margin-bottom:8px;display:none}
-.btn-unlock{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;background:linear-gradient(135deg,#6B5EA8,#4A7C6F);color:#fff;border:none;border-radius:100px;padding:14px 24px;cursor:pointer;width:100%;margin-bottom:10px}
-.email-note{font-size:11px;color:#9A9A9A;text-align:center;line-height:1.5}
-.disclaimer{font-size:11px;color:#9A9A9A;line-height:1.75;border-top:1px solid rgba(0,0,0,0.07);padding-top:20px;margin-top:28px}
-.disclaimer strong{color:#6B6B6B;display:block;margin-bottom:4px}
-.btn-restart{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#9A9A9A;background:none;border:1px solid rgba(0,0,0,0.07);border-radius:100px;padding:10px 20px;cursor:pointer;margin-top:24px}
+.tip-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.tip-dot{color:#4A7C6F;flex-shrink:0;margin-top:2px;font-size:12px}
+.tip-text{font-size:13px;color:#6B6B6B;line-height:1.65}
+.tip-text strong{color:#2C2C2C;font-weight:600}
+/* disclaimer */
+.disclaimer{font-size:11px;color:#9A9A9A;line-height:1.75;border-top:1px solid rgba(0,0,0,0.07);padding-top:18px;margin-top:24px}
+.disclaimer strong{color:#6B6B6B;display:block;margin-bottom:3px}
+.btn-restart{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:#9A9A9A;background:none;border:1px solid rgba(0,0,0,0.07);border-radius:100px;padding:9px 18px;cursor:pointer;margin-top:20px}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">Raising<span>Digital</span>Teens</div>
-  <div class="tag">First Phone Setup</div>
+  <div class="htag">First Phone Setup</div>
 </header>
 
-<!-- SCREEN 1: DEVICE -->
-<div id="s-device" class="screen active">
-  <div class="wrap" style="padding-top:40px">
-    <div class="label">Free · Step 1 of 3</div>
-    <h1>First phone.<br><span>Let's set it up well.</span></h1>
-    <p class="sub">Answer three questions. Get a setup plan matched to your child's age — with the exact items to have in place before you hand it over.</p>
-    <div style="font-size:14px;font-weight:600;color:#2C2C2C;margin-bottom:14px">What phone are they getting?</div>
-    <div class="pick-grid">
-      <div class="pick-card" onclick="pick('device','iphone',this)">
-        <div class="check">✓</div>
-        <div class="icon">📱</div>
-        <div class="name">iPhone</div>
-        <div class="desc">iOS · Screen Time</div>
+<!-- ── S1: AWARENESS ─────────────────────────────────────────── -->
+<div id="s-aware" class="screen active">
+  <div class="wrap" style="padding-top:44px">
+    <div class="eyebrow">Free Resource · iPhone</div>
+    <h1>Before you hand over<br>that phone —<br><span>did you know?</span></h1>
+    <p class="sub" style="margin-bottom:36px">Most parents don't realize how much control is already built into their child's iPhone. No extra apps. No monthly fees. It's all there — you just have to turn it on.</p>
+
+    <div style="font-size:12px;font-weight:700;color:#9A9A9A;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px">Here's what you can actually control</div>
+
+    <div class="awareness-grid">
+      <div class="card">
+        <div class="aw-top"><div class="aw-icon">📲</div><div class="aw-title">App Downloads</div></div>
+        <div class="aw-q">Can your child install any app they want?</div>
+        <div class="aw-a">By default — yes. Every app in the App Store is one tap away. But you can require your approval before anything installs, or block new downloads entirely.</div>
+        <div class="aw-badge">✓ You can control this</div>
       </div>
-      <div class="pick-card" onclick="pick('device','android',this)">
-        <div class="check">✓</div>
-        <div class="icon">🤖</div>
-        <div class="name">Android</div>
-        <div class="desc">Google Family Link</div>
+      <div class="card">
+        <div class="aw-top"><div class="aw-icon">🌐</div><div class="aw-title">Web Browsing & Content</div></div>
+        <div class="aw-q">What can they look up online?</div>
+        <div class="aw-a">By default — everything. Adult content, unmoderated forums, anything. You can filter explicit content, enable SafeSearch, or limit browsing to only sites you approve.</div>
+        <div class="aw-badge">✓ You can control this</div>
+      </div>
+      <div class="card">
+        <div class="aw-top"><div class="aw-icon">💬</div><div class="aw-title">Social Media</div></div>
+        <div class="aw-q">Should they have access to social media?</div>
+        <div class="aw-a">Most platforms require users to be 13+. You can block social apps entirely, limit access to one approved platform, or set daily time limits with safety settings in place.</div>
+        <div class="aw-badge">✓ You can control this</div>
+      </div>
+      <div class="card">
+        <div class="aw-top"><div class="aw-icon">⏱️</div><div class="aw-title">Daily Screen Time</div></div>
+        <div class="aw-q">How long should they be on their phone each day?</div>
+        <div class="aw-a">You can set separate daily limits for social apps, entertainment, and games. When the limit is reached, those apps stop working — automatically, without a fight.</div>
+        <div class="aw-badge">✓ You can control this</div>
+      </div>
+      <div class="card">
+        <div class="aw-top"><div class="aw-icon">🌙</div><div class="aw-title">Bedtime & Overnight Access</div></div>
+        <div class="aw-q">Is the phone accessible at 2am?</div>
+        <div class="aw-a">By default — yes. You can set a schedule so the phone locks itself every night at a time you choose. No willpower required from anyone. It just stops working.</div>
+        <div class="aw-badge">✓ You can control this</div>
+      </div>
+      <div class="card">
+        <div class="aw-top"><div class="aw-icon">📞</div><div class="aw-title">Who Can Contact Them</div></div>
+        <div class="aw-q">Can strangers call or message your child?</div>
+        <div class="aw-a">By default — yes. You can limit calls and messages to contacts only during the day, and family only overnight. Emergency services always go through.</div>
+        <div class="aw-badge">✓ You can control this</div>
+      </div>
+      <div class="card">
+        <div class="aw-top"><div class="aw-icon">📍</div><div class="aw-title">Location Awareness</div></div>
+        <div class="aw-q">Do you know where they are?</div>
+        <div class="aw-a">Built into every iPhone — you can see your child's device location from your own phone. You decide whether your child knows it's on and how you use it.</div>
+        <div class="aw-badge">✓ You can control this</div>
+      </div>
+      <div class="card">
+        <div class="aw-top"><div class="aw-icon">💳</div><div class="aw-title">In-App Purchases</div></div>
+        <div class="aw-q">Can they spend money without you knowing?</div>
+        <div class="aw-a">By default — yes. In-app purchases are on and can charge without a password. You can require your approval for every purchase or block spending entirely.</div>
+        <div class="aw-badge">✓ You can control this</div>
       </div>
     </div>
-    <button class="btn-primary" id="btn-device" disabled onclick="goTo('s-age')">Continue →</button>
+
+    <div class="cta-box">
+      <div class="eyebrow" style="margin-bottom:8px">Get the Setup Guide</div>
+      <div class="cta-title">Now let's get these settings turned on</div>
+      <div class="cta-sub">Enter your email and we'll walk you through exactly how to set up each one — including a personalized option where you decide the level for each category.</div>
+      <div class="cta-list">
+        <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>Where to find every setting</strong> — exact menu paths on current iOS</div></div>
+        <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>What to prioritize first</strong> — a sequenced checklist before you hand over the phone</div></div>
+        <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>What to say</strong> — conversation starters for when you hand it over</div></div>
+      </div>
+      <input type="email" class="email-field" id="email-input" placeholder="your@email.com">
+      <div class="email-err" id="email-err">Please enter a valid email address.</div>
+      <button class="btn sage full" onclick="submitEmail()">Get the Free Guide →</button>
+      <div class="email-note">No spam. We may send occasional tips for parents navigating tech with kids.</div>
+    </div>
+    <div style="font-size:11px;color:#9A9A9A;text-align:center;margin-top:14px;line-height:1.5">This resource covers iPhone with current iOS. Android guide coming soon.</div>
   </div>
 </div>
 
-<!-- SCREEN 2: AGE -->
+<!-- ── S2: AGE ────────────────────────────────────────────────── -->
 <div id="s-age" class="screen">
-  <div class="wrap" style="padding-top:40px">
-    <div class="label">Step 2 of 3</div>
-    <h2>How old are they?</h2>
-    <p class="sub">Age determines which settings are appropriate and how your plan is built.</p>
+  <div class="wrap" style="padding-top:44px">
+    <div class="eyebrow">One quick question</div>
+    <h2>How old is your child?</h2>
+    <p class="sub" style="margin-bottom:28px">We adjust the guide to what's developmentally appropriate — the right settings for an 8-year-old look different than for a 15-year-old.</p>
     <div class="age-num" id="age-display">11</div>
-    <div class="age-label">years old</div>
-    <div class="tier-badge" id="tier-badge">Guided Access tier</div><br>
+    <div class="age-lbl">years old</div>
+    <div class="tier-pill" id="tier-pill">Guided Access</div><br>
     <input type="range" min="8" max="17" value="11" id="age-slider" oninput="updateAge(this.value)">
-    <div class="range-labels"><span>8</span><span>17</span></div>
-    <div class="nav-row">
-      <button class="btn-ghost" onclick="goTo('s-device')">← Back</button>
-      <button class="btn-primary" onclick="goTo('s-path')">Continue →</button>
-    </div>
+    <div class="range-row"><span>8</span><span>17</span></div>
+    <button class="btn sage" onclick="goTo('s-path')">Continue →</button>
   </div>
 </div>
 
-<!-- SCREEN 3: PATH -->
+<!-- ── S3: PATH CHOICE ───────────────────────────────────────── -->
 <div id="s-path" class="screen">
-  <div class="wrap" style="padding-top:40px">
-    <div class="label">Step 3 of 3</div>
+  <div class="wrap" style="padding-top:44px">
+    <div class="eyebrow">Choose your setup</div>
     <h2>How do you want to set it up?</h2>
-    <p class="sub">Both give you a complete plan — the difference is how much you decide yourself.</p>
-    <div class="path-card" onclick="pick('path','standard',this)">
-      <div class="check">✓</div>
+    <p class="sub" style="margin-bottom:28px">Both give you a complete plan. The difference is how much you decide for yourself.</p>
+
+    <div class="path-card" id="pc-standard" onclick="pickPath('standard')">
+      <div class="path-check sage">✓</div>
       <div class="path-inner">
-        <div style="font-size:28px">⚡</div>
+        <div class="path-icon">⚡</div>
         <div>
-          <div class="path-title">Standard Setup</div>
-          <div class="path-desc" id="standard-desc">We build you a starting point based on your child's age. Fast, done-for-you — no guessing about where to start.</div>
-          <div class="path-tag">Best for: quick start</div>
+          <div class="path-title">Standard Setup — Free</div>
+          <div class="path-desc">We build a starting point based on your child's age. Includes where to find every setting and what to turn on — no decisions required.</div>
+          <div class="path-pill sage">Best for: quick start</div>
         </div>
       </div>
     </div>
-    <div class="path-card" onclick="pick('path','custom',this)">
-      <div class="check">✓</div>
+
+    <div class="path-card" id="pc-custom" onclick="pickPath('custom')">
+      <div class="path-check purple">✓</div>
       <div class="path-inner">
-        <div style="font-size:28px">🎛️</div>
+        <div class="path-icon">🎛️</div>
         <div>
-          <div class="path-title">Custom Setup</div>
-          <div class="path-desc">Walk through each category one at a time and decide what level of access is right for your child.</div>
-          <div class="path-tag">Best for: specific preferences</div>
+          <div class="path-title">Custom Setup — Personalized</div>
+          <div class="path-desc">You decide the level for each category — app downloads, social media, bedtime, communication and more. We generate the exact steps for your specific choices.</div>
+          <div class="path-pill purple">Best for: specific preferences</div>
         </div>
       </div>
     </div>
-    <div class="nav-row" style="margin-top:24px">
-      <button class="btn-ghost" onclick="goTo('s-age')">← Back</button>
-      <button class="btn-primary" id="btn-path" disabled onclick="startPlan()">Build My Plan →</button>
+
+    <div class="nav-row">
+      <button class="btn ghost" onclick="goTo('s-age')">← Back</button>
+      <button class="btn sage" id="btn-path" disabled onclick="startPath()">Continue →</button>
     </div>
   </div>
 </div>
 
-<!-- SCREEN 4: PLAN -->
-<div id="s-plan" class="screen">
-  <div class="plan-bar">
-    <div class="plan-bar-track"><div class="plan-bar-fill" id="bar-fill" style="width:0%"></div></div>
-    <div class="plan-bar-label" id="bar-label">0 / 0</div>
+<!-- ── S4: WIZARD INTRO ──────────────────────────────────────── -->
+<div id="s-wiz-intro" class="screen">
+  <div class="wrap" style="padding-top:44px">
+    <div class="eyebrow purple">Custom Setup</div>
+    <h2>Let's build your child's phone setup together.</h2>
+    <p class="sub" style="margin-bottom:24px">I'll ask 8 quick questions, one at a time. There are no perfect answers — just the setup that fits your child, your family, and your comfort level right now.</p>
+    <div class="card" style="margin-bottom:28px">
+      <div style="font-size:13px;color:#6B6B6B;line-height:1.7">
+        After your answers you'll see a summary of every choice. You can edit anything before we build your plan. The plan includes the <strong style="color:#2C2C2C">exact steps to configure each setting</strong> based on what you decided — not a generic guide.
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn ghost" onclick="goTo('s-path')">← Back</button>
+      <button class="btn purple" onclick="startWizard()">Start →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── S5: WIZARD QUESTION ───────────────────────────────────── -->
+<div id="s-wiz-q" class="screen">
+  <div class="wiz-bar">
+    <div class="wiz-dots" id="wiz-dots"></div>
+    <div class="wiz-step-label" id="wiz-step-label">Question 1 of 8</div>
+  </div>
+  <div class="wrap" style="padding-top:32px">
+    <div class="eyebrow purple" id="wiz-cat-label"></div>
+    <h2 id="wiz-question" style="margin-bottom:8px"></h2>
+    <p style="font-size:13px;color:#6B6B6B;line-height:1.6;margin-bottom:24px" id="wiz-context"></p>
+    <div id="wiz-options"></div>
+    <div class="nav-row">
+      <button class="btn ghost" onclick="wizBack()">← Back</button>
+      <button class="btn purple" id="btn-wiz-next" disabled onclick="wizNext()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── S6: REVIEW ────────────────────────────────────────────── -->
+<div id="s-review" class="screen">
+  <div class="wrap" style="padding-top:44px">
+    <div class="eyebrow purple">Review Your Choices</div>
+    <h2>Here's the setup you chose.</h2>
+    <p class="sub" style="margin-bottom:24px">Tap any row to change your answer before we build your plan.</p>
+    <div class="card" style="margin-bottom:28px">
+      <div id="review-rows"></div>
+    </div>
+    <div class="nav-row">
+      <button class="btn ghost" onclick="goTo('s-wiz-q'); wizStep=7; renderWizStep()">← Back</button>
+      <button class="btn purple" onclick="goTo('s-payment')">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── S7: PAYMENT PLACEHOLDER ──────────────────────────────── -->
+<div id="s-payment" class="screen">
+  <div class="wrap" style="padding-top:44px">
+    <div class="pay-box">
+      <div class="pay-accent"></div>
+      <div class="pay-inner">
+        <div class="pay-badge">Custom Setup Plan</div>
+        <div class="pay-title">Your personalized plan is ready to build.</div>
+        <div class="pay-sub">This plan reflects the 8 choices you made — exact steps to configure each setting on your child's iPhone, matched to their age and your decisions.</div>
+        <div class="pay-includes">
+          <div class="pay-inc-row"><div class="pay-inc-icon">✓</div><div class="pay-inc-text"><strong>Exact steps for your choices</strong> — not a generic guide, steps built from what you decided</div></div>
+          <div class="pay-inc-row"><div class="pay-inc-icon">✓</div><div class="pay-inc-text"><strong>Settings in the right order</strong> — sequenced so each step builds on the last</div></div>
+          <div class="pay-inc-row"><div class="pay-inc-icon">✓</div><div class="pay-inc-text"><strong>Conversation scripts</strong> — what to say when you hand over the phone, matched to your child's age</div></div>
+          <div class="pay-inc-row"><div class="pay-inc-icon">✓</div><div class="pay-inc-text"><strong>Reset plan</strong> — what to do when a boundary breaks down, matched to how you set things up</div></div>
+        </div>
+        <!-- PAYMENT PLACEHOLDER — swap for Stripe checkout here -->
+        <!-- payment_status: dev_bypass -->
+        <button class="btn purple full" onclick="buildCustomPlan()">Preview My Custom Plan</button>
+        <!-- END PAYMENT PLACEHOLDER -->
+        <div class="pay-note">Pricing coming soon. Preview is free during development.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S8: STANDARD GUIDE ────────────────────────────────────── -->
+<div id="s-standard" class="screen">
+  <div class="prog-bar">
+    <div class="prog-track"><div class="prog-fill" id="std-fill"></div></div>
+    <div class="prog-label" id="std-label">0 / 0</div>
   </div>
   <div class="wrap">
-    <div class="plan-head">
-      <div class="plan-label" id="plan-label">Free Setup Plan</div>
-      <div class="plan-title" id="plan-title"></div>
-      <div class="plan-sub" id="plan-sub"></div>
+    <div style="padding-top:28px;margin-bottom:24px">
+      <div class="eyebrow amber">Free iPhone Setup Guide</div>
+      <div style="font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:#2C2C2C;line-height:1.2;margin-bottom:8px" id="std-title"></div>
+      <div style="font-size:13px;color:#6B6B6B;line-height:1.65">Work through these sections in order. Tap any step to mark it done.</div>
     </div>
-    <div id="plan-sections"></div>
-    <div class="upgrade" id="upgrade-card">
-      <div class="upgrade-accent"></div>
-      <div class="upgrade-inner">
-        <div class="upgrade-label">Unlock the Full Setup Guide</div>
-        <div class="upgrade-title">You know what to aim for.<br>Now get the step-by-step guide to make it happen.</div>
-        <div class="upgrade-sub" id="upgrade-sub"></div>
-        <div class="upgrade-items">
-          <div class="upgrade-item">
-            <div class="upgrade-icon">⚙️</div>
-            <div><div class="upgrade-item-title" id="u-item-1">Setup guide</div><div class="upgrade-item-desc" id="u-desc-1">Exact navigation paths in the right order</div></div>
-          </div>
-          <div class="upgrade-item">
-            <div class="upgrade-icon">💬</div>
-            <div><div class="upgrade-item-title">First conversations</div><div class="upgrade-item-desc">Age-appropriate scripts for what to say when you hand over the phone</div></div>
-          </div>
-          <div class="upgrade-item">
-            <div class="upgrade-icon">🔒</div>
-            <div><div class="upgrade-item-title" id="u-item-3">Calibrated to your setup</div><div class="upgrade-item-desc" id="u-desc-3">Built for your device and child's age — not generic advice</div></div>
-          </div>
-        </div>
-        <div class="email-gate">
-          <div class="email-label">Enter your email to continue</div>
-          <input type="email" class="email-input" id="email-input" placeholder="you@example.com">
-          <div class="email-error" id="email-error">Please enter a valid email address.</div>
-          <button class="btn-unlock" onclick="submitEmail()">Get the Full Setup Guide →</button>
-          <div class="email-note">No spam. We may send occasional tips for parents navigating tech with kids.</div>
-        </div>
-      </div>
+    <div id="std-sections"></div>
+    <div class="disclaimer"><strong>About this guide</strong>This guide reflects general best practices for family digital boundaries. It is a starting point, not a comprehensive solution. Menu wording varies by iOS version — verify all steps on your current device. Raising Digital Teens does not provide legal, clinical, or emergency safety guidance.</div>
+    <button class="btn-restart" onclick="restart()">← Start Over</button>
+  </div>
+</div>
+
+<!-- ── S9: CUSTOM PLAN ───────────────────────────────────────── -->
+<div id="s-custom" class="screen">
+  <div class="prog-bar">
+    <div class="prog-track"><div class="prog-fill" id="cus-fill"></div></div>
+    <div class="prog-label" id="cus-label">0 / 0</div>
+  </div>
+  <div class="wrap">
+    <div style="padding-top:28px;margin-bottom:24px">
+      <div class="eyebrow purple">Your Custom iPhone Setup Plan</div>
+      <div style="font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:#2C2C2C;line-height:1.2;margin-bottom:8px" id="cus-title"></div>
+      <div style="font-size:13px;color:#6B6B6B;line-height:1.65">Built from your choices. Tap any step to mark it done.</div>
     </div>
-    <div class="disclaimer">
-      <strong>About this plan</strong>
-      This plan is educational in nature and reflects general best practices for family digital boundaries. It is a starting point, not a comprehensive solution. Menu wording and setting locations vary by device model and OS version — verify all steps on your current device. Raising Digital Teens does not provide legal, clinical, or emergency safety guidance.
-    </div>
+    <div id="cus-sections"></div>
+    <div class="disclaimer"><strong>About this plan</strong>This plan is built from the choices you made and reflects general best practices for family digital boundaries. It is a starting point, not a comprehensive solution. Menu wording varies by iOS version — verify all steps on your current device. Raising Digital Teens does not provide legal, clinical, or emergency safety guidance.</div>
     <button class="btn-restart" onclick="restart()">← Start Over</button>
   </div>
 </div>
 
 <script>
-var state = { device: null, age: 11, path: null, checked: {}, tier: 'free' };
+// ── STATE ──────────────────────────────────────────────────────
+var S = {
+  email: '',
+  age: 11,
+  path: null,       // 'standard' | 'custom'
+  choices: {},      // q0..q7: 'a'|'b'|'c'
+  checked: {},      // section index -> [bool]
+  payment_status: 'dev_bypass'  // swap to 'paid' when Stripe ready
+};
 var FORMSPREE = 'https://formspree.io/f/xzdqnwaw';
+var wizStep = 0;
+var currentSections = [];
 
+// ── QUESTIONS ──────────────────────────────────────────────────
+var QUESTIONS = [
+  {
+    cat: 'App Downloads',
+    q: 'When your child wants a new app, how should that work?',
+    ctx: 'By default, any app in the App Store installs with one tap.',
+    opts: [
+      { key:'a', label:'They ask first, and I approve or decline it.', detail:'Sets up Ask to Buy so every download request comes to your phone first.' },
+      { key:'b', label:'Only I can install new apps for now.', detail:'Disables the App Store on their device. You install apps manually when needed.' },
+      { key:'c', label:'They can download apps without asking for now.', detail:'No restrictions on downloads. You can revisit this later.' }
+    ]
+  },
+  {
+    cat: 'Web Browsing',
+    q: 'What should they be able to look up online?',
+    ctx: 'By default, Safari has no content filters.',
+    opts: [
+      { key:'a', label:'Regular browsing, with adult content blocked and search filters on.', detail:'Limits adult websites and enables SafeSearch across Google and Bing.' },
+      { key:'b', label:'Only websites I have approved.', detail:'Restricts Safari to an approved list you build. Everything else is blocked.' },
+      { key:'c', label:'Open web access for now.', detail:'No content filters configured. You can add them later.' }
+    ]
+  },
+  {
+    cat: 'Social Media',
+    q: 'Should they have access to social media?',
+    ctx: 'Most platforms — Instagram, TikTok, Snapchat — require users to be 13+.',
+    opts: [
+      { key:'a', label:'Not yet. I want social media blocked for now.', detail:'Blocks the Social Networking app category entirely via App Limits.' },
+      { key:'b', label:'One approved platform, with limits.', detail:'Blocks the Social Networking category, then manually allows one app you choose.' },
+      { key:'c', label:'Yes, but with time limits and safety settings.', detail:'Sets a daily time cap on Social Networking and enables Communication Safety in Messages.' }
+    ]
+  },
+  {
+    cat: 'Daily Screen Time',
+    q: 'Should there be daily limits on phone use?',
+    ctx: 'Limits apply by app category and reset automatically at midnight.',
+    opts: [
+      { key:'a', label:'Yes — reasonable daily limits by category.', detail:'Social: 1.5 hrs, Entertainment: 2 hrs, Games: 1 hr on school days. Adjust after the first week.' },
+      { key:'b', label:'Yes — very limited use for now.', detail:'Social: 30 min, Entertainment: 45 min, Games: 45 min on school days.' },
+      { key:'c', label:'No automatic daily limits for now.', detail:'No App Limits configured. You manage usage through conversation and household rules.' }
+    ]
+  },
+  {
+    cat: 'Bedtime',
+    q: 'Should the phone lock itself at night?',
+    ctx: 'Downtime schedules a window where only approved apps are accessible.',
+    opts: [
+      { key:'a', label:'Yes — at a reasonable bedtime for their age.', detail: null }, // filled dynamically
+      { key:'b', label:'Yes — earlier and stricter.', detail: null },
+      { key:'c', label:'No automatic lock. We\'ll handle bedtime ourselves.', detail:'No Downtime configured. Strongly recommend a physical charging station outside the bedroom instead.' }
+    ]
+  },
+  {
+    cat: 'Communication',
+    q: 'Who should be able to call or message them?',
+    ctx: 'This applies to Phone, FaceTime, Messages, and iCloud contacts. Emergency calls always go through.',
+    opts: [
+      { key:'a', label:'Contacts only during the day, family only at night.', detail:'Sets Communication Limits to Contacts Only during Screen Time, Specific Contacts during Downtime.' },
+      { key:'b', label:'Family only — all hours.', detail:'Sets Communication Limits to Specific Contacts at all times. No messaging apps beyond SMS.' },
+      { key:'c', label:'No contact limits for now.', detail:'No Communication Limits configured.' }
+    ]
+  },
+  {
+    cat: 'Location',
+    q: 'Do you want location sharing turned on?',
+    ctx: 'Location sharing shows where the device is — not necessarily where your child is. It\'s one layer, not a complete picture.',
+    opts: [
+      { key:'a', label:'Yes — and my child knows location sharing is on.', detail:'Enables Share My Location in Find My. Consider sharing yours too — it frames it as mutual.' },
+      { key:'b', label:'Yes — for safety situations, with clear family rules about when I\'ll check.', detail:'Same setup. The key is agreeing in advance when and why you\'ll look.' },
+      { key:'c', label:'No location sharing for now.', detail:'No location sharing configured.' }
+    ]
+  },
+  {
+    cat: 'Purchases',
+    q: 'Should they be able to make app or in-game purchases?',
+    ctx: 'In-app purchases are on by default and can charge without a password prompt.',
+    opts: [
+      { key:'a', label:'Only with my approval.', detail:'Enables Ask to Buy in Family Sharing. Sets In-App Purchases to Require Password.' },
+      { key:'b', label:'No purchases at all.', detail:'Sets In-App Purchases to Don\'t Allow. Removes saved payment methods from their Apple ID.' },
+      { key:'c', label:'Purchases are allowed without approval for now.', detail:'No purchase restrictions configured. Strongly recommended to reconsider — accidental charges are common.' }
+    ]
+  }
+];
+
+// fill bedtime details dynamically
+function bedtimeDetails() {
+  var tier = S.age <= 10 ? 1 : S.age <= 13 ? 2 : 3;
+  var std = tier===1?'7:30pm':tier===2?'9pm':'10pm';
+  var strict = tier===1?'6:30pm':tier===2?'8pm':'9pm';
+  QUESTIONS[4].opts[0].detail = 'Device locks at ' + std + ' nightly. Block at Downtime on — child must request more time from you rather than bypassing it.';
+  QUESTIONS[4].opts[1].detail = 'Device locks at ' + strict + ' nightly. All apps blocked including calls.';
+}
+
+// ── NAVIGATION ─────────────────────────────────────────────────
 function goTo(id) {
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
 
-function pick(key, val, el) {
-  var group = el.parentElement.querySelectorAll('.pick-card, .path-card');
-  group.forEach(function(c){ c.classList.remove('selected'); });
-  el.classList.add('selected');
-  state[key] = val;
-  if (key === 'device') { document.getElementById('btn-device').disabled = false; }
-  if (key === 'path') { document.getElementById('btn-path').disabled = false; }
+// ── AWARENESS → EMAIL ──────────────────────────────────────────
+function submitEmail() {
+  var email = document.getElementById('email-input').value.trim();
+  var err = document.getElementById('email-err');
+  if (!email || !email.includes('@')) { err.style.display='block'; return; }
+  err.style.display='none';
+  S.email = email;
+  fetch(FORMSPREE, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({email:email,source:'awareness',device:'iphone'})
+  }).catch(function(){});
+  goTo('s-age');
 }
 
+// ── AGE ────────────────────────────────────────────────────────
 function updateAge(v) {
-  state.age = parseInt(v);
+  S.age = parseInt(v);
   document.getElementById('age-display').textContent = v;
-  var tier = v <= 10 ? 'Supervised Access' : v <= 13 ? 'Guided Access' : 'Earned Access';
-  document.getElementById('tier-badge').textContent = tier + ' tier';
+  var t = v<=10?'Supervised Access':v<=13?'Guided Access':'Earned Access';
+  document.getElementById('tier-pill').textContent = t;
 }
 
-function startPlan() {
-  state.checked = {};
-  state.tier = 'free';
-  buildPlan();
-  goTo('s-plan');
+// ── PATH ───────────────────────────────────────────────────────
+function pickPath(p) {
+  S.path = p;
+  document.getElementById('pc-standard').className = 'path-card' + (p==='standard'?' sel-sage':'');
+  document.getElementById('pc-custom').className = 'path-card' + (p==='custom'?' sel-purple':'');
+  document.getElementById('btn-path').disabled = false;
 }
 
-function buildBaselineItems() {
-  var isIOS = state.device === 'iphone';
-  var age = state.age;
-  var tier = age <= 10 ? 1 : age <= 13 ? 2 : 3;
-  var items = {
-    1: [
-      isIOS ? '<strong>Parental oversight:</strong> Screen Time is on with a passcode only you know — your child does not have it' : '<strong>Parental oversight:</strong> Google Family Link is installed and linked on both devices — you control the settings',
-      '<strong>App downloads:</strong> Nothing can install on their phone without you approving it first',
-      '<strong>Web content:</strong> Adult sites are blocked and SafeSearch is on across all browsers',
-      '<strong>Social media:</strong> Instagram, TikTok, Snapchat and similar apps are blocked — all require age 13+',
-      '<strong>Communication:</strong> They can only reach family and adults you know — no open messaging to strangers',
-      '<strong>Bedtime lock:</strong> The phone locks itself every night at a set time — no willpower required from anyone'
-    ],
-    2: [
-      isIOS ? '<strong>Parental oversight:</strong> Screen Time is on with a passcode only you know — activity reports are visible to you' : '<strong>Parental oversight:</strong> Family Link is installed and linked — usage reports are visible to you',
-      '<strong>App downloads:</strong> Every new app requires your approval before it installs',
-      '<strong>Web content:</strong> Adult sites blocked, SafeSearch on — verified across every browser they use',
-      '<strong>Social media:</strong> Off entirely, or limited to one age-appropriate platform with your visibility into the account',
-      '<strong>Time limits:</strong> Social, entertainment, and gaming each have their own daily cap — not one combined limit',
-      '<strong>Bedtime lock:</strong> The phone locks itself at a set time every night — not a verbal agreement, a system setting'
-    ],
-    3: [
-      isIOS ? '<strong>Parental oversight:</strong> Screen Time is on — weekly activity reports are visible to you, reviewed together' : '<strong>Parental oversight:</strong> Family Link is on — activity reports visible to you, reviewed together monthly',
-      '<strong>App downloads:</strong> New apps are discussed before they\'re downloaded — a standing expectation, not a case-by-case negotiation',
-      '<strong>Web content:</strong> Explicit content, adult sites, and highest-risk categories are restricted — not everything, but the categories that matter',
-      '<strong>Time limits:</strong> Social and gaming each have a daily cap — targeted limits, not a blanket restriction on everything',
-      '<strong>Bedtime lock:</strong> The phone becomes inaccessible at a set time every night — set in the system, not dependent on willpower'
-    ]
-  };
-  return items[tier];
+function startPath() {
+  if (!S.path) return;
+  if (S.path==='standard') { buildStandardGuide(); goTo('s-standard'); }
+  else { goTo('s-wiz-intro'); }
 }
 
-function buildPaidSteps() {
-  var isIOS = state.device === 'iphone';
-  var age = state.age;
-  var tier = age <= 10 ? 1 : age <= 13 ? 2 : 3;
-  if (isIOS) {
-    return [
-      '<strong>Step 1 — Family Setup:</strong> On your iPhone go to <strong>Settings → [your name] → Family</strong>. Tap the <strong>person+ icon</strong> in the top right. Choose <strong>Create Child Account</strong> if they don\'t have an Apple ID, or <strong>Invite People</strong> if they already have one. Once added, tap your child\'s name — you\'ll see Screen Time and Ask To Buy. Everything is managed from your phone.',
-      '<strong>Step 2 — Screen Time Passcode:</strong> Tap <strong>Screen Time → Manage Screen Time → Change Screen Time Passcode</strong>. Set a passcode only you know — not their device passcode. This prevents them from changing Screen Time settings themselves.',
-      '<strong>Step 3 — App Limits:</strong> Tap <strong>App Limits → Add Limit</strong>. A "Choose Apps" screen appears. Select a whole <strong>category</strong> (Social, Games, Entertainment) or use the <strong>Search bar</strong> to find a specific app by name. Set your time and tap Add. Limits reset every day at midnight.',
-      '<strong>Step 4 — Downtime:</strong> Tap <strong>Downtime → Scheduled → on</strong>. Choose Every Day or Customize Days. Set start and end times (' + (tier===1?'7:30pm':tier===2?'9pm':'10pm') + '–7am recommended). Make sure <strong>Block at Downtime is on</strong> — this means your child sends you a request for more time rather than bypassing it. A 5-minute warning appears before Downtime starts.',
-      '<strong>Step 5 — Always Allowed:</strong> Tap <strong>Always Allowed</strong>. Phone is permanently allowed and can\'t be removed. <strong>Remove entertainment apps</strong> from this list — tap the red minus next to games, streaming, or social apps. Change <strong>Contacts</strong> at the top from Everyone to Contacts Only.',
-      '<strong>Step 6 — Communication Limits:</strong> Tap <strong>Communication Limits</strong>. Set <strong>During Screen Time</strong> to Contacts Only. Set <strong>During Downtime</strong> to Specific Contacts (family only). Consider turning off <strong>Allow Contact Editing</strong> so your child can\'t add new contacts themselves. Emergency calls always go through regardless of these settings.',
-      '<strong>Step 7 — Purchases:</strong> Go back to your child\'s Family profile and tap <strong>Ask To Buy</strong> to activate purchase approval. Then go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases</strong>. Set <strong>In-app Purchases</strong> to Don\'t Allow. Set <strong>Require Password</strong> to Always Require.'
-    ];
-  } else {
-    return [
-      '<strong>Step 1 — Family Link Setup:</strong> Download <strong>Google Family Link</strong> from the Play Store on your phone. Open it and create a new Google Account for your child or link their existing one. On their Android, open Family Link and approve the connection.',
-      '<strong>Step 2 — Screen Time & Bedtime Lock:</strong> In Family Link tap your child\'s name → <strong>Controls → Daily Screen Time</strong>. Set a daily limit. Tap <strong>Bedtime</strong> to set the hours the device locks automatically (' + (tier===1?'7:30pm':tier===2?'9pm':'10pm') + ' recommended).',
-      '<strong>Step 3 — Content Filters:</strong> In Family Link → Controls → <strong>Content Filters</strong>. Turn SafeSearch on. Set YouTube to <strong>Supervised</strong> mode. Set Google Play to <strong>Approved apps only</strong>.',
-      '<strong>Step 4 — App Limits:</strong> In Family Link → Controls → <strong>App Limits</strong>. Set daily caps for social and entertainment apps. Review after the first week of usage data.',
-      '<strong>Step 5 — Communication & Location:</strong> Review which apps have messaging access. Confirm location sharing is on — you\'ll see their device location in the Family Link app.',
-      '<strong>Step 6 — Purchases:</strong> In Family Link → Controls → Google Play → confirm <strong>purchase approval is required</strong>. Remove any saved payment methods from their Google account.'
-    ];
+// ── WIZARD ─────────────────────────────────────────────────────
+function startWizard() {
+  wizStep = 0;
+  S.choices = {};
+  bedtimeDetails();
+  goTo('s-wiz-q');
+  renderWizStep();
+}
+
+function renderWizStep() {
+  var q = QUESTIONS[wizStep];
+  document.getElementById('wiz-cat-label').textContent = 'Question ' + (wizStep+1) + ' of 8 · ' + q.cat;
+  document.getElementById('wiz-step-label').textContent = 'Question ' + (wizStep+1) + ' of 8';
+  document.getElementById('wiz-question').textContent = q.q;
+  document.getElementById('wiz-context').textContent = q.ctx;
+
+  // dots
+  var dotsHtml = '';
+  for (var i=0;i<8;i++) {
+    dotsHtml += '<div class="wiz-dot' + (i<wizStep?' done':i===wizStep?' active':'') + '"></div>';
   }
+  document.getElementById('wiz-dots').innerHTML = dotsHtml;
+
+  // options
+  var sel = S.choices['q'+wizStep];
+  var html = '';
+  q.opts.forEach(function(o) {
+    var selClass = sel===o.key ? ' selected-'+o.key : '';
+    var dotClass = 'level-dot ' + o.key;
+    var symbol = o.key==='a'?'✓':o.key==='b'?'↓':'○';
+    html += '<div class="level-card'+selClass+'" onclick="pickLevel(\''+o.key+'\')">' +
+      '<div class="level-inner">' +
+        '<div class="'+dotClass+'">'+symbol+'</div>' +
+        '<div><div class="level-title">'+o.label+'</div>' +
+        (o.detail ? '<div class="level-detail">'+o.detail+'</div>' : '') +
+        '</div></div></div>';
+  });
+  document.getElementById('wiz-options').innerHTML = html;
+  document.getElementById('btn-wiz-next').disabled = !sel;
+  document.getElementById('btn-wiz-next').textContent = wizStep<7 ? 'Next →' : 'Review My Choices →';
 }
 
-function buildScripts() {
-  var age = state.age;
-  var tier = age <= 10 ? 1 : age <= 13 ? 2 : 3;
-  if (tier === 1) return [
+function pickLevel(key) {
+  S.choices['q'+wizStep] = key;
+  document.getElementById('btn-wiz-next').disabled = false;
+  renderWizStep();
+}
+
+function wizNext() {
+  if (!S.choices['q'+wizStep]) return;
+  if (wizStep < 7) { wizStep++; renderWizStep(); window.scrollTo(0,0); }
+  else { renderReview(); goTo('s-review'); }
+}
+
+function wizBack() {
+  if (wizStep > 0) { wizStep--; renderWizStep(); window.scrollTo(0,0); }
+  else goTo('s-wiz-intro');
+}
+
+// ── REVIEW ─────────────────────────────────────────────────────
+var REVIEW_LABELS = {
+  q0: { cat:'App Downloads',   a:'Child asks before downloading',   b:'Only parent installs apps',     c:'Open downloads' },
+  q1: { cat:'Web Browsing',    a:'Adult content filtered',          b:'Approved sites only',           c:'Open web access' },
+  q2: { cat:'Social Media',    a:'Blocked entirely',                b:'One approved platform',         c:'Allowed with time limits' },
+  q3: { cat:'Screen Time',     a:'Balanced daily limits',           b:'Tight daily limits',            c:'No automatic limits' },
+  q4: { cat:'Bedtime',         a:'Age-based bedtime lock',          b:'Earlier strict lock',           c:'Manual bedtime' },
+  q5: { cat:'Communication',   a:'Contacts by day, family at night',b:'Family only at all times',      c:'No contact limits' },
+  q6: { cat:'Location',        a:'On — child knows',                b:'On — safety-based',             c:'Off' },
+  q7: { cat:'Purchases',       a:'Parent approval required',        b:'All purchases blocked',         c:'Open purchases' }
+};
+
+function renderReview() {
+  var html = '';
+  for (var i=0;i<8;i++) {
+    var key = 'q'+i;
+    var info = REVIEW_LABELS[key];
+    var choice = S.choices[key] || 'a';
+    var val = info[choice];
+    html += '<div class="review-row" onclick="jumpToWizStep('+i+')">' +
+      '<div><div class="review-cat">'+info.cat+'</div><div class="review-val">'+val+'</div></div>' +
+      '<div class="review-edit">Edit</div></div>';
+  }
+  document.getElementById('review-rows').innerHTML = html;
+}
+
+function jumpToWizStep(i) {
+  wizStep = i;
+  renderWizStep();
+  goTo('s-wiz-q');
+}
+
+// ── PAYMENT PLACEHOLDER ────────────────────────────────────────
+// payment_status: dev_bypass
+// To activate Stripe: replace buildCustomPlan() call with Stripe checkout
+// then call buildCustomPlan() on successful payment webhook
+function buildCustomPlan() {
+  S.checked = {};
+  generateCustomSections();
+  goTo('s-custom');
+}
+
+// ── CUSTOM PLAN GENERATOR ──────────────────────────────────────
+function generateCustomSections() {
+  var age = S.age;
+  var tier = age<=10?1:age<=13?2:3;
+  var tierName = tier===1?'Supervised Access':tier===2?'Guided Access':'Earned Access';
+  var c = S.choices;
+
+  document.getElementById('cus-title').textContent = 'iPhone · Age ' + age + ' · ' + tierName + ' · Custom';
+
+  var steps = [];
+
+  // Always: Family setup + Screen Time passcode
+  steps.push('<strong>Family Setup:</strong> On your iPhone go to <strong>Settings → [your name] → Family</strong>. Tap the <strong>person+ icon</strong> in the top right. Choose <strong>Create Child Account</strong> if they don\'t have an Apple ID, or <strong>Invite People</strong> if they already have one. Once added, tap your child\'s name — you\'ll see Screen Time and Ask To Buy listed. Everything is managed from your phone.');
+  steps.push('<strong>Screen Time Passcode:</strong> Tap <strong>Screen Time → Manage Screen Time → Change Screen Time Passcode</strong>. Set a passcode only you know — separate from their device passcode. This prevents them from changing Screen Time settings themselves.');
+
+  // App downloads
+  if (c.q0==='a') steps.push('<strong>App Downloads — Approval required:</strong> In Family Sharing, confirm <strong>Ask to Buy is on</strong> for your child. Go to <strong>Settings → [your name] → Family → [child\'s name] → Ask To Buy → on</strong>. Every App Store download request will come to your phone before anything installs.');
+  if (c.q0==='b') steps.push('<strong>App Downloads — Parent installs only:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → Installing Apps → Don\'t Allow</strong>. The App Store icon remains but nothing can download without you manually changing this setting.');
+
+  // Web browsing
+  if (c.q1==='a') steps.push('<strong>Web Browsing — Filtered:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content → Limit Adult Websites</strong>. Also go to <strong>safesearch.google.com</strong> in Safari and enable SafeSearch — this adds a second filter layer for Google searches.');
+  if (c.q1==='b') steps.push('<strong>Web Browsing — Approved sites only:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content → Allowed Websites Only</strong>. Tap <strong>Add Website</strong> to build your approved list. Safari will block everything else.');
+
+  // Social media
+  if (c.q2==='a') steps.push('<strong>Social Media — Blocked:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social (category) → set to 1 minute daily</strong>. This effectively blocks all social apps without removing them. If they\'re already installed, they\'ll be inaccessible.');
+  if (c.q2==='b') steps.push('<strong>Social Media — One approved platform:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social → set to 1 minute</strong>. Then go to <strong>Screen Time → Always Allowed</strong> and add the one approved platform. It will bypass the limit while all others remain blocked.');
+  if (c.q2==='c') steps.push('<strong>Social Media — With time limits and safety settings:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social</strong> and set a daily cap (1–2 hours is a common starting point). Then go to <strong>Screen Time → Communication Safety</strong> and turn on warnings for sensitive images in Messages.');
+
+  // Screen time
+  if (c.q3==='a') steps.push('<strong>Screen Time — Balanced limits:</strong> Go to <strong>Screen Time → App Limits → Add Limit</strong>. Add three separate limits: <strong>Social → 1.5 hours</strong>, <strong>Entertainment → 2 hours</strong>, <strong>Games → 1 hour</strong>. Select <strong>Customize Days</strong> to set tighter limits on school days if needed. Limits reset at midnight.');
+  if (c.q3==='b') steps.push('<strong>Screen Time — Tight limits:</strong> Go to <strong>Screen Time → App Limits → Add Limit</strong>. Add: <strong>Social → 30 minutes</strong>, <strong>Entertainment → 45 minutes</strong>, <strong>Games → 45 minutes</strong>. Revisit after the first two weeks — you can adjust up or down based on what you observe.');
+
+  // Bedtime
+  var tier2 = S.age<=10?1:S.age<=13?2:3;
+  var stdTime = tier2===1?'7:30pm':tier2===2?'9pm':'10pm';
+  var strictTime = tier2===1?'6:30pm':tier2===2?'8pm':'9pm';
+  if (c.q4==='a') steps.push('<strong>Bedtime — Age-based lock:</strong> Go to <strong>Screen Time → Downtime → Scheduled → on → Every Day → Time → ' + stdTime + ' to 7:00 AM</strong>. Make sure <strong>Block at Downtime is on</strong> — this means your child must send you a request for more time rather than bypassing it themselves. A 5-minute warning appears before Downtime starts.');
+  if (c.q4==='b') steps.push('<strong>Bedtime — Strict lock:</strong> Go to <strong>Screen Time → Downtime → Scheduled → on → Every Day → Time → ' + strictTime + ' to 7:00 AM</strong>. Turn <strong>Block at Downtime on</strong>. Under Always Allowed, remove Phone if you want calls blocked during Downtime — otherwise phone calls remain available.');
+  if (c.q4==='c') steps.push('<strong>Bedtime — Manual:</strong> No Downtime configured. Set up a physical charging station in a common area — phone charges there overnight, not in the bedroom. Starting this habit on night one is significantly easier than introducing it later.');
+
+  // Always Allowed audit (relevant for everyone)
+  steps.push('<strong>Always Allowed — Audit required:</strong> Go to <strong>Screen Time → Always Allowed</strong>. These apps stay accessible even during Downtime. Phone is permanently allowed and can\'t be removed. Tap the <strong>red minus</strong> next to any entertainment app (games, streaming, social apps) that shouldn\'t be available overnight. Change <strong>Contacts</strong> at the top from Everyone to <strong>Contacts Only</strong>.');
+
+  // Communication
+  if (c.q5==='a') steps.push('<strong>Communication — Contacts by day, family at night:</strong> Go to <strong>Screen Time → Communication Limits → During Screen Time → Contacts Only</strong>. Then set <strong>During Downtime → Specific Contacts</strong> and choose family members only. Emergency calls always go through regardless of these settings.');
+  if (c.q5==='b') steps.push('<strong>Communication — Family only:</strong> Go to <strong>Screen Time → Communication Limits → During Screen Time → Specific Contacts</strong> and select family members. Set <strong>During Downtime</strong> to the same. Consider turning off <strong>Allow Contact Editing</strong> so your child can\'t add new contacts themselves.');
+
+  // Location
+  if (c.q6==='a') steps.push('<strong>Location — On, child knows:</strong> Go to <strong>Find My → Me → Share My Location → on</strong>. Share it with your child\'s Apple ID so they can see yours too — framing location as mutual builds more trust than one-way tracking. Have a direct conversation about when and why you might check.');
+  if (c.q6==='b') steps.push('<strong>Location — On, safety-based:</strong> Go to <strong>Find My → Me → Share My Location → on</strong>. Share with your own Apple ID or family member. Agree in advance on the circumstances when you\'ll look — "if I can\'t reach you by phone" is a clear, fair rule.');
+
+  // Purchases
+  if (c.q7==='a') steps.push('<strong>Purchases — Approval required:</strong> Confirm <strong>Ask to Buy is on</strong> in Family Sharing. Then go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow</strong> as a backup layer. Set <strong>Require Password → Always Require</strong>.');
+  if (c.q7==='b') steps.push('<strong>Purchases — All blocked:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow</strong>. Go to <strong>Settings → [your name] → Payment & Shipping</strong> and remove any saved payment methods from their Apple ID account.');
+
+  // Conversation scripts
+  var scripts = tier===1 ? [
     '"This phone is a tool that belongs to our family. We\'re going to learn how to use it together, and the rules will change as you show us you\'re ready."',
     '"When the timer goes off, screen time is over — even if it feels hard. That\'s the rule, every time."',
     '"If something ever makes you uncomfortable — something you see or someone says — you can tell me. You won\'t get in trouble."'
-  ];
-  if (tier === 3) return [
+  ] : tier===3 ? [
     '"I want to set up a starting point that works for both of us — and I want your input on what seems fair."',
     '"As you show me you can handle it, I\'ll give you more flexibility. That\'s the deal."',
     '"If something ever feels off online, I want you to be able to tell me without worrying about losing your phone."'
-  ];
-  return [
+  ] : [
     '"We\'re starting with some limits, and as you show us you can handle it, those limits will change."',
     '"We\'re setting these rules because we care about you, not because we don\'t trust you."',
     '"If something feels weird or wrong online, come tell me. My first reaction won\'t be to take your phone away."'
   ];
-}
 
-function buildPlan() {
-  var age = state.age;
-  var device = state.device;
-  var tier = age <= 10 ? 'Supervised Access' : age <= 13 ? 'Guided Access' : 'Earned Access';
-  var tierLabel = age <= 10 ? '8–10' : age <= 13 ? '11–13' : '14–17';
-  var deviceLabel = device === 'iphone' ? 'iPhone' : 'Android';
-
-  document.getElementById('plan-title').innerHTML = deviceLabel + ' · Age ' + age + ' · <span>' + tier + '</span>';
-  document.getElementById('plan-sub').textContent = 'Start with The Starting Point — the device settings worth having in place before you hand over the phone. Tap each one as you confirm it\'s done.';
-
-  // Upgrade card content
-  document.getElementById('upgrade-sub').textContent = 'Step-by-step setup instructions generated from your child\'s age — exactly which menus to open, what to tap, and what to set.';
-  document.getElementById('u-item-1').textContent = deviceLabel === 'iPhone' ? 'Screen Time & Family Sharing setup guide' : 'Google Family Link setup guide';
-  document.getElementById('u-item-3').textContent = 'Built for ' + deviceLabel + ' · Age ' + age;
-  document.getElementById('u-desc-3').textContent = 'Calibrated to your device and child\'s age — not generic advice';
-
-  var sections = [
-    {
-      id: 'baseline',
-      eyebrow: 'The Starting Point',
-      title: 'Quick setup — do this before you hand over the phone',
-      intro: 'For a ' + tierLabel + '-year-old (' + tier + '). These are the device settings worth having in place. Tap each one as you confirm it\'s done.',
-      type: 'checklist',
-      items: buildBaselineItems(),
-      isBaseline: true
-    }
+  // Reset plan — matched to communication and bedtime choices
+  var resetItems = [
+    'Don\'t react in the moment — the best reset conversations happen when everyone is calm',
+    'Name what happened specifically — the behavior, not the character: "You were on your phone at 1am" not "You always lie"',
+    'Identify what broke down: was the limit unclear? The consequence inconsistent? The rule realistic?',
+    c.q4==='c' ? 'Since you\'re managing bedtime manually, consider whether a device-based bedtime lock would remove this as a nightly friction point' : 'Check that Block at Downtime is still on — your child may have found a way to request extensions repeatedly',
+    'Tighten one specific thing at a time — sweeping changes create more conflict than clarity',
+    'Rebuild with a short agreement: "Here\'s what changes for two weeks. Then we check in."'
   ];
 
-  renderSections(sections);
-  document.getElementById('upgrade-card').style.display = 'block';
-  updateBar();
-}
+  // Summary of their choices
+  var summaryItems = [];
+  summaryItems.push('<strong>Your choices at a glance:</strong>');
+  Object.keys(REVIEW_LABELS).forEach(function(key,i){
+    var info = REVIEW_LABELS[key];
+    var choice = S.choices[key] || 'a';
+    summaryItems.push(info.cat + ': ' + info[choice]);
+  });
 
-function buildFullPlan() {
-  var age = state.age;
-  var device = state.device;
-  var tier = age <= 10 ? 'Supervised Access' : age <= 13 ? 'Guided Access' : 'Earned Access';
-  var tierLabel = age <= 10 ? '8–10' : age <= 13 ? '11–13' : '14–17';
-  var deviceLabel = device === 'iphone' ? 'iPhone' : 'Android';
-
-  document.getElementById('plan-label').textContent = 'Full Setup Plan';
-  document.getElementById('plan-sub').textContent = 'Your full plan is ready. Work through it in order — tap any item to mark it done.';
-
-  var sections = [
-    {
-      id: 'baseline',
-      eyebrow: 'The Starting Point',
-      title: 'Quick setup — do this before you hand over the phone',
-      intro: 'For a ' + tierLabel + '-year-old (' + tier + '). These are the device settings worth having in place.',
-      type: 'checklist',
-      items: buildBaselineItems(),
-      isBaseline: true
-    },
-    {
-      id: 'setup',
-      eyebrow: 'How to Set It Up',
-      title: 'Step-by-Step: ' + (device === 'iphone' ? 'Screen Time & Family Sharing' : 'Google Family Link'),
-      intro: 'Each step explains what the setting does and what to tap. Menu names may vary slightly by device model and OS version.',
-      type: 'steps',
-      items: buildPaidSteps()
-    },
-    {
-      id: 'scripts',
-      eyebrow: 'First Conversations',
-      title: 'What to Say When You Hand Over the Phone',
-      intro: 'Set up the settings first. Then have the conversation. These are starting points — adapt them to your voice.',
-      type: 'scripts',
-      items: buildScripts()
-    }
+  currentSections = [
+    { id:'summary', ey:'Your Setup', title:'What you decided — at a glance', type:'tips', items: summaryItems },
+    { id:'steps', ey:'How to Set It Up', title:'Step-by-step configuration — built from your choices', intro:'Each step reflects the decisions you made. Menu wording may vary slightly by iOS version.', type:'steps', items: steps },
+    { id:'scripts', ey:'First Conversations', title:'What to say when you hand over the phone', intro:'Set up the settings first. Then have the conversation. These are starting points — adapt them to your voice.', type:'scripts', items: scripts },
+    { id:'reset', ey:'Reset Plan', title:'When a boundary breaks down — what to do', intro:'Every family hits a reset moment. This is yours for when it happens.', type:'steps', items: resetItems }
   ];
 
-  renderSections(sections);
-  document.getElementById('upgrade-card').style.display = 'none';
-  updateBar();
+  renderPlanSections('cus-sections','cus-fill','cus-label');
 }
 
-function renderSections(sections) {
-  var container = document.getElementById('plan-sections');
+// ── STANDARD GUIDE ─────────────────────────────────────────────
+function buildStandardGuide() {
+  var age = S.age;
+  var tier = age<=10?1:age<=13?2:3;
+  var tierName = tier===1?'Supervised Access':tier===2?'Guided Access':'Earned Access';
+  var tierLabel = tier===1?'8–10':tier===2?'11–13':'14–17';
+
+  document.getElementById('std-title').textContent = 'iPhone · Age ' + age + ' · ' + tierName;
+
+  var baseItems = {
+    1:['<strong>Parental oversight:</strong> Screen Time is on with a passcode only you know — your child does not have it','<strong>App downloads:</strong> Nothing can install on their phone without you approving it first','<strong>Web content:</strong> Adult sites are blocked and SafeSearch is on across all browsers','<strong>Social media:</strong> Instagram, TikTok, Snapchat and similar apps are blocked — all require age 13+','<strong>Communication:</strong> They can only reach family and adults you know — no open messaging to strangers','<strong>Bedtime lock:</strong> The phone locks itself every night at a set time — no willpower required from anyone'],
+    2:['<strong>Parental oversight:</strong> Screen Time is on with a passcode only you know — activity reports are visible to you','<strong>App downloads:</strong> Every new app requires your approval before it installs','<strong>Web content:</strong> Adult sites blocked, SafeSearch on — verified across every browser they use','<strong>Social media:</strong> Off entirely, or limited to one age-appropriate platform with your visibility into the account','<strong>Time limits:</strong> Social, entertainment, and gaming each have their own daily cap — not one combined limit','<strong>Bedtime lock:</strong> The phone locks itself at a set time every night — not a verbal agreement, a system setting'],
+    3:['<strong>Parental oversight:</strong> Screen Time is on — weekly activity reports visible to you, reviewed together','<strong>App downloads:</strong> New apps are discussed before they\'re downloaded — a standing expectation, not a case-by-case negotiation','<strong>Web content:</strong> Explicit content, adult sites, and highest-risk categories are restricted — not everything, but the categories that matter','<strong>Time limits:</strong> Social and gaming each have a daily cap — targeted limits, not a blanket restriction on everything','<strong>Bedtime lock:</strong> The phone becomes inaccessible at a set time every night — set in the system, not dependent on willpower']
+  };
+
+  var t2 = age<=10?1:age<=13?2:3;
+  var bt = t2===1?'7:30pm':t2===2?'9pm':'10pm';
+
+  var setupSteps = [
+    '<strong>Family Setup:</strong> On your iPhone go to <strong>Settings → [your name] → Family</strong>. Tap the <strong>person+ icon</strong> in the top right. Choose <strong>Create Child Account</strong> if they don\'t have an Apple ID, or <strong>Invite People</strong> if they already have one. Once added, tap your child\'s name — you\'ll see Screen Time and Ask To Buy. Everything is managed from your phone.',
+    '<strong>Screen Time Passcode:</strong> Tap <strong>Screen Time → Manage Screen Time → Change Screen Time Passcode</strong>. Set a passcode only you know — not their device passcode. This prevents them from changing Screen Time settings themselves.',
+    '<strong>App Limits:</strong> Tap <strong>App Limits → Add Limit</strong>. Select a whole <strong>category</strong> (Social, Games, Entertainment) or use the <strong>Search bar</strong> to find a specific app. Set your time and tap Add. Limits reset every day at midnight.',
+    '<strong>Downtime:</strong> Tap <strong>Downtime → Scheduled → on → Every Day → Time → ' + bt + ' to 7:00 AM</strong>. Make sure <strong>Block at Downtime is on</strong> — your child must request more time from you rather than bypassing it. A 5-minute warning appears before Downtime starts.',
+    '<strong>Always Allowed:</strong> Tap <strong>Always Allowed</strong>. Phone is permanently allowed. Tap the <strong>red minus</strong> next to any entertainment apps that shouldn\'t be available overnight. Change <strong>Contacts</strong> from Everyone to <strong>Contacts Only</strong>.',
+    '<strong>Communication Limits:</strong> Tap <strong>Communication Limits → During Screen Time → Contacts Only. During Downtime → Specific Contacts</strong> (family only). Consider turning off <strong>Allow Contact Editing</strong>. Emergency calls always go through.',
+    '<strong>Purchases:</strong> Go back to your child\'s Family profile and tap <strong>Ask To Buy → on</strong>. Then go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow. Require Password → Always Require</strong>.'
+  ];
+
+  var scripts = tier===1?['"This phone is a tool that belongs to our family. We\'re going to learn how to use it together, and the rules will change as you show us you\'re ready."','"When the timer goes off, screen time is over — even if it feels hard. That\'s the rule, every time."','"If something ever makes you uncomfortable — something you see or someone says — you can tell me. You won\'t get in trouble."']:tier===3?['"I want to set up a starting point that works for both of us — and I want your input on what seems fair."','"As you show me you can handle it, I\'ll give you more flexibility. That\'s the deal."','"If something ever feels off online, I want you to be able to tell me without worrying about losing your phone."']:['"We\'re starting with some limits, and as you show us you can handle it, those limits will change."','"We\'re setting these rules because we care about you, not because we don\'t trust you."','"If something feels weird or wrong online, come tell me. My first reaction won\'t be to take your phone away."'];
+
+  currentSections = [
+    { id:'base', ey:'Before You Hand It Over', title:'Settings worth having in place for a ' + tierLabel + '-year-old', intro:'These are the settings worth confirming are active before you hand over the phone. Tap each one as you verify it\'s done.', type:'steps', items: baseItems[tier] },
+    { id:'setup', ey:'How to Set It Up', title:'Step-by-Step: Screen Time & Family Sharing', intro:'Exact navigation paths verified on current iOS. Menu wording may vary slightly by device model and iOS version.', type:'steps', items: setupSteps },
+    { id:'scripts', ey:'First Conversations', title:'What to Say When You Hand Over the Phone', intro:'Set up the settings first. Then have the conversation.', type:'scripts', items: scripts }
+  ];
+
+  S.checked = {};
+  renderPlanSections('std-sections','std-fill','std-label');
+}
+
+// ── SECTION RENDERER ───────────────────────────────────────────
+function renderPlanSections(containerId, fillId, labelId) {
+  var container = document.getElementById(containerId);
   container.innerHTML = '';
-  sections.forEach(function(s, si) {
-    var checkable = s.type === 'checklist' || s.type === 'steps';
+  var totalSteps=0, doneSteps=0;
+
+  currentSections.forEach(function(s,si) {
+    var isSteps = s.type==='steps';
     var total = s.items.length;
-    var done = checkable ? (state.checked[si] || []).filter(Boolean).length : 0;
-    var allDone = checkable && done === total;
+    var done = isSteps?(S.checked[si]||[]).filter(Boolean).length:0;
+    if(isSteps){totalSteps+=total;doneSteps+=done;}
+    var allDone = isSteps&&done===total&&total>0;
 
-    var el = document.createElement('div');
-    el.className = 'section' + (s.isBaseline ? ' baseline' : '') + (allDone ? ' done' : '');
-    el.id = 'sec-' + si;
-
-    var itemsHtml = '';
-    if (s.type === 'checklist') {
-      s.items.forEach(function(item, ii) {
-        var isDone = (state.checked[si] || [])[ii];
-        itemsHtml += '<div class="check-item' + (isDone?' done':'') + '" onclick="toggle(' + si + ',' + ii + ')">' +
-          '<div class="check-box"></div>' +
-          '<div class="check-text">' + item + '</div></div>';
+    var itemsHtml='';
+    if(isSteps){
+      s.items.forEach(function(item,ii){
+        var isDone=(S.checked[si]||[])[ii];
+        itemsHtml+='<div class="step-item'+(isDone?' done':'')+'" onclick="toggleStep(\''+containerId+'\',\''+fillId+'\',\''+labelId+'\','+si+','+ii+')">' +
+          '<div class="step-num">'+(isDone?'✓':(ii+1))+'</div>' +
+          '<div class="step-text">'+item+'</div></div>';
       });
-    } else if (s.type === 'steps') {
-      s.items.forEach(function(item, ii) {
-        var isDone = (state.checked[si] || [])[ii];
-        itemsHtml += '<div class="step-item' + (isDone?' done':'') + '" onclick="toggle(' + si + ',' + ii + ')">' +
-          '<div class="step-num"><span>' + (ii+1) + '</span></div>' +
-          '<div class="check-text">' + item + '</div></div>';
-      });
-    } else if (s.type === 'scripts') {
-      s.items.forEach(function(item) {
-        itemsHtml += '<div class="script-item"><div class="script-text">' + item + '</div></div>';
+    } else if(s.type==='scripts'){
+      s.items.forEach(function(item){
+        itemsHtml+='<div class="script-card"><div class="script-text">'+item+'</div></div>';
       });
     } else {
-      s.items.forEach(function(item) {
-        itemsHtml += '<div class="tip-item"><div class="tip-dot">●</div><div class="check-text">' + item + '</div></div>';
+      s.items.forEach(function(item){
+        itemsHtml+='<div class="tip-item"><div class="tip-dot">●</div><div class="tip-text">'+item+'</div></div>';
       });
     }
 
-    var countBadge = checkable ? '<div class="sec-count">' + done + '/' + total + '</div>' : '';
-
-    el.innerHTML = '<div class="sec-accent"></div>' +
-      '<div class="sec-head" onclick="toggleSec(' + si + ')">' +
-        '<div><div class="sec-eyebrow">' + s.eyebrow + '</div><div class="sec-title">' + s.title + '</div></div>' +
-        '<div class="sec-meta">' + countBadge + '<div class="sec-toggle" id="tog-' + si + '">▲</div></div>' +
-      '</div>' +
-      '<div class="sec-body open" id="body-' + si + '">' +
-        '<div class="sec-inner">' +
-          (s.intro ? '<div class="sec-intro">' + s.intro + '</div>' : '') +
-          itemsHtml +
-        '</div>' +
-      '</div>';
+    var countHtml=isSteps?'<div class="sec-count">'+done+'/'+total+'</div>':'';
+    var el=document.createElement('div');
+    el.className='sec'+(si===0?' baseline':'')+( allDone?' all-done':'');
+    el.id='sec-'+containerId+'-'+si;
+    el.innerHTML=
+      '<div class="sec-accent"></div>'+
+      '<div class="sec-head" onclick="toggleSec(\''+containerId+'\','+si+')">'+
+        '<div><div class="sec-ey">'+s.ey+'</div><div class="sec-title">'+s.title+'</div></div>'+
+        '<div class="sec-right">'+countHtml+'<div class="sec-tog" id="tog-'+containerId+'-'+si+'">▲</div></div>'+
+      '</div>'+
+      '<div class="sec-body open" id="body-'+containerId+'-'+si+'">'+
+        '<div class="sec-inner">'+
+          (s.intro?'<div class="sec-intro">'+s.intro+'</div>':'')+
+          itemsHtml+
+        '</div></div>';
     container.appendChild(el);
   });
-  window._sections = sections;
+
+  var pct=totalSteps?Math.round((doneSteps/totalSteps)*100):0;
+  document.getElementById(fillId).style.width=pct+'%';
+  var lbl=document.getElementById(labelId);
+  lbl.textContent=doneSteps===totalSteps&&totalSteps>0?'✓ Done!':doneSteps+' / '+totalSteps;
 }
 
-function toggleSec(si) {
-  var body = document.getElementById('body-' + si);
-  var tog = document.getElementById('tog-' + si);
+function toggleSec(cid,si){
+  var body=document.getElementById('body-'+cid+'-'+si);
+  var tog=document.getElementById('tog-'+cid+'-'+si);
   body.classList.toggle('open');
-  tog.textContent = body.classList.contains('open') ? '▲' : '▼';
+  tog.textContent=body.classList.contains('open')?'▲':'▼';
 }
 
-function toggle(si, ii) {
-  if (!state.checked[si]) state.checked[si] = [];
-  state.checked[si][ii] = !state.checked[si][ii];
-  var sections = window._sections;
-  renderSections(sections);
-  if (state.tier === 'free') {
-    document.getElementById('upgrade-card').style.display = 'block';
-  }
-  updateBar();
+function toggleStep(cid,fillId,labelId,si,ii){
+  if(!S.checked[si])S.checked[si]=[];
+  S.checked[si][ii]=!S.checked[si][ii];
+  renderPlanSections(cid,fillId,labelId);
 }
 
-function updateBar() {
-  var sections = window._sections || [];
-  var total = 0, done = 0;
-  sections.forEach(function(s, si) {
-    if (s.type === 'checklist' || s.type === 'steps') {
-      total += s.items.length;
-      done += (state.checked[si] || []).filter(Boolean).length;
-    }
-  });
-  var pct = total ? Math.round((done/total)*100) : 0;
-  document.getElementById('bar-fill').style.width = pct + '%';
-  document.getElementById('bar-label').textContent = done === total && total > 0 ? '✓ Done!' : done + ' / ' + total;
-  if (done === total && total > 0) {
-    document.getElementById('bar-fill').style.background = '#C4714A';
-    document.getElementById('bar-label').style.color = '#C4714A';
-  }
-}
-
-function submitEmail() {
-  var email = document.getElementById('email-input').value;
-  var errEl = document.getElementById('email-error');
-  if (!email || !email.includes('@')) { errEl.style.display = 'block'; return; }
-  errEl.style.display = 'none';
-  fetch(FORMSPREE, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ email: email, device: state.device, age: state.age, path: state.path || 'standard' })
-  }).catch(function(){});
-  state.tier = 'paid';
-  buildFullPlan();
-  window.scrollTo(0,0);
-}
-
-function restart() {
-  state = { device: null, age: 11, path: null, checked: {}, tier: 'free' };
-  document.querySelectorAll('.pick-card,.path-card').forEach(function(c){ c.classList.remove('selected'); });
-  document.getElementById('btn-device').disabled = true;
-  document.getElementById('btn-path').disabled = true;
-  document.getElementById('age-slider').value = 11;
+// ── RESTART ────────────────────────────────────────────────────
+function restart(){
+  S={email:'',age:11,path:null,choices:{},checked:{},payment_status:'dev_bypass'};
+  wizStep=0;currentSections=[];
+  document.getElementById('email-input').value='';
+  document.getElementById('age-slider').value=11;
   updateAge(11);
-  goTo('s-device');
+  document.getElementById('pc-standard').className='path-card';
+  document.getElementById('pc-custom').className='path-card';
+  document.getElementById('btn-path').disabled=true;
+  goTo('s-aware');
 }
 </script>
 </body>
