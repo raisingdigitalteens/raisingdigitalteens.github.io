@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raising Digital Teens — First Phone Setup</title>
+<title>Raising Digital Teens -- First Phone Setup</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -22,7 +22,6 @@ h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;color
 .card{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;padding:20px 22px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
 .card.sage{border-color:#4A7C6F;border-width:1.5px}
 .card.purple{border-color:#6B5EA8;border-width:1.5px}
-/* awareness */
 .awareness-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
 .aw-top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .aw-icon{font-size:22px;flex-shrink:0}
@@ -30,7 +29,6 @@ h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;color
 .aw-q{font-size:13px;font-weight:600;color:#4A7C6F;margin-bottom:5px}
 .aw-a{font-size:13px;color:#6B6B6B;line-height:1.6}
 .aw-badge{display:inline-block;font-size:11px;font-weight:700;color:#4A7C6F;background:rgba(74,124,111,0.10);padding:3px 10px;border-radius:100px;margin-top:8px}
-/* cta */
 .cta-box{background:#fff;border:1.5px solid #4A7C6F;border-radius:20px;padding:26px 22px;box-shadow:0 4px 16px rgba(0,0,0,0.07)}
 .cta-title{font-size:19px;font-weight:700;color:#2C2C2C;margin-bottom:8px;line-height:1.3}
 .cta-sub{font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:18px}
@@ -43,7 +41,6 @@ h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;color
 .email-field:focus{border-color:#4A7C6F;background:#fff}
 .email-err{font-size:12px;color:#B85450;margin-bottom:8px;display:none}
 .email-note{font-size:11px;color:#9A9A9A;text-align:center;margin-top:10px;line-height:1.5}
-/* buttons */
 .btn{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:100px;padding:14px 28px;cursor:pointer;transition:all 0.2s;display:inline-block}
 .btn.terra{background:#C4714A;color:#fff;box-shadow:0 4px 14px rgba(196,113,74,0.25)}
 .btn.terra:hover{background:#b5643e}
@@ -53,13 +50,11 @@ h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:-0.02em;color
 .btn.full{width:100%;display:block;text-align:center}
 .btn:disabled{background:#E8E4DE;color:#9A9A9A;box-shadow:none;cursor:not-allowed}
 .nav-row{display:flex;gap:10px;align-items:center;margin-top:24px}
-/* age */
 .age-num{font-size:68px;font-weight:700;color:#4A7C6F;letter-spacing:-0.04em;line-height:1;margin-bottom:4px}
 .tier-pill{display:inline-block;font-size:12px;font-weight:600;color:#4A7C6F;background:rgba(74,124,111,0.10);padding:4px 12px;border-radius:100px;margin-bottom:22px}
 input[type=range]{width:100%;max-width:340px;accent-color:#4A7C6F;display:block;margin-bottom:4px}
 .range-row{display:flex;justify-content:space-between;max-width:340px;margin-bottom:32px}
 .range-row span{font-size:11px;color:#9A9A9A}
-/* path */
 .path-card{background:#fff;border:1.5px solid rgba(0,0,0,0.07);border-radius:18px;padding:20px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:all 0.18s;position:relative;margin-bottom:12px}
 .path-card.sel-sage{background:#EEF4F2;border-color:#4A7C6F}
 .path-card.sel-purple{background:rgba(107,94,168,0.06);border-color:#6B5EA8}
@@ -73,7 +68,6 @@ input[type=range]{width:100%;max-width:340px;accent-color:#4A7C6F;display:block;
 .path-pill{font-size:11px;font-weight:700;display:inline-block;padding:3px 10px;border-radius:100px}
 .path-pill.sage{color:#4A7C6F;background:rgba(74,124,111,0.10)}
 .path-pill.purple{color:#6B5EA8;background:rgba(107,94,168,0.10)}
-/* wizard */
 .wiz-bar{padding:16px 24px 0;max-width:680px;margin:0 auto}
 .wiz-dots{display:flex;gap:4px;margin-bottom:8px}
 .wiz-dot{flex:1;height:3px;border-radius:100px;background:#F2EFE9;transition:background 0.3s}
@@ -94,7 +88,6 @@ input[type=range]{width:100%;max-width:340px;accent-color:#4A7C6F;display:block;
 .level-desc{font-size:13px;color:#6B6B6B;line-height:1.55}
 .level-detail{margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,0.06);font-size:12px;color:#9A9A9A;line-height:1.6;display:none}
 .level-card.sel-a .level-detail,.level-card.sel-b .level-detail,.level-card.sel-c .level-detail,.level-card.sel-d .level-detail{display:block}
-/* sliders */
 .slider-block{background:#F2EFE9;border-radius:12px;padding:16px;margin-top:12px;display:none}
 .slider-row{margin-bottom:16px}
 .slider-row:last-child{margin-bottom:0}
@@ -102,26 +95,22 @@ input[type=range]{width:100%;max-width:340px;accent-color:#4A7C6F;display:block;
 .slider-name{font-size:13px;font-weight:600;color:#2C2C2C}
 .slider-val{font-size:13px;font-weight:700;color:#4A7C6F}
 input.cat-slider{width:100%;accent-color:#4A7C6F}
-/* time pickers */
 .time-block{background:#F2EFE9;border-radius:12px;padding:16px;margin-top:12px;display:none}
 .time-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .time-row:last-child{margin-bottom:0}
 .time-label{font-size:13px;font-weight:600;color:#2C2C2C}
 .time-input{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:#4A7C6F;background:#fff;border:1.5px solid rgba(74,124,111,0.3);border-radius:8px;padding:7px 12px;outline:none}
-/* review */
 .review-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.06);cursor:pointer}
 .review-row:last-child{border-bottom:none}
 .review-cat{font-size:12px;color:#9A9A9A;margin-bottom:2px}
 .review-val{font-size:14px;font-weight:600;color:#2C2C2C}
 .review-edit{font-size:12px;font-weight:600;color:#4A7C6F;background:rgba(74,124,111,0.08);padding:4px 10px;border-radius:8px;flex-shrink:0}
-/* plan home */
 .plan-home{max-width:680px;margin:0 auto;padding:0 24px 80px}
 .summary-card{background:#fff;border:1.5px solid #4A7C6F;border-radius:16px;padding:22px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
 .summary-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.06)}
 .summary-row:last-child{border-bottom:none}
 .summary-cat{font-size:11px;color:#9A9A9A;width:110px;flex-shrink:0;padding-top:1px}
 .summary-val{font-size:13px;font-weight:600;color:#2C2C2C;line-height:1.4}
-/* locked/unlocked section cards */
 .section-card{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
 .section-card.locked{opacity:0.7}
 .section-card-head{padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer}
@@ -138,7 +127,6 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 .sc-badge.unlocked{color:#4A7C6F;background:rgba(74,124,111,0.10)}
 .sc-badge.locked{color:#9A9A9A;background:#F2EFE9}
 .sc-badge.arrow{color:#4A7C6F;background:rgba(74,124,111,0.10)}
-/* pay box */
 .pay-box{background:#fff;border:1.5px solid #6B5EA8;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(107,94,168,0.12);margin-bottom:16px}
 .pay-accent{height:4px;background:linear-gradient(90deg,#6B5EA8,#4A7C6F)}
 .pay-inner{padding:26px 22px}
@@ -152,12 +140,10 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 .pay-row-text{font-size:13px;color:#6B6B6B;line-height:1.5}
 .pay-row-text strong{color:#2C2C2C}
 .pay-note{font-size:11px;color:#9A9A9A;text-align:center;margin-top:10px;line-height:1.5}
-/* keep current card */
 .kc-card{background:#EEF4F2;border:1px solid rgba(74,124,111,0.2);border-radius:14px;padding:18px 20px;margin-bottom:16px}
 .kc-title{font-size:13px;font-weight:700;color:#4A7C6F;margin-bottom:4px}
 .kc-desc{font-size:12px;color:#6B6B6B;line-height:1.6;margin-bottom:8px}
 .kc-badge{display:inline-block;font-size:11px;font-weight:700;color:#4A7C6F;background:rgba(74,124,111,0.15);padding:3px 10px;border-radius:100px}
-/* section screens */
 .sec-screen{max-width:680px;margin:0 auto;padding:0 24px 80px}
 .prog-bar{position:sticky;top:0;z-index:20;background:rgba(250,248,245,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,0.07);padding:11px 24px;display:flex;gap:14px;align-items:center}
 .prog-track{flex:1;height:4px;background:#F2EFE9;border-radius:100px;overflow:hidden}
@@ -181,7 +167,6 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 .tweak-item.checked .tweak-box::after{content:'✓';color:#fff;font-size:10px;font-weight:800}
 .tweak-text{font-size:13px;color:#6B6B6B;line-height:1.65}
 .tweak-note{font-size:11px;color:#9A9A9A;line-height:1.5;margin-top:3px}
-/* standard guide */
 .std-section{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
 .std-sec-head{padding:16px 20px 12px;cursor:pointer;user-select:none;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .std-sec-ey{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#4A7C6F;margin-bottom:5px}
@@ -192,12 +177,9 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 .std-body{max-height:0;overflow:hidden;transition:max-height 0.3s ease}
 .std-body.open{max-height:4000px}
 .std-inner{padding:0 20px 18px}
-.std-intro{font-size:12px;color:#9A9A9A;line-height:1.65;margin-bottom:12px;border-left:2px solid rgba(0,0,0,0.08);padding-left:12px;font-style:italic}
-/* add child */
 .add-child-card{background:#fff;border:1px dashed rgba(74,124,111,0.4);border-radius:16px;padding:20px 22px;text-align:center;margin-top:8px;cursor:pointer}
 .add-child-title{font-size:14px;font-weight:700;color:#4A7C6F;margin-bottom:4px}
 .add-child-sub{font-size:12px;color:#9A9A9A;line-height:1.5}
-/* disclaimer */
 .disclaimer{font-size:11px;color:#9A9A9A;line-height:1.75;border-top:1px solid rgba(0,0,0,0.07);padding-top:18px;margin-top:24px}
 .disclaimer strong{color:#6B6B6B;display:block;margin-bottom:3px}
 .btn-restart{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:#9A9A9A;background:none;border:1px solid rgba(0,0,0,0.07);border-radius:100px;padding:9px 18px;cursor:pointer;margin-top:20px}
@@ -213,27 +195,29 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 <div id="s-aware" class="screen active">
 <div class="wrap" style="padding-top:44px">
   <div class="eyebrow">Free Resource · iPhone</div>
-  <h1>Before you hand over<br>that phone —<br><span>did you know?</span></h1>
-  <p class="sub" style="margin-bottom:36px">Most parents don't realize how much control is already built into their child's iPhone. No extra apps. No monthly fees. It's all there — you just have to turn it on.</p>
+  <h1>Before you hand over<br>that phone --<br><span>did you know?</span></h1>
+  <p class="sub" style="margin-bottom:36px">Most parents don't realize how much control is already built into their child's iPhone. No extra apps. No monthly fees. It's all there -- you just have to turn it on.</p>
   <div style="font-size:12px;font-weight:700;color:#9A9A9A;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px">Here's what you can actually control</div>
   <div class="awareness-grid">
-    <div class="card"><div class="aw-top"><div class="aw-icon">📲</div><div class="aw-title">App Downloads</div></div><div class="aw-q">Can your child install any app they want?</div><div class="aw-a">By default — yes. Every app in the App Store is one tap away. But you can require your approval before anything installs, or block new downloads entirely.</div><div class="aw-badge">✓ You can control this</div></div>
-    <div class="card"><div class="aw-top"><div class="aw-icon">🌐</div><div class="aw-title">Web Browsing & Content</div></div><div class="aw-q">What can they look up online?</div><div class="aw-a">By default — everything. Adult content, unmoderated forums, anything. You can filter explicit content, enable SafeSearch, or limit browsing to only sites you approve.</div><div class="aw-badge">✓ You can control this</div></div>
+    <div class="card"><div class="aw-top"><div class="aw-icon">📲</div><div class="aw-title">App Downloads</div></div><div class="aw-q">Can your child install any app they want?</div><div class="aw-a">By default -- yes. Every app in the App Store is one tap away. But you can require your approval before anything installs, or block new downloads entirely.</div><div class="aw-badge">✓ You can control this</div></div>
+    <div class="card"><div class="aw-top"><div class="aw-icon">🌐</div><div class="aw-title">Web Browsing & Content</div></div><div class="aw-q">What can they look up online?</div><div class="aw-a">By default -- everything. Adult content, unmoderated forums, anything. You can filter explicit content, enable SafeSearch, or limit browsing to only sites you approve.</div><div class="aw-badge">✓ You can control this</div></div>
     <div class="card"><div class="aw-top"><div class="aw-icon">💬</div><div class="aw-title">Social Media</div></div><div class="aw-q">Should they have unlimited access to social apps?</div><div class="aw-a">Most platforms require users to be 13+. You can block social apps entirely, limit access to one approved platform, or set daily time limits with safety settings in place.</div><div class="aw-badge">✓ You can control this</div></div>
-    <div class="card"><div class="aw-top"><div class="aw-icon">⏱️</div><div class="aw-title">Daily Screen Time</div></div><div class="aw-q">How long should they be on their phone each day?</div><div class="aw-a">You can set separate daily limits for social apps, entertainment, and games. When the limit is reached, those apps stop working — automatically, without a fight.</div><div class="aw-badge">✓ You can control this</div></div>
-    <div class="card"><div class="aw-top"><div class="aw-icon">🌙</div><div class="aw-title">Bedtime & Overnight Access</div></div><div class="aw-q">Is the phone accessible at 2am?</div><div class="aw-a">By default — yes. You can set a schedule so the phone locks itself every night at a time you choose. No willpower required. It just stops working.</div><div class="aw-badge">✓ You can control this</div></div>
-    <div class="card"><div class="aw-top"><div class="aw-icon">📞</div><div class="aw-title">Who Can Contact Them</div></div><div class="aw-q">Can strangers call or message your child?</div><div class="aw-a">By default — yes. You can limit calls and messages to saved contacts only during the day, and family members only at night. Emergency services always go through.</div><div class="aw-badge">✓ You can control this</div></div>
-    <div class="card"><div class="aw-top"><div class="aw-icon">📍</div><div class="aw-title">Location Awareness</div></div><div class="aw-q">Do you know where they are?</div><div class="aw-a">Built into every iPhone through Find My and Family Sharing. You decide whether your child knows location sharing is on and how your family uses it.</div><div class="aw-badge">✓ You can control this</div></div>
-    <div class="card"><div class="aw-top"><div class="aw-icon">💳</div><div class="aw-title">In-App Purchases</div></div><div class="aw-q">Can they spend money without you knowing?</div><div class="aw-a">By default — yes. In-app purchases are on and can charge without a password. You can require your approval for every purchase or restrict spending entirely.</div><div class="aw-badge">✓ You can control this</div></div>
+    <div class="card"><div class="aw-top"><div class="aw-icon">⏱️</div><div class="aw-title">Daily Screen Time</div></div><div class="aw-q">How long should they be on their phone each day?</div><div class="aw-a">You can set separate daily limits for social apps, entertainment, and games. When the limit is reached, those apps stop working -- automatically, without a fight.</div><div class="aw-badge">✓ You can control this</div></div>
+    <div class="card"><div class="aw-top"><div class="aw-icon">🌙</div><div class="aw-title">Bedtime & Overnight Access</div></div><div class="aw-q">Is the phone accessible at 2am?</div><div class="aw-a">By default -- yes. You can set a schedule so the phone locks itself every night at a time you choose. No willpower required. It just stops working.</div><div class="aw-badge">✓ You can control this</div></div>
+    <div class="card"><div class="aw-top"><div class="aw-icon">📞</div><div class="aw-title">Who Can Contact Them</div></div><div class="aw-q">Can strangers call or message your child?</div><div class="aw-a">By default -- yes. You can limit calls and messages to saved contacts only during the day, and family members only at night. Emergency services always go through.</div><div class="aw-badge">✓ You can control this</div></div>
+    <!-- CHANGE: Updated Location Awareness body copy -- removed covert tracking implication -->
+    <div class="card"><div class="aw-top"><div class="aw-icon">📍</div><div class="aw-title">Location Awareness</div></div><div class="aw-q">Do you know where they are?</div><div class="aw-a">You can see where they are in real time -- and decide how your family uses that information.</div><div class="aw-badge">✓ You can control this</div></div>
+    <div class="card"><div class="aw-top"><div class="aw-icon">💳</div><div class="aw-title">iTunes & App Store Purchases</div></div><div class="aw-q">Can they spend money without you knowing?</div><div class="aw-a">By default -- yes. In-app purchases are on and can charge without a password. You can require your approval for every purchase or restrict spending entirely.</div><div class="aw-badge">✓ You can control this</div></div>
   </div>
   <div class="cta-box">
     <div class="eyebrow" style="margin-bottom:8px">Get the iPhone Setup Starter Map</div>
     <div class="cta-title">Now let's get these settings turned on</div>
-    <div class="cta-sub">Enter your email and we'll walk you through the main areas to review — including a personalized option where you decide the level for each setting.</div>
+    <div class="cta-sub">Enter your email and we'll walk you through the main areas to review -- including a personalized option where you decide the level for each setting.</div>
     <div class="cta-list">
-      <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>The 7 areas to review</strong> — what each one controls and why it matters</div></div>
-      <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>Where to find each setting</strong> — general navigation on current iOS</div></div>
-      <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>What to consider first</strong> — age-based orientation before you dive in</div></div>
+      <!-- CHANGE: Updated "7 areas" to "8 areas" -->
+      <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>The 8 areas to review</strong> -- what each one controls and why it matters</div></div>
+      <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>Where to find each setting</strong> -- general navigation on current iOS</div></div>
+      <div class="cta-row"><div class="cta-check">✓</div><div class="cta-row-text"><strong>What to consider first</strong> -- age-based orientation before you dive in</div></div>
     </div>
     <input type="email" class="email-field" id="email-input" placeholder="your@email.com">
     <div class="email-err" id="email-err">Please enter a valid email address.</div>
@@ -244,31 +228,33 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 </div>
 </div>
 
-<!-- S2: STARTER MAP (free email unlock) -->
+<!-- S2: STARTER MAP -->
 <div id="s-starter" class="screen">
 <div class="wrap" style="padding-top:44px">
   <div class="eyebrow">iPhone Setup Starter Map</div>
-  <h2>7 areas worth reviewing before you hand over the phone</h2>
-  <p class="sub" style="margin-bottom:28px">This is your orientation — what each setting area controls and where to find it. Menu names may vary by iOS version. Verify all steps on your current device.</p>
+  <!-- CHANGE: Updated "7 areas" to "8 areas" in headline -->
+  <h2>8 areas worth reviewing before you hand over the phone</h2>
+  <p class="sub" style="margin-bottom:28px">This is your orientation -- what each setting area controls and where to find it. Menu names may vary by iOS version. Verify all steps on your current device.</p>
   <div id="starter-sections"></div>
   <div style="margin-top:28px;background:#fff;border:1.5px solid #6B5EA8;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(107,94,168,0.10)">
     <div style="height:4px;background:linear-gradient(90deg,#6B5EA8,#4A7C6F)"></div>
     <div style="padding:24px 22px">
       <div class="eyebrow purple" style="margin-bottom:8px">Personalized iPhone Setup Plan</div>
       <div style="font-size:18px;font-weight:700;color:#2C2C2C;margin-bottom:8px;line-height:1.3">Want the exact steps for your family's choices?</div>
-      <div style="font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:16px">The Starter Map shows you what to look at. The Personalized Plan tells you exactly what to set — built from your 8 decisions, matched to your child's age, with scripts and a reset plan included.</div>
+      <div style="font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:16px">The Starter Map shows you what to look at. The Personalized Plan tells you exactly what to set -- built from your 8 decisions, matched to your child's age, with scripts and a reset plan included.</div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
-        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Exact steps from your choices</strong> — not a generic guide</div></div>
-        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Conversation scripts</strong> — matched to your child's age</div></div>
-        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Reset plan</strong> — what to do when a boundary breaks down</div></div>
-        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Communication tweaks</strong> — optional refinements after setup</div></div>
-        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Every child in your family</strong> — one price, unlimited kids</div></div>
+        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Exact steps from your choices</strong> -- not a generic guide</div></div>
+        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Conversation scripts</strong> -- matched to your child's age</div></div>
+        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Reset plan</strong> -- what to do when a boundary breaks down</div></div>
+        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Communication tweaks</strong> -- optional refinements after setup</div></div>
+        <div class="cta-row"><div class="cta-check" style="color:#6B5EA8">✓</div><div class="cta-row-text"><strong>Every child in your family</strong> -- one price, unlimited kids</div></div>
       </div>
       <button class="btn purple full" onclick="goTo('s-age')">Build My Personalized Plan →</button>
-      <div class="pay-note">$19 at launch · Covers every child in your family</div>
+      <!-- CHANGE: Updated button subtext to signal payment comes after wizard -->
+      <div class="pay-note">Answer 8 questions · $19 at launch · covers every child in your family</div>
     </div>
   </div>
-  <div class="disclaimer"><strong>About this starter map</strong>This map is educational and reflects general best practices for family digital boundaries. It is an orientation tool, not a comprehensive setup guide. Menu wording varies by iOS version — verify all steps on your current device. Raising Digital Teens does not provide legal, clinical, or emergency safety guidance.</div>
+  <div class="disclaimer"><strong>About this starter map</strong>This map is educational and reflects general best practices for family digital boundaries. It is an orientation tool, not a comprehensive setup guide. Menu wording varies by iOS version -- verify all steps on your current device. Raising Digital Teens does not provide legal, clinical, or emergency safety guidance.</div>
   <button class="btn-restart" onclick="restart()">← Start Over</button>
 </div>
 </div>
@@ -278,10 +264,10 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 <div class="wrap" style="padding-top:44px">
   <div class="eyebrow">Personalized Plan</div>
   <h2>How old is your child?</h2>
-  <p class="sub" style="margin-bottom:28px">We adjust the plan to what's developmentally appropriate — the right settings for an 8-year-old look different than for a 15-year-old.</p>
+  <p class="sub" style="margin-bottom:28px">We adjust the plan to what's developmentally appropriate -- the right settings for an 8-year-old look different than for a 15-year-old.</p>
   <div class="age-num" id="age-display">11</div>
   <div style="font-size:12px;color:#9A9A9A;margin-bottom:6px">years old</div>
-  <div class="tier-pill" id="tier-pill">Guided Access</div><br>
+  <div class="tier-pill" id="tier-pill">Ages 11–12</div><br>
   <input type="range" min="8" max="17" value="11" id="age-slider" oninput="updateAge(this.value)">
   <div class="range-row"><span>8</span><span>17</span></div>
   <div class="nav-row">
@@ -334,15 +320,14 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
       <div class="pay-price">$19</div>
       <div class="pay-price-sub">Launch price · Regular price $27 · Covers every child in your family</div>
       <div class="pay-list">
-        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Exact steps from your 8 choices</strong> — not a generic guide</div></div>
-        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Conversation scripts</strong> — age-appropriate, ready to use</div></div>
-        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Reset plan</strong> — for when a boundary breaks down</div></div>
-        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Communication tweaks</strong> — optional refinements after setup</div></div>
-        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Every child in your family</strong> — one purchase, unlimited plans</div></div>
+        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Exact steps from your 8 choices</strong> -- not a generic guide</div></div>
+        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Conversation scripts</strong> -- age-appropriate, ready to use</div></div>
+        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Reset plan</strong> -- for when a boundary breaks down</div></div>
+        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Communication tweaks</strong> -- optional refinements after setup</div></div>
+        <div class="pay-row"><div class="pay-chk">✓</div><div class="pay-row-text"><strong>Every child in your family</strong> -- one purchase, unlimited plans</div></div>
       </div>
-      <!-- payment_status: dev_bypass — replace onclick with Stripe checkout when ready -->
+      <!-- payment_status: dev_bypass -- replace onclick with Stripe checkout when ready -->
       <button class="btn purple full" onclick="unlockPlan()">Preview My Full Plan</button>
-      <!-- end payment placeholder -->
       <div class="pay-note">Pricing active soon. Preview is free during development.</div>
     </div>
   </div>
@@ -355,20 +340,16 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
   <div class="eyebrow purple">Your Personalized iPhone Setup Plan</div>
   <div style="font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:#2C2C2C;line-height:1.2;margin-bottom:6px" id="plan-home-title"></div>
   <div style="font-size:13px;color:#6B6B6B;margin-bottom:24px">Your 8 choices are locked in. Tap any section below to open it.</div>
-
-  <!-- Summary -->
   <div class="summary-card">
     <div class="eyebrow" style="margin-bottom:10px;font-size:10px">Your Setup at a Glance</div>
     <div id="plan-summary-rows"></div>
   </div>
-
-  <!-- Section cards -->
   <div class="section-card" onclick="goTo('s-steps')">
     <div class="section-card-head">
       <div class="sc-icon sage">⚙️</div>
       <div class="sc-text">
         <div class="sc-title">Step-by-Step Configuration</div>
-        <div class="sc-desc">Exact steps built from your choices — in the right order</div>
+        <div class="sc-desc">Exact steps built from your choices -- in the right order</div>
       </div>
       <div class="sc-badge arrow">Open →</div>
     </div>
@@ -388,7 +369,7 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
       <div class="sc-icon amber">🔄</div>
       <div class="sc-text">
         <div class="sc-title">Reset Plan</div>
-        <div class="sc-desc">When a boundary breaks down — what to do</div>
+        <div class="sc-desc">When a boundary breaks down -- what to do</div>
       </div>
       <div class="sc-badge arrow">Open →</div>
     </div>
@@ -403,25 +384,20 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
       <div class="sc-badge arrow">Open →</div>
     </div>
   </div>
-
-  <!-- Keep Current -->
   <div class="kc-card">
-    <div class="kc-title">RDT Keep Current Membership — Coming Soon</div>
+    <div class="kc-title">RDT Keep Current Membership -- Coming Soon</div>
     <div class="kc-desc">Apps change. iOS changes. Kids get older. Monthly updates, iOS setting-change alerts, and age milestone reminders so you know when your family's digital boundaries may need a refresh.</div>
     <div class="kc-badge">$4.99/month · Coming Soon</div>
   </div>
-
-  <!-- Add another child -->
   <div class="add-child-card" onclick="addAnotherChild()">
     <div class="add-child-title">+ Add Another Child</div>
     <div class="add-child-sub">Your purchase covers every child in your family. Tap to build a plan for a different age or set of choices.</div>
   </div>
-
   <button class="btn-restart" onclick="restart()">← Start Over</button>
 </div>
 </div>
 
-<!-- S8: STEPS SCREEN -->
+<!-- S8: STEPS -->
 <div id="s-steps" class="screen">
 <div class="prog-bar">
   <div class="prog-track"><div class="prog-fill" id="steps-fill"></div></div>
@@ -429,8 +405,8 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 </div>
 <div class="sec-screen" style="padding-top:28px">
   <div class="eyebrow purple">Step-by-Step Configuration</div>
-  <div style="font-size:clamp(1.2rem,4vw,1.6rem);font-weight:700;color:#2C2C2C;margin-bottom:6px">Exact steps — built from your choices</div>
-  <div style="font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:20px">Each step reflects the decisions you made. Menu wording may vary slightly by iOS version — verify on your current device.</div>
+  <div style="font-size:clamp(1.2rem,4vw,1.6rem);font-weight:700;color:#2C2C2C;margin-bottom:6px">Exact steps -- built from your choices</div>
+  <div style="font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:20px">Each step reflects the decisions you made. Menu wording may vary slightly by iOS version -- verify on your current device.</div>
   <div id="steps-list"></div>
   <div class="nav-row" style="margin-top:8px">
     <button class="btn ghost" onclick="goTo('s-plan-home')">← Back to Plan</button>
@@ -439,12 +415,12 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 </div>
 </div>
 
-<!-- S9: SCRIPTS SCREEN -->
+<!-- S9: SCRIPTS -->
 <div id="s-scripts" class="screen">
 <div class="sec-screen" style="padding-top:44px">
   <div class="eyebrow purple">First Conversations</div>
   <div style="font-size:clamp(1.2rem,4vw,1.6rem);font-weight:700;color:#2C2C2C;margin-bottom:6px">What to say when you hand over the phone</div>
-  <div style="font-size:13px;color:#9A9A9A;line-height:1.65;margin-bottom:20px;border-left:2px solid rgba(0,0,0,0.08);padding-left:12px;font-style:italic">Set up the settings first. Then have the conversation. These are starting points — adapt them to your voice.</div>
+  <div style="font-size:13px;color:#9A9A9A;line-height:1.65;margin-bottom:20px;border-left:2px solid rgba(0,0,0,0.08);padding-left:12px;font-style:italic">Set up the settings first. Then have the conversation. These are starting points -- adapt them to your voice.</div>
   <div id="scripts-list"></div>
   <div class="nav-row" style="margin-top:8px">
     <button class="btn ghost" onclick="goTo('s-plan-home')">← Back to Plan</button>
@@ -452,7 +428,7 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 </div>
 </div>
 
-<!-- S10: RESET SCREEN -->
+<!-- S10: RESET -->
 <div id="s-reset" class="screen">
 <div class="prog-bar">
   <div class="prog-track"><div class="prog-fill" id="reset-fill"></div></div>
@@ -460,7 +436,7 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 </div>
 <div class="sec-screen" style="padding-top:28px">
   <div class="eyebrow amber">Reset Plan</div>
-  <div style="font-size:clamp(1.2rem,4vw,1.6rem);font-weight:700;color:#2C2C2C;margin-bottom:6px">When a boundary breaks down — what to do</div>
+  <div style="font-size:clamp(1.2rem,4vw,1.6rem);font-weight:700;color:#2C2C2C;margin-bottom:6px">When a boundary breaks down -- what to do</div>
   <div style="font-size:13px;color:#9A9A9A;line-height:1.65;margin-bottom:20px;border-left:2px solid rgba(0,0,0,0.08);padding-left:12px;font-style:italic">Every family hits a reset moment. This is yours for when it happens.</div>
   <div id="reset-list"></div>
   <div class="nav-row" style="margin-top:8px">
@@ -469,33 +445,17 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 </div>
 </div>
 
-<!-- S11: TWEAKS SCREEN -->
+<!-- S11: TWEAKS -->
 <div id="s-tweaks" class="screen">
 <div class="sec-screen" style="padding-top:44px">
   <div class="eyebrow sage">Communication Tweaks</div>
   <div style="font-size:clamp(1.2rem,4vw,1.6rem);font-weight:700;color:#2C2C2C;margin-bottom:6px">Optional refinements after setup</div>
-  <div style="font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:6px">These go beyond the main setup. Each one is a combination of iOS settings and family-use agreements — not all are automatic iOS switches. Tap to mark what you've put in place.</div>
+  <div style="font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:6px">These go beyond the main setup. Each one is a combination of iOS settings and family-use agreements -- not all are automatic iOS switches. Tap to mark what you've put in place.</div>
   <div style="font-size:11px;color:#9A9A9A;margin-bottom:20px;font-style:italic">Note: Some of these are exact settings; others are family rules supported by settings. The distinction is noted for each.</div>
   <div id="tweaks-list"></div>
   <div class="nav-row" style="margin-top:8px">
     <button class="btn ghost" onclick="goTo('s-plan-home')">← Back to Plan</button>
   </div>
-</div>
-</div>
-
-<!-- S12: STANDARD GUIDE -->
-<div id="s-standard" class="screen">
-<div class="prog-bar">
-  <div class="prog-track"><div class="prog-fill" id="std-fill"></div></div>
-  <div class="prog-label" id="std-label">0 / 0</div>
-</div>
-<div class="sec-screen" style="padding-top:28px">
-  <div class="eyebrow amber">Free iPhone Setup Guide</div>
-  <div style="font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:#2C2C2C;line-height:1.2;margin-bottom:8px" id="std-title"></div>
-  <div style="font-size:13px;color:#6B6B6B;line-height:1.65;margin-bottom:20px">Work through these sections in order. Tap any step to mark it done.</div>
-  <div id="std-sections"></div>
-  <div class="disclaimer"><strong>About this guide</strong>This guide reflects general best practices for family digital boundaries. It is a starting point, not a comprehensive solution. Menu wording varies by iOS version. Raising Digital Teens does not provide legal, clinical, or emergency safety guidance.</div>
-  <button class="btn-restart" onclick="restart()">← Start Over</button>
 </div>
 </div>
 
@@ -506,88 +466,93 @@ var wizStep = 0;
 
 // ── QUESTIONS ──────────────────────────────────────────────────
 var QS = [
-  { cat:'App Downloads', q:'When your child wants a new app, how should that work?', ctx:'By default, any app in the App Store installs with one tap — no approval needed.',
+  // Q0: App Downloads
+  { cat:'App Downloads', q:'When your child wants a new app, how should that work?', ctx:'By default, any app in the App Store installs with one tap -- no approval needed.',
     opts:[
       {k:'a',sym:'✓',label:'They ask first, and I approve or decline it.',detail:'Activates Ask to Buy in Family Sharing. Every App Store download request comes to your phone before anything installs.'},
       {k:'b',sym:'↓',label:'Only I can install new apps for now.',detail:'Disables app installation on their device via Screen Time. You install apps manually when needed.'},
       {k:'c',sym:'○',label:'They can download apps without asking for now.',detail:'No download restrictions configured. You can revisit this later.'}
     ]
   },
-  { cat:'Web Browsing', q:'What should they be able to look up online?', ctx:'By default, Safari has no content filters — all web content is accessible.',
+  // Q1: Web Browsing
+  { cat:'Web Browsing', q:'What should they be able to look up online?', ctx:'By default, Safari has no content filters -- all web content is accessible.',
     opts:[
       {k:'a',sym:'✓',label:'Regular browsing, with adult content blocked and search filters on.',detail:'Screen Time → Content & Privacy Restrictions → Web Content → Limit Adult Websites. SafeSearch enabled via safesearch.google.com.'},
-      {k:'b',sym:'↓',label:'Only websites I have approved.',detail:'Screen Time → Web Content → Allowed Websites Only. You build an approved list; Safari blocks everything else.'},
+      {k:'b',sym:'↓',label:'Only websites I have approved.',detail:'Screen Time → Content & Privacy Restrictions → Web Content → Allowed Websites Only. You build an approved list; Safari blocks everything else.'},
       {k:'c',sym:'○',label:'Open web access for now.',detail:'No content filters configured.'}
     ]
   },
-  { cat:'Social Media', q:'Should they have access to social media?', ctx:'Most platforms — Instagram, TikTok, Snapchat — require users to be 13+.',
+  // Q2: Social Media -- CHANGE: added fake birthday note to ctx
+  { cat:'Social Media', q:'Should they have access to social media?', ctx:'Most platforms -- Instagram, TikTok, Snapchat -- require users to be 13+, though age verification is easy to bypass. Your family\'s rules matter more than the platform\'s age gate.',
     opts:[
-      {k:'a',sym:'✓',label:'Not yet. Block social media for now.',detail:'Screen Time → App Limits → Add Limit → Social category → set to 1 minute. This effectively blocks all social apps.'},
-      {k:'b',sym:'↓',label:'One approved platform, with limits.',detail:'Block the Social category via App Limits, then add one approved app to Always Allowed so it bypasses the limit.'},
-      {k:'c',sym:'○',label:'Yes, with time limits and safety settings.',detail:'Screen Time → App Limits → Social → set a daily cap. Also enable Communication Safety in Messages for sensitive content warnings.'}
+      {k:'a',sym:'✓',label:'Not yet. Block social media for now.',detail:'Screen Time → App Limits → Add Limit → Social category → set to 1 minute. This effectively blocks all social apps. iOS groups social apps under the Social category in App Limits.'},
+      {k:'b',sym:'↓',label:'One approved platform, with limits.',detail:'Block the Social category via App Limits, then add one approved app to Always Allowed so it bypasses the limit. iOS groups social apps under the Social category in App Limits.'},
+      {k:'c',sym:'○',label:'Yes, with time limits and safety settings.',detail:'Screen Time → App Limits → Add Limit → Social → set a daily cap. Also enable Communication Safety in Messages for sensitive content warnings. iOS groups social apps under the Social category in App Limits.'}
     ]
   },
-  { cat:'Daily Screen Time', q:'Should there be daily limits on phone use?', ctx:'App Limits set caps by category. They reset automatically at midnight every day.',
+  // Q3: Screen Time -- CHANGE: collapsed two "yes" options into one with sliders; removed "Yes -- very limited" option
+  { cat:'App Limits', q:'Should there be daily limits on phone use?', ctx:'App Limits set caps by category -- Social, Entertainment, and Games. They reset automatically at midnight every day.',
     opts:[
-      {k:'a',sym:'✓',label:'Yes — reasonable daily limits by category.',detail:'Social: 1.5 hrs, Entertainment: 2 hrs, Games: 1 hr on school days. Adjust after the first week.'},
-      {k:'b',sym:'↓',label:'Yes — very limited use for now.',detail:'Social: 30 min, Entertainment: 45 min, Games: 45 min. Revisit after two weeks.'},
-      {k:'c',sym:'🎛',label:'I want to set the limits myself.',detail:'Use the sliders below to choose your own daily cap for each category.', hasSliders:true},
-      {k:'d',sym:'○',label:'No automatic daily limits for now.',detail:'No App Limits configured. You manage usage through household rules.'}
+      {k:'a',sym:'✓',label:'Yes -- set limits by category.',detail:'Use the sliders below to choose your own daily cap for each category, or use the pre-loaded starting points for your child\'s age.', hasSliders:true},
+      {k:'b',sym:'○',label:'No automatic daily limits for now.',detail:'No App Limits configured. You manage usage through household rules.'}
     ]
   },
-  { cat:'Bedtime', q:'Should the phone lock itself at night?', ctx:'Screen Time Downtime schedules a window when only approved apps — and phone calls — are accessible.',
+  // Q4: Bedtime
+  { cat:'Downtime', q:'Should the phone lock itself at night?', ctx:'Screen Time Downtime schedules a window when only approved apps -- and phone calls -- are accessible.',
     opts:[
-      {k:'a',sym:'✓',label:'Yes — at a reasonable bedtime for their age.',detail:null},
+      {k:'a',sym:'✓',label:'Yes -- at a reasonable bedtime for their age.',detail:null},
       {k:'b',sym:'⏰',label:'I want to set my own bedtime.',detail:'Use the time pickers below to set school nights (Mon–Fri) and weekends (Sat–Sun) separately. iOS supports different Downtime schedules per day.', hasTimePickers:true},
-      {k:'c',sym:'○',label:'No automatic lock. We\'ll handle bedtime ourselves.',detail:'No Downtime configured. Strongly recommend a physical charging station in a common area — phone charges there overnight, not in the bedroom.'}
+      {k:'c',sym:'○',label:'No automatic lock. We\'ll handle bedtime ourselves.',detail:'No Downtime configured. Strongly recommend a physical charging station in a common area -- phone charges there overnight, not in the bedroom.'}
     ]
   },
-  { cat:'Communication', q:'Who should be able to call or message them?', ctx:'This applies to Phone, FaceTime, Messages, and saved contacts. Emergency calls always go through.',
+  // Q5: Communication -- CHANGE: added note that iOS doesn't know who family is automatically
+  { cat:'Communication Limits', q:'Who should be able to call or message them?', ctx:'This applies to Phone, FaceTime, Messages, and saved contacts. Emergency calls always go through. Note: iOS does not automatically know who your family members are -- you will choose specific people from your saved contacts to designate as allowed callers and messengers.',
     opts:[
-      {k:'a',sym:'✓',label:'Contacts only during the day, family only at night.',detail:'Screen Time → Communication Limits → During Screen Time: Contacts Only. During Downtime: Specific Contacts — choose family members from saved contacts.'},
-      {k:'b',sym:'↓',label:'Family only, all day and night.',detail:'Screen Time → Communication Limits → During Screen Time: Specific Contacts (family members from saved contacts). Same setting during Downtime.'},
+      {k:'a',sym:'✓',label:'Contacts only during the day, family only at night.',detail:'Screen Time → Communication Limits → During Screen Time: Contacts Only. During Downtime: Specific Contacts -- choose family members individually from your saved contacts.'},
+      {k:'b',sym:'↓',label:'Family only, all day and night.',detail:'Screen Time → Communication Limits → During Screen Time: Specific Contacts -- choose family members individually from your saved contacts. Set the same for During Downtime.'},
       {k:'c',sym:'○',label:'No contact limits for now.',detail:'No Communication Limits configured.'}
     ]
   },
-  { cat:'Location', q:'Do you want location sharing turned on?', ctx:'Location sharing shows where the device is. How your family uses that information is a family-use decision, not an automatic iOS schedule.',
+  // Q6: Location -- CHANGE: clarified active vs passive distinction, referenced Check In
+  { cat:'Location (Find My)', q:'Do you want location sharing turned on?', ctx:'Location sharing shows where the device is in real time. How your family uses that information is a family-use decision, not an automatic iOS schedule.',
     opts:[
-      {k:'a',sym:'✓',label:'Yes — share location with family, and my child knows it\'s on.',detail:'Family Sharing → Find My → Share My Location. Consider sharing yours too — framing location as mutual builds more trust than one-way tracking. This is a family agreement supported by a setting.'},
-      {k:'b',sym:'↓',label:'Yes — for outings and check-ins only, with clear family rules.',detail:'Same setup as above. Agree in advance on when and why you\'ll look — "if I can\'t reach you by phone" is a clear, fair rule. This is a family-use rule, not an automatic iOS schedule.'},
+      {k:'a',sym:'✓',label:'Yes -- always on, and my child knows it\'s on.',detail:'Settings → [your name] → Find My → Share My Location → on. Location is shared continuously through Find My. Your child\'s device is visible to you at any time. Framing location as a mutual, transparent arrangement builds more trust than one-way monitoring.'},
+      {k:'b',sym:'↓',label:'Yes -- for outings and check-ins, with clear family rules.',detail:'Settings → [your name] → Find My → Share My Location → on. Location is on through Find My, but your family agrees in advance on when and why you\'ll look -- "if I can\'t reach you by phone" is a clear, fair rule. Your child can also use Check In (iOS 17+) to automatically notify you when they arrive somewhere -- they initiate it, you receive it. This is a family-use rule, not an automatic iOS schedule.'},
       {k:'c',sym:'○',label:'No location sharing for now.',detail:'No location sharing configured.'}
     ]
   },
-  { cat:'Purchases', q:'Should they be able to make app or in-game purchases?', ctx:'In-app purchases are on by default and can charge without a password prompt.',
+  // Q7: Purchases
+  { cat:'iTunes & App Store Purchases', q:'Should they be able to make app or in-game purchases?', ctx:'In-app purchases are on by default and can charge without a password prompt.',
     opts:[
-      {k:'a',sym:'✓',label:'Parent approves all downloads and purchases.',detail:'Ask to Buy in Family Sharing requires your approval for App Store downloads and eligible in-app purchases. Screen Time → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow as a backup layer.'},
+      {k:'a',sym:'✓',label:'Parent approves all downloads and purchases.',detail:'Ask to Buy in Family Sharing requires your approval for App Store downloads and eligible in-app purchases. Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow as a backup layer.'},
       {k:'b',sym:'↓',label:'Downloads allowed, purchases restricted.',detail:'Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow. App installation remains available. Set Require Password → Always Require.'},
-      {k:'c',sym:'○',label:'Purchases open for now.',detail:'No purchase restrictions configured. Note: in-app charges are common and can add up quickly — this is worth revisiting.'}
+      {k:'c',sym:'○',label:'Purchases open for now.',detail:'No purchase restrictions configured. Note: in-app charges are common and can add up quickly -- this is worth revisiting.'}
     ]
   }
 ];
 
 var REVIEW_LABELS = {
-  q0:{cat:'App Downloads',   a:'Child asks before downloading', b:'Parent installs only',        c:'Open downloads'},
-  q1:{cat:'Web Browsing',    a:'Adult content filtered',        b:'Approved sites only',         c:'Open access'},
-  q2:{cat:'Social Media',    a:'Blocked entirely',              b:'One approved platform',       c:'Allowed with limits'},
-  q3:{cat:'Screen Time',     a:'Balanced limits',               b:'Tight limits',                c:'Custom limits',      d:'No automatic limits'},
-  q4:{cat:'Bedtime',         a:'Age-based lock',                b:'Custom bedtime',              c:'Manual bedtime'},
-  q5:{cat:'Communication',   a:'Contacts by day, family at night', b:'Family only, all day and night', c:'No contact limits'},
-  q6:{cat:'Location',        a:'On — child knows',              b:'On — outings and check-ins',  c:'Off'},
-  q7:{cat:'Purchases',       a:'Parent approves all',           b:'Downloads OK, purchases off', c:'Open purchases'}
+  q0:{cat:'App Downloads',              a:'Child asks, parent approves',  b:'Parent installs only',          c:'Open downloads'},
+  q1:{cat:'Web Browsing',               a:'Adult content filtered',        b:'Approved sites only',           c:'Open access'},
+  q2:{cat:'Social Media',               a:'Blocked entirely',              b:'One approved platform',         c:'Allowed with limits'},
+  q3:{cat:'App Limits',                 a:'Custom limits',                 b:'No automatic limits'},
+  q4:{cat:'Downtime',                   a:'Age-based lock',                b:'Custom bedtime',                c:'Manual bedtime'},
+  q5:{cat:'Communication Limits',       a:'Contacts by day, family at night', b:'Family only, all day and night', c:'No contact limits'},
+  q6:{cat:'Location (Find My)',         a:'On -- always, child knows',      b:'On -- outings and check-ins',    c:'Off'},
+  q7:{cat:'iTunes & App Store Purchases', a:'Parent approves all',         b:'Downloads OK, purchases off',   c:'Open purchases'}
 };
 
-// slider state
+// slider state -- pre-populated with age-appropriate defaults, updated in startWizard
 var customSliders = { social:90, entertainment:120, games:60 };
-// time picker state
-var customTimes = { schoolStart:'21:00', schoolEnd:'07:00', weekendStart:'22:00', weekendEnd:'07:00' };
+var customTimes = { schoolStart:'21:00', weekendStart:'22:00' };
 
 function toAmPm(t){ var p=t.split(':'),h=parseInt(p[0]),m=p[1],s=h>=12?'PM':'AM'; h=h%12||12; return h+':'+m+' '+s; }
 function minsToLabel(m){ if(m<60)return m+' min'; var h=Math.floor(m/60),r=m%60; return h+'h'+(r?(' '+r+'m'):''); }
 
-// ── NAVIGATION ─────────────────────────────────────────────────
+// ── NAVIGATION ────────────────────────────────────────────────
 function goTo(id){ document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');}); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
 
-// ── AWARENESS ──────────────────────────────────────────────────
+// ── EMAIL ─────────────────────────────────────────────────────
 function submitEmail(){
   var email=document.getElementById('email-input').value.trim();
   var err=document.getElementById('email-err');
@@ -598,39 +563,70 @@ function submitEmail(){
   goTo('s-starter');
 }
 
-// ── STARTER MAP ────────────────────────────────────────────────
+// ── STARTER MAP ───────────────────────────────────────────────
 function buildStarterMap(){
+  // CHANGE: 8 areas, Area X of 8, Location/Find My added as Area 8, social media note in App Limits
   var areas=[
-    {icon:'📲',title:'App Downloads',where:'Settings → Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases',why:'Controls whether your child can install new apps without your involvement.'},
-    {icon:'🌐',title:'Web Content',where:'Settings → Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content',why:'Sets what websites Safari can access — from open browsing to approved sites only.'},
-    {icon:'💬',title:'App Limits',where:'Settings → Screen Time → App Limits → Add Limit',why:'Sets daily time caps by app category (Social, Entertainment, Games). Limits reset at midnight.'},
-    {icon:'🌙',title:'Downtime',where:'Settings → Screen Time → Downtime',why:'Schedules a nightly window when only approved apps are accessible. Block at Downtime must be on to prevent bypassing.'},
-    {icon:'📞',title:'Communication Limits',where:'Settings → Screen Time → Communication Limits',why:'Controls who can call and message them during the day and overnight. Applies to Phone, FaceTime, Messages, and saved contacts.'},
-    {icon:'✅',title:'Always Allowed',where:'Settings → Screen Time → Always Allowed',why:'Apps listed here work even during Downtime and bypass App Limits. Audit this list — entertainment apps can sneak in.'},
-    {icon:'💳',title:'iTunes & App Store Purchases',where:'Settings → Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases',why:'Controls in-app purchases, app deletion, and whether a password is required for purchases.'}
+    {icon:'📲',title:'App Downloads',
+     where:'Settings → Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases',
+     why:'Controls whether your child can install new apps without your involvement.'},
+    {icon:'🌐',title:'Web Content',
+     where:'Settings → Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content',
+     why:'Sets what websites Safari can access -- from open browsing to approved sites only.'},
+    {icon:'⏱️',title:'App Limits',
+     where:'Settings → Screen Time → App Limits → Add Limit',
+     why:'Sets daily time caps by app category (Social, Entertainment, Games). Limits reset at midnight. This is also where you manage time on social apps -- iOS groups them under the Social category within App Limits.'},
+    {icon:'🌙',title:'Downtime',
+     where:'Settings → Screen Time → Downtime',
+     why:'Schedules a nightly window when only approved apps are accessible. Block at Downtime must be on to prevent bypassing.'},
+    {icon:'📞',title:'Communication Limits',
+     where:'Settings → Screen Time → Communication Limits',
+     why:'Controls who can call and message them during the day and overnight. Applies to Phone, FaceTime, Messages, and saved contacts. iOS does not automatically know who your family members are -- you designate them individually from saved contacts.'},
+    {icon:'✅',title:'Always Allowed',
+     where:'Settings → Screen Time → Always Allowed',
+     why:'Apps listed here work even during Downtime and bypass App Limits. Audit this list -- entertainment apps can sneak in.'},
+    {icon:'💳',title:'iTunes & App Store Purchases',
+     where:'Settings → Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases',
+     why:'Controls in-app purchases, app deletion, and whether a password is required for purchases.'},
+    {icon:'📍',title:'Location (Find My)',
+     where:'Settings → [your name] → Find My → Share My Location',
+     why:'Shows where the device is in real time. How your family uses that information is a family-use decision, not an automatic iOS schedule.'}
   ];
   var html='';
   areas.forEach(function(a,i){
-    html+='<div class="std-section"><div class="std-sec-head" onclick="toggleStd('+i+')"><div><div class="std-sec-ey">Area '+(i+1)+' of 7</div><div class="std-sec-title">'+a.icon+' '+a.title+'</div></div><div class="std-sec-right"><div class="std-tog" id="stdtog-'+i+'">▲</div></div></div><div class="std-body open" id="stdbody-'+i+'"><div class="std-inner"><div style="font-size:12px;color:#9A9A9A;font-style:italic;margin-bottom:10px">'+a.why+'</div><div style="font-size:12px;color:#6B6B6B;line-height:1.6"><strong style="color:#2C2C2C">Where to find it:</strong> '+a.where+'</div><div style="font-size:11px;color:#9A9A9A;margin-top:8px;font-style:italic">Menu names may vary by iOS version.</div></div></div></div>';
+    html+='<div class="std-section"><div class="std-sec-head" onclick="toggleStd('+i+')"><div><div class="std-sec-ey">Area '+(i+1)+' of 8</div><div class="std-sec-title">'+a.icon+' '+a.title+'</div></div><div class="std-sec-right"><div class="std-tog" id="stdtog-'+i+'">▲</div></div></div><div class="std-body open" id="stdbody-'+i+'"><div class="std-inner"><div style="font-size:12px;color:#9A9A9A;font-style:italic;margin-bottom:10px">'+a.why+'</div><div style="font-size:12px;color:#6B6B6B;line-height:1.6"><strong style="color:#2C2C2C">Where to find it:</strong> '+a.where+'</div><div style="font-size:11px;color:#9A9A9A;margin-top:8px;font-style:italic">Menu names may vary by iOS version.</div></div></div></div>';
   });
   document.getElementById('starter-sections').innerHTML=html;
 }
 function toggleStd(i){var b=document.getElementById('stdbody-'+i),t=document.getElementById('stdtog-'+i);b.classList.toggle('open');t.textContent=b.classList.contains('open')?'▲':'▼';}
 
-// ── AGE ────────────────────────────────────────────────────────
-function updateAge(v){ S.age=parseInt(v); document.getElementById('age-display').textContent=v; var t=v<=10?'Supervised Access':v<=13?'Guided Access':'Earned Access'; document.getElementById('tier-pill').textContent=t; }
+// ── AGE ───────────────────────────────────────────────────────
+// CHANGE: tier pill shows age band, not feature name like "Guided Access"
+function updateAge(v){
+  S.age=parseInt(v);
+  document.getElementById('age-display').textContent=v;
+  var t=parseInt(v)<=10?'Ages 8–10':parseInt(v)<=12?'Ages 11–12':parseInt(v)<=15?'Ages 13–15':'Ages 16–17';
+  document.getElementById('tier-pill').textContent=t;
+}
 
-// ── WIZARD ─────────────────────────────────────────────────────
-function startWizard(){ wizStep=0; S.choices={}; S.checked={}; S.tweaks={}; renderWizStep(); goTo('s-wiz'); }
+// ── WIZARD ────────────────────────────────────────────────────
+function startWizard(){
+  wizStep=0; S.choices={}; S.checked={}; S.tweaks={};
+  // CHANGE: pre-populate sliders with age-appropriate defaults
+  var age=S.age;
+  if(age<=10){ customSliders={social:30,entertainment:60,games:30}; customTimes={schoolStart:'20:00',weekendStart:'20:30'}; }
+  else if(age<=12){ customSliders={social:60,entertainment:90,games:60}; customTimes={schoolStart:'21:00',weekendStart:'22:00'}; }
+  else if(age<=15){ customSliders={social:90,entertainment:120,games:90}; customTimes={schoolStart:'22:00',weekendStart:'23:00'}; }
+  else { customSliders={social:120,entertainment:180,games:120}; customTimes={schoolStart:'22:30',weekendStart:'23:30'}; }
+  renderWizStep(); goTo('s-wiz');
+}
 function goToWizStep(i){ wizStep=i; renderWizStep(); goTo('s-wiz'); }
 
 function renderWizStep(){
   var q=QS[wizStep];
-  // fill bedtime details
-  var tier=S.age<=10?1:S.age<=13?2:3;
-  var stdBt=tier===1?'7:30 PM':tier===2?'9:00 PM':'10:00 PM';
-  var strictBt=tier===1?'6:30 PM':tier===2?'8:00 PM':'9:00 PM';
-  QS[4].opts[0].detail='Screen Time → Downtime → Scheduled → on → Every Day → Time → '+stdBt+' to 7:00 AM. Turn Block at Downtime on — your child must send you a request for more time rather than bypassing it themselves.';
+  var tier=S.age<=10?1:S.age<=12?2:S.age<=15?3:4;
+  var stdBt=tier===1?'8:00 PM':tier===2?'9:00 PM':tier===3?'10:00 PM':'10:30 PM';
+  QS[4].opts[0].detail='Screen Time → Downtime → Scheduled → on → Every Day → Time → '+stdBt+' to 7:00 AM. Turn Block at Downtime on -- your child must send you a request for more time rather than bypassing it themselves.';
 
   document.getElementById('wiz-cat').textContent='Question '+(wizStep+1)+' of 8 · '+q.cat;
   document.getElementById('wiz-lbl').textContent='Question '+(wizStep+1)+' of 8';
@@ -649,7 +645,7 @@ function renderWizStep(){
     if(o.hasSliders){
       var show=sel===o.k?'block':'none';
       html+='<div class="slider-block" id="slider-block" style="display:'+show+'">'+
-        '<div style="font-size:11px;color:#9A9A9A;margin-bottom:12px;font-style:italic">Drag each slider to set a daily limit. App category names may vary by iOS version.</div>'+
+        '<div style="font-size:11px;color:#9A9A9A;margin-bottom:12px;font-style:italic">Starting points are adjusted for your child\'s age. Drag each slider to customise. App category names may vary by iOS version.</div>'+
         '<div class="slider-row"><div class="slider-label"><span class="slider-name">💬 Social</span><span class="slider-val" id="sv-social">'+minsToLabel(customSliders.social)+'</span></div><input class="cat-slider" type="range" min="15" max="180" step="15" value="'+customSliders.social+'" oninput="updateSlider(\'social\',this.value)"></div>'+
         '<div class="slider-row"><div class="slider-label"><span class="slider-name">🎬 Entertainment</span><span class="slider-val" id="sv-ent">'+minsToLabel(customSliders.entertainment)+'</span></div><input class="cat-slider" type="range" min="15" max="240" step="15" value="'+customSliders.entertainment+'" oninput="updateSlider(\'entertainment\',this.value)"></div>'+
         '<div class="slider-row"><div class="slider-label"><span class="slider-name">🎮 Games</span><span class="slider-val" id="sv-games">'+minsToLabel(customSliders.games)+'</span></div><input class="cat-slider" type="range" min="15" max="180" step="15" value="'+customSliders.games+'" oninput="updateSlider(\'games\',this.value)"></div>'+
@@ -658,7 +654,7 @@ function renderWizStep(){
     if(o.hasTimePickers){
       var show2=sel===o.k?'block':'none';
       html+='<div class="time-block" id="time-block" style="display:'+show2+'">'+
-        '<div style="font-size:11px;color:#9A9A9A;margin-bottom:12px;font-style:italic">iOS Downtime supports separate schedules per day (Customize Days). Set your preferred start time for each.</div>'+
+        '<div style="font-size:11px;color:#9A9A9A;margin-bottom:12px;font-style:italic">iOS Downtime supports separate schedules per day (Customize Days). Starting points are adjusted for your child\'s age.</div>'+
         '<div class="time-row"><span class="time-label">📚 School nights (Mon–Fri)</span><input type="time" class="time-input" value="'+customTimes.schoolStart+'" oninput="updateTime(\'schoolStart\',this.value)"></div>'+
         '<div class="time-row"><span class="time-label">🏖️ Weekends (Sat–Sun)</span><input type="time" class="time-input" value="'+customTimes.weekendStart+'" oninput="updateTime(\'weekendStart\',this.value)"></div>'+
         '<div style="font-size:11px;color:#9A9A9A;margin-top:8px">Downtime ends at 7:00 AM daily by default. You can adjust this in Screen Time settings.</div>'+
@@ -689,110 +685,98 @@ function wizNext(){
 }
 function wizBack(){ if(wizStep>0){wizStep--;renderWizStep();window.scrollTo(0,0);}else goTo('s-age'); }
 
-// ── REVIEW ─────────────────────────────────────────────────────
+// ── REVIEW ────────────────────────────────────────────────────
 function renderReview(){
   var html='';
   for(var i=0;i<8;i++){
-    var key='q'+i,info=REVIEW_LABELS[key],choice=S.choices[key]||'a',val=info[choice];
-    if(i===2&&choice==='c')val='Custom limits (Social: '+minsToLabel(customSliders.social)+', Entertainment: '+minsToLabel(customSliders.entertainment)+', Games: '+minsToLabel(customSliders.games)+')';
-    if(i===3&&choice==='b')val='Custom bedtime (School: '+toAmPm(customTimes.schoolStart)+', Weekends: '+toAmPm(customTimes.weekendStart)+')';
+    var key='q'+i,info=REVIEW_LABELS[key],choice=S.choices[key]||'a',val=info[choice]||'Not set';
+    if(i===3&&choice==='a')val='Custom limits (Social: '+minsToLabel(customSliders.social)+', Entertainment: '+minsToLabel(customSliders.entertainment)+', Games: '+minsToLabel(customSliders.games)+')';
+    if(i===4&&choice==='b')val='Custom bedtime (School: '+toAmPm(customTimes.schoolStart)+', Weekends: '+toAmPm(customTimes.weekendStart)+')';
     html+='<div class="review-row" onclick="goToWizStep('+i+')"><div><div class="review-cat">'+info.cat+'</div><div class="review-val">'+val+'</div></div><div class="review-edit">Edit</div></div>';
   }
   document.getElementById('review-rows').innerHTML=html;
 }
 
-// ── PAYMENT (dev_bypass) ───────────────────────────────────────
+// ── PAYMENT (dev_bypass) ──────────────────────────────────────
 function unlockPlan(){ buildCustomPlan(); goTo('s-plan-home'); }
 
-// ── PLAN HOME ──────────────────────────────────────────────────
+// ── PLAN HOME ─────────────────────────────────────────────────
 function buildCustomPlan(){
-  var age=S.age,tier=age<=10?1:age<=13?2:3;
-  var tierName=tier===1?'Supervised Access':tier===2?'Guided Access':'Earned Access';
-  document.getElementById('plan-home-title').textContent='iPhone · Age '+age+' · '+tierName+' · Custom Plan';
+  var age=S.age;
+  // CHANGE: plan title uses age band only, no feature name like "Guided Access"
+  var band=age<=10?'Ages 8–10':age<=12?'Ages 11–12':age<=15?'Ages 13–15':'Ages 16–17';
+  document.getElementById('plan-home-title').textContent='iPhone · Age '+age+' · '+band+' · Custom Plan';
 
-  // summary rows
   var shtml='';
   for(var i=0;i<8;i++){
-    var key='q'+i,info=REVIEW_LABELS[key],choice=S.choices[key]||'a',val=info[choice];
-    if(i===2&&choice==='c')val='Custom limits';
-    if(i===3&&choice==='b')val='Custom bedtime';
+    var key='q'+i,info=REVIEW_LABELS[key],choice=S.choices[key]||'a',val=info[choice]||'Not set';
+    if(i===3&&choice==='a')val='Custom limits';
+    if(i===4&&choice==='b')val='Custom bedtime';
     shtml+='<div class="summary-row"><div class="summary-cat">'+info.cat+'</div><div class="summary-val">'+val+'</div></div>';
   }
   document.getElementById('plan-summary-rows').innerHTML=shtml;
-
-  // build steps
-  buildSteps();
-  buildScripts();
-  buildReset();
-  buildTweaks();
+  buildSteps(); buildScripts(); buildReset(); buildTweaks();
 }
 
 function buildSteps(){
-  var c=S.choices,age=S.age,tier=age<=10?1:age<=13?2:3;
-  var bt=tier===1?'7:30 PM':tier===2?'9:00 PM':'10:00 PM';
-  var steps=[];
-  var warns=[];
+  var c=S.choices,age=S.age,tier=age<=10?1:age<=12?2:age<=15?3:4;
+  var bt=tier===1?'8:00 PM':tier===2?'9:00 PM':tier===3?'10:00 PM':'10:30 PM';
+  var steps=[], warns=[];
 
-  steps.push('<strong>Family Setup:</strong> On your iPhone go to <strong>Settings → [your name] → Family</strong>. Tap the <strong>person+ icon</strong> in the top right. Choose <strong>Create Child Account</strong> if they don\'t have an Apple ID, or <strong>Invite People</strong> if they already have one. Once added, tap your child\'s name — Screen Time and Ask To Buy are listed there. Everything is managed from your phone.');
-  steps.push('<strong>Screen Time Passcode:</strong> Tap <strong>Screen Time → Manage Screen Time → Change Screen Time Passcode</strong>. Set a passcode only you know — separate from their device passcode. This prevents them from changing or turning off Screen Time settings themselves.');
+  steps.push('<strong>Family Setup:</strong> On your iPhone go to <strong>Settings → [your name] → Family</strong>. Tap the <strong>person+ icon</strong> in the top right. Choose <strong>Create Child Account</strong> if they don\'t have an Apple ID, or <strong>Invite People</strong> if they already have one. Once added, tap your child\'s name -- Screen Time and Ask To Buy are listed there. Everything is managed from your phone.');
+  steps.push('<strong>Screen Time Passcode:</strong> Tap <strong>Screen Time → Manage Screen Time → Change Screen Time Passcode</strong>. Set a passcode only you know -- separate from their device passcode. This prevents them from changing or turning off Screen Time settings themselves.');
 
-  if(c.q0==='a')steps.push('<strong>App Downloads — Approval required:</strong> In Family Sharing, confirm <strong>Ask to Buy is on</strong> for your child: Settings → [your name] → Family → [child\'s name] → Ask To Buy → on. Every App Store download request will come to your phone before anything installs.');
-  if(c.q0==='b')steps.push('<strong>App Downloads — Parent installs only:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → Installing Apps → Don\'t Allow</strong>. The App Store remains visible but nothing can download without you re-enabling this setting.');
+  if(c.q0==='a')steps.push('<strong>App Downloads -- Approval required:</strong> Confirm <strong>Ask to Buy is on</strong>: Settings → [your name] → Family → [child\'s name] → Ask To Buy → on. Every App Store download request will come to your phone before anything installs.');
+  if(c.q0==='b')steps.push('<strong>App Downloads -- Parent installs only:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → Installing Apps → Don\'t Allow</strong>. The App Store remains visible but nothing can download without you re-enabling this setting.');
 
-  if(c.q1==='a')steps.push('<strong>Web Browsing — Filtered:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content → Limit Adult Websites</strong>. Also visit <strong>safesearch.google.com</strong> in Safari and enable SafeSearch for an additional filter on Google searches.');
-  if(c.q1==='b')steps.push('<strong>Web Browsing — Approved sites only:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content → Allowed Websites Only</strong>. Tap <strong>Add Website</strong> to build your approved list. Safari blocks everything else.');
+  if(c.q1==='a')steps.push('<strong>Web Browsing -- Filtered:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content → Limit Adult Websites</strong>. Also visit <strong>safesearch.google.com</strong> in Safari and enable SafeSearch for an additional filter on Google searches.');
+  if(c.q1==='b')steps.push('<strong>Web Browsing -- Approved sites only:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → Content Restrictions → Web Content → Allowed Websites Only</strong>. Tap <strong>Add Website</strong> to build your approved list. Safari blocks everything else.');
 
-  if(c.q2==='a')steps.push('<strong>Social Media — Blocked:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social category → set to 1 minute</strong>. This effectively blocks all social apps. If social apps are installed they\'ll be inaccessible when the limit activates.');
-  if(c.q2==='b')steps.push('<strong>Social Media — One approved platform:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social → set to 1 minute</strong>. Then go to <strong>Screen Time → Always Allowed</strong> and add the one approved app. It bypasses the limit while all others remain blocked.');
-  if(c.q2==='c')steps.push('<strong>Social Media — With limits:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social</strong> and set a daily cap. Also go to <strong>Screen Time → Communication Safety</strong> and turn on warnings for sensitive images in Messages.');
+  if(c.q2==='a')steps.push('<strong>Social Media -- Blocked:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social category → set to 1 minute</strong>. This effectively blocks all social apps. iOS groups social apps under the Social category.');
+  if(c.q2==='b')steps.push('<strong>Social Media -- One approved platform:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social → set to 1 minute</strong>. Then go to <strong>Screen Time → Always Allowed</strong> and add the one approved app. It bypasses the limit while all others remain blocked.');
+  if(c.q2==='c')steps.push('<strong>Social Media -- With limits:</strong> Go to <strong>Screen Time → App Limits → Add Limit → Social</strong> and set a daily cap. Also go to <strong>Screen Time → Communication Safety</strong> and turn on warnings for sensitive images in Messages.');
 
-  if(c.q3==='a')steps.push('<strong>Screen Time — Balanced limits:</strong> Go to <strong>Screen Time → App Limits → Add Limit</strong>. Add three limits: <strong>Social → 1.5 hours, Entertainment → 2 hours, Games → 1 hour</strong>. Select Customize Days to set tighter limits on school days if needed. Limits reset at midnight.');
-  if(c.q3==='b')steps.push('<strong>Screen Time — Tight limits:</strong> Go to <strong>Screen Time → App Limits → Add Limit</strong>. Add: <strong>Social → 30 min, Entertainment → 45 min, Games → 45 min</strong>. Revisit after two weeks and adjust based on what you observe.');
-  if(c.q3==='c')steps.push('<strong>Screen Time — Your custom limits:</strong> Go to <strong>Screen Time → App Limits → Add Limit</strong>. Add three limits: <strong>Social → '+minsToLabel(customSliders.social)+', Entertainment → '+minsToLabel(customSliders.entertainment)+', Games → '+minsToLabel(customSliders.games)+'</strong>. App category names may vary slightly by iOS version.');
-
-  if(c.q3==='a'||c.q3==='b'||c.q3==='c'){
+  if(c.q3==='a'){
+    steps.push('<strong>App Limits -- Your custom limits:</strong> Go to <strong>Screen Time → App Limits → Add Limit</strong>. Add three limits: <strong>Social → '+minsToLabel(customSliders.social)+', Entertainment → '+minsToLabel(customSliders.entertainment)+', Games → '+minsToLabel(customSliders.games)+'</strong>. App category names may vary slightly by iOS version.');
     warns.push('⚠️ <strong>Always Allowed overrides App Limits.</strong> Go to Screen Time → Always Allowed and remove any entertainment apps (games, streaming, social apps) from that list. Apps listed there ignore all time limits.');
     warns.push('⚠️ <strong>Block at Downtime must be on.</strong> Without it, your child can tap "Ignore Limit" to bypass App Limits. Also make sure your Screen Time passcode is set so they can\'t disable limits themselves.');
   }
 
-  if(c.q4==='a')steps.push('<strong>Bedtime — Age-based lock:</strong> Go to <strong>Screen Time → Downtime → Scheduled → on → Every Day → Time → '+bt+' to 7:00 AM</strong>. Turn <strong>Block at Downtime on</strong>. Your child will see a 5-minute warning before Downtime starts and must send you a request for more time rather than bypassing it.');
-  if(c.q4==='b')steps.push('<strong>Bedtime — Your custom schedule:</strong> Go to <strong>Screen Time → Downtime → Scheduled → on → Customize Days</strong>. Set school nights (Mon–Fri) to lock at <strong>'+toAmPm(customTimes.schoolStart)+'</strong> and weekends (Sat–Sun) to lock at <strong>'+toAmPm(customTimes.weekendStart)+'</strong>. Turn <strong>Block at Downtime on</strong>.');
-  if(c.q4==='c')steps.push('<strong>Bedtime — Manual:</strong> No Downtime configured. Set up a physical charging station in a common area — phone charges there overnight, not in the bedroom. Starting this habit on night one is significantly easier than introducing it later.');
+  if(c.q4==='a')steps.push('<strong>Downtime -- Age-based lock:</strong> Go to <strong>Screen Time → Downtime → Scheduled → on → Every Day → Time → '+bt+' to 7:00 AM</strong>. Turn <strong>Block at Downtime on</strong>. Your child will see a 5-minute warning before Downtime starts.');
+  if(c.q4==='b')steps.push('<strong>Downtime -- Your custom schedule:</strong> Go to <strong>Screen Time → Downtime → Scheduled → on → Customize Days</strong>. Set school nights (Mon–Fri) to lock at <strong>'+toAmPm(customTimes.schoolStart)+'</strong> and weekends (Sat–Sun) to lock at <strong>'+toAmPm(customTimes.weekendStart)+'</strong>. Turn <strong>Block at Downtime on</strong>.');
+  if(c.q4==='c')steps.push('<strong>Downtime -- Manual bedtime:</strong> No Downtime configured. Set up a physical charging station in a common area -- phone charges there overnight, not in the bedroom. Starting this habit on night one is significantly easier than introducing it later.');
 
-  steps.push('<strong>Always Allowed — Audit:</strong> Go to <strong>Screen Time → Always Allowed</strong>. Phone is permanently allowed and cannot be removed — your child can always call you. Tap the <strong>red minus</strong> next to any entertainment app (games, streaming, social) that shouldn\'t be available overnight. Change <strong>Contacts</strong> at the top from Everyone to <strong>Contacts Only</strong>.');
+  steps.push('<strong>Always Allowed -- Audit:</strong> Go to <strong>Screen Time → Always Allowed</strong>. Phone is permanently allowed and cannot be removed -- your child can always call you. Tap the <strong>red minus</strong> next to any entertainment app (games, streaming, social) that shouldn\'t be available overnight. Change <strong>Contacts</strong> at the top from Everyone to <strong>Contacts Only</strong>.');
 
-  if(c.q5==='a')steps.push('<strong>Communication — Contacts by day, family at night:</strong> Go to <strong>Screen Time → Communication Limits → During Screen Time → Contacts Only</strong>. Set <strong>During Downtime → Specific Contacts</strong> and choose family members from your saved contacts. Emergency calls always go through.');
-  if(c.q5==='b')steps.push('<strong>Communication — Family only, all day and night:</strong> Go to <strong>Screen Time → Communication Limits → During Screen Time → Specific Contacts</strong> and select family members from saved contacts. Set the same for <strong>During Downtime</strong>. Consider turning off <strong>Allow Contact Editing</strong> so your child can\'t add new contacts themselves.');
+  if(c.q5==='a')steps.push('<strong>Communication Limits -- Contacts by day, family at night:</strong> Go to <strong>Screen Time → Communication Limits → During Screen Time → Contacts Only</strong>. Set <strong>During Downtime → Specific Contacts</strong> and choose family members individually from your saved contacts. iOS does not automatically know who your family members are -- you designate them by name. Emergency calls always go through.');
+  if(c.q5==='b')steps.push('<strong>Communication Limits -- Family only, all day and night:</strong> Go to <strong>Screen Time → Communication Limits → During Screen Time → Specific Contacts</strong> and select family members individually from your saved contacts. Set the same for <strong>During Downtime</strong>. Consider turning off <strong>Allow Contact Editing</strong> so your child can\'t add new contacts themselves.');
 
-  if(c.q6==='a')steps.push('<strong>Location — On, child knows:</strong> Go to <strong>Find My → Me → Share My Location → on</strong>. Share it with your child\'s Apple ID so they can see yours too — framing location as mutual tends to build more trust. This is a family agreement supported by a setting, not an automated schedule.');
-  if(c.q6==='b')steps.push('<strong>Location — For outings and check-ins:</strong> Go to <strong>Find My → Me → Share My Location → on</strong>. Agree in advance on when and why you\'ll check — "if I can\'t reach you by phone" is a clear, fair rule. This is a family-use rule, not an automatic iOS schedule.');
+  if(c.q6==='a')steps.push('<strong>Location -- Always on, child knows:</strong> Go to <strong>Settings → [your name] → Find My → Share My Location → on</strong>. Location is shared continuously through Find My. Consider sharing yours with your child too -- framing location as mutual builds more trust than one-way monitoring.');
+  if(c.q6==='b')steps.push('<strong>Location -- Outings and check-ins:</strong> Go to <strong>Settings → [your name] → Find My → Share My Location → on</strong>. Agree in advance on when and why you\'ll check -- "if I can\'t reach you by phone" is a clear, fair rule. Your child can also use <strong>Check In</strong> (iOS 17+) to automatically notify you when they arrive somewhere -- they initiate it, you receive it. This is a family-use rule, not an automatic iOS schedule.');
 
-  if(c.q7==='a')steps.push('<strong>Purchases — Parent approves all:</strong> Confirm <strong>Ask to Buy is on</strong> in Family Sharing (Settings → [your name] → Family → [child\'s name] → Ask To Buy → on). Go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow</strong> as a backup. Set <strong>Require Password → Always Require</strong>.');
-  if(c.q7==='b')steps.push('<strong>Purchases — Downloads OK, purchases off:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow</strong>. Set <strong>Require Password → Always Require</strong>. App installation remains allowed.');
-  if(c.q7==='c')steps.push('<strong>Purchases — Open:</strong> No purchase restrictions configured. Note: in-app charges are common and can add up quickly — this is worth revisiting after the first month.');
+  if(c.q7==='a')steps.push('<strong>iTunes & App Store Purchases -- Parent approves all:</strong> Confirm <strong>Ask to Buy is on</strong> (Settings → [your name] → Family → [child\'s name] → Ask To Buy → on). Go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow</strong>. Set <strong>Require Password → Always Require</strong>.');
+  if(c.q7==='b')steps.push('<strong>iTunes & App Store Purchases -- Purchases off:</strong> Go to <strong>Screen Time → Content & Privacy Restrictions → iTunes & App Store Purchases → In-App Purchases → Don\'t Allow</strong>. Set <strong>Require Password → Always Require</strong>. App installation remains allowed.');
+  if(c.q7==='c')steps.push('<strong>iTunes & App Store Purchases -- Open:</strong> No purchase restrictions configured. In-app charges are common and can add up quickly -- this is worth revisiting after the first month.');
 
-  // render
   var warnHtml='';
   warns.forEach(function(w){ warnHtml+='<div class="warn-box"><div class="warn-text">'+w+'</div></div>'; });
-
   var stepsHtml='';
   steps.forEach(function(s,i){
     var done=(S.checked['steps']||[])[i];
     stepsHtml+='<div class="step-item'+(done?' done':'')+'" onclick="toggleCheck(\'steps\','+i+')"><div class="step-num">'+(done?'✓':(i+1))+'</div><div class="step-text">'+s+'</div></div>';
   });
-
   document.getElementById('steps-list').innerHTML=warnHtml+stepsHtml;
   updateProgress('steps',steps.length,'steps-fill','steps-label');
 }
 
 function buildScripts(){
-  var tier=S.age<=10?1:S.age<=13?2:3;
+  var tier=S.age<=10?1:S.age<=12?2:S.age<=15?3:4;
   var scripts=tier===1?[
     '"This phone is a tool that belongs to our family. We\'re going to learn how to use it together, and the rules will change as you show us you\'re ready."',
-    '"When the timer goes off, screen time is over — even if it feels hard. That\'s the rule, every time."',
-    '"If something ever makes you uncomfortable — something you see or someone says — you can tell me. You won\'t get in trouble."'
-  ]:tier===3?[
-    '"I want to set up a starting point that works for both of us — and I want your input on what seems fair."',
+    '"When the timer goes off, screen time is over -- even if it feels hard. That\'s the rule, every time."',
+    '"If something ever makes you uncomfortable -- something you see or someone says -- you can tell me. You won\'t get in trouble."'
+  ]:tier===4?[
+    '"I want to set up a starting point that works for both of us -- and I want your input on what seems fair."',
     '"As you show me you can handle it, I\'ll give you more flexibility. That\'s the deal."',
     '"If something ever feels off online, I want you to be able to tell me without worrying about losing your phone."'
   ]:[
@@ -808,11 +792,11 @@ function buildScripts(){
 function buildReset(){
   var c=S.choices;
   var items=[
-    'Don\'t react in the moment — the best reset conversations happen when everyone is calm',
-    'Name what happened specifically — the behavior, not the character: "You were on your phone at 1am" not "You always lie"',
+    'Don\'t react in the moment -- the best reset conversations happen when everyone is calm',
+    'Name what happened specifically -- the behavior, not the character: "You were on your phone at 1am" not "You always lie"',
     'Identify what broke down: was the limit unclear? The consequence inconsistent? The rule realistic?',
-    c.q4==='c'?'Since you\'re managing bedtime manually, consider whether a Downtime schedule would remove this as a nightly friction point':'Check that Block at Downtime is still on — your child may have found a way to request extensions repeatedly',
-    'Tighten one specific thing at a time — sweeping changes create more conflict than clarity',
+    c.q4==='c'?'Since you\'re managing bedtime manually, consider whether a Downtime schedule would remove this as a nightly friction point':'Check that Block at Downtime is still on -- your child may have found a way to request extensions repeatedly',
+    'Tighten one specific thing at a time -- sweeping changes create more conflict than clarity',
     'Rebuild with a short agreement: "Here\'s what changes for two weeks. Then we check in."'
   ];
   var html='';
@@ -827,11 +811,11 @@ function buildReset(){
 function buildTweaks(){
   var tweaks=[
     {id:'t0',label:'Allow approved friends to contact them during the day',note:'iOS setting: Screen Time → Communication Limits → During Screen Time → Contacts Only (saved contacts you approve).'},
-    {id:'t1',label:'Family only after bedtime',note:'iOS setting: Screen Time → Communication Limits → During Downtime → Specific Contacts. Choose family members from saved contacts.'},
-    {id:'t2',label:'Limit unknown callers',note:'iOS supports Contacts Only via Communication Limits, which filters most unknown numbers. This is not a complete block of all unknown routes — it reduces exposure significantly.'},
+    {id:'t1',label:'Family only after bedtime',note:'iOS setting: Screen Time → Communication Limits → During Downtime → Specific Contacts. Choose family members individually from saved contacts.'},
+    {id:'t2',label:'Limit unknown callers',note:'iOS supports Contacts Only via Communication Limits, which filters most unknown numbers. This is not a complete block of all unknown routes -- it reduces exposure significantly.'},
     {id:'t3',label:'Parent manages new contacts',note:'iOS setting: Screen Time → Communication Limits → Allow Contact Editing → off. Your child cannot add new contacts without you re-enabling this.'},
-    {id:'t4',label:'Allow FaceTime with family only',note:'iOS setting: Screen Time → Communication Limits → Specific Contacts (family) covers FaceTime. This is a family-use agreement supported by the same setting.'},
-    {id:'t5',label:'Allow group chats only when an approved contact is included',note:'iOS supports "Contacts & Groups with at least one contact" in Communication Limits — group chats are allowed only when at least one saved contact is a member. iOS does not individually approve every group chat.'}
+    {id:'t4',label:'Allow FaceTime with family only',note:'iOS setting: Screen Time → Communication Limits → Specific Contacts (family) covers FaceTime. Designate family members individually from saved contacts.'},
+    {id:'t5',label:'Allow group chats only when an approved contact is included',note:'iOS supports "Contacts & Groups with at least one contact" in Communication Limits -- group chats are allowed only when at least one saved contact is a member. iOS does not individually approve every group chat.'}
   ];
   var html='';
   tweaks.forEach(function(t){
@@ -847,10 +831,7 @@ function toggleCheck(section,i){
   if(section==='steps')buildSteps();
   if(section==='reset')buildReset();
 }
-function toggleTweak(id){
-  S.tweaks[id]=!S.tweaks[id];
-  buildTweaks();
-}
+function toggleTweak(id){ S.tweaks[id]=!S.tweaks[id]; buildTweaks(); }
 function updateProgress(section,total,fillId,labelId){
   var done=(S.checked[section]||[]).filter(Boolean).length;
   var pct=total?Math.round((done/total)*100):0;
@@ -858,7 +839,6 @@ function updateProgress(section,total,fillId,labelId){
   document.getElementById(labelId).textContent=done===total&&total>0?'✓ Done!':done+' / '+total;
 }
 
-// ── ADD ANOTHER CHILD ──────────────────────────────────────────
 function addAnotherChild(){
   S.choices={}; S.checked={}; S.tweaks={};
   document.getElementById('age-slider').value=S.age;
@@ -866,10 +846,6 @@ function addAnotherChild(){
   startWizard();
 }
 
-// ── STANDARD GUIDE (not used in new flow but preserved) ────────
-function buildStandardGuide(){} // placeholder
-
-// ── RESTART ────────────────────────────────────────────────────
 function restart(){
   S={email:'',age:11,choices:{},checked:{},tweaks:{},payment_status:'dev_bypass'};
   wizStep=0;
