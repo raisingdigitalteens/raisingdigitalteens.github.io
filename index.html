@@ -460,7 +460,7 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 </div>
 
 <script>
-var FORMSPREE = 'https://formspree.io/f/xzdqnwaw';
+
 var S = { email:'', age:11, choices:{}, checked:{}, tweaks:{}, payment_status:'dev_bypass' };
 var wizStep = 0;
 
@@ -558,7 +558,8 @@ function submitEmail(){
   var err=document.getElementById('email-err');
   if(!email||!email.includes('@')){err.style.display='block';return;}
   err.style.display='none'; S.email=email;
-  fetch(FORMSPREE,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:email,source:'awareness'})}).catch(function(){});
+  fetch('https://app.kit.com/forms/4cf3a4ec5b/subscriptions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email_address:email})}).catch(function(){});
+
   buildStarterMap();
   goTo('s-starter');
 }
