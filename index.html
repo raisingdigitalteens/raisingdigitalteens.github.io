@@ -188,6 +188,7 @@ input.cat-slider{width:100%;accent-color:#4A7C6F}
 </style>
 </head>
 <body>
+<iframe name="kit-hidden-frame" style="display:none"></iframe>
 <header>
   <div class="logo">Raising<span>Digital</span>Teens</div>
   <div class="htag">First Phone Setup</div>
@@ -554,17 +555,28 @@ function minsToLabel(m){ if(m<60)return m+' min'; var h=Math.floor(m/60),r=m%60;
 // ── NAVIGATION ────────────────────────────────────────────────
 function goTo(id){ document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');}); document.getElementById(id).classList.add('active'); window.scrollTo(0,0); }
 
-// ── EMAIL ─────────────────────────────────────────────────────
 function submitEmail(){
   var email=document.getElementById('email-input').value.trim();
   var err=document.getElementById('email-err');
   if(!email||!email.includes('@')){err.style.display='block';return;}
-  err.style.display='none'; S.email=email;
-  fetch('https://app.kit.com/forms/4cf3a4ec5b/subscriptions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email_address:email})}).catch(function(){});
-
+  err.style.display='none';
+  S.email=email;
+  var f=document.createElement('form');
+  f.method='POST';
+  f.action='https://app.kit.com/forms/4cf3a4ec5b/subscriptions';
+  f.target='kit-hidden-frame';
+  var i=document.createElement('input');
+  i.type='hidden';
+  i.name='email_address';
+  i.value=email;
+  f.appendChild(i);
+  document.body.appendChild(f);
+  f.submit();
+  document.body.removeChild(f);
   buildStarterMap();
   goTo('s-starter');
 }
+
 
 // ── STARTER MAP ───────────────────────────────────────────────
 function buildStarterMap(){
